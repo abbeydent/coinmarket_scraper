@@ -6,7 +6,7 @@ import pandas as pd
 if not os.path.exists("parsed_files"):
 	os.mkdir("parsed_files")
 
-df = pd.dataframe[]
+df = pd.DataFrame()
 
 for one_file_name in glob.glob("html_files/*.html"):
 	print("parsing " + one_file_name)
@@ -44,6 +44,7 @@ for one_file_name in glob.glob("html_files/*.html"):
 			}, ignore_index=True)
 
 
+#print(df)
 df.to_csv("parsed_files/coinmarketcap_dataset1")
 	
 
