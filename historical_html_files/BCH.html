@@ -6,7 +6,7 @@
 <html lang="en"> <!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<meta http-equiv="x-ua-compatible" content="ie=edge"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VQ4BV1dWDxACVVZTAAUEUVI="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e,n){function r(t){try{s.console&&console.log(t)}catch(e){}}var o,i=t("ee"),a=t(21),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,e,n){r(n.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,s){try{l?l-=1:o(s||new UncaughtException(t,e,n),!0)}catch(f){try{i("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function o(t,e){var n=e?null:c.now();i("err",[t,n])}var i=t("handle"),a=t(22),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,p="nr@seenError",l=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(13),t(12),"addEventListener"in window&&t(6),c.xhrWrappable&&t(14),d=!0)}s.on("fn-start",function(t,e,n){d&&(l+=1)}),s.on("fn-err",function(t,e,n){d&&!n[p]&&(f(n,p,function(){return!0}),this.thrown=!0,o(n))}),s.on("fn-end",function(){d&&!this.thrown&&l>0&&(l-=1)}),s.on("internal-error",function(t){i("ierr",[t,c.now(),!0])})},{}],3:[function(t,e,n){t("loader").features.ins=!0},{}],4:[function(t,e,n){function r(){M++,N=y.hash,this[u]=g.now()}function o(){M--,y.hash!==N&&i(0,!0);var t=g.now();this[h]=~~this[h]+t-this[u],this[d]=t}function i(t,e){E.emit("newURL",[""+y,e])}function a(t,e){t.on(e,function(){this[e]=g.now()})}var s="-start",c="-end",f="-body",u="fn"+s,d="fn"+c,p="cb"+s,l="cb"+c,h="jsTime",m="fetch",v="addEventListener",w=window,y=w.location,g=t("loader");if(w[v]&&g.xhrWrappable){var b=t(10),x=t(11),E=t(8),O=t(6),P=t(13),R=t(7),T=t(14),L=t(9),j=t("ee"),S=j.get("tracer");t(15),g.features.spa=!0;var N,M=0;j.on(u,r),j.on(p,r),j.on(d,o),j.on(l,o),j.buffer([u,d,"xhr-done","xhr-resolved"]),O.buffer([u]),P.buffer(["setTimeout"+c,"clearTimeout"+s,u]),T.buffer([u,"new-xhr","send-xhr"+s]),R.buffer([m+s,m+"-done",m+f+s,m+f+c]),E.buffer(["newURL"]),b.buffer([u]),x.buffer(["propagate",p,l,"executor-err","resolve"+s]),S.buffer([u,"no-"+u]),L.buffer(["new-jsonp","cb-start","jsonp-error","jsonp-end"]),a(T,"send-xhr"+s),a(j,"xhr-resolved"),a(j,"xhr-done"),a(R,m+s),a(R,m+"-done"),a(L,"new-jsonp"),a(L,"jsonp-end"),a(L,"cb-start"),E.on("pushState-end",i),E.on("replaceState-end",i),w[v]("hashchange",i,!0),w[v]("load",i,!0),w[v]("popstate",function(){i(0,M>1)},!0)}},{}],5:[function(t,e,n){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(13),s=t(12),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",p="resource",l="-start",h="-end",m="fn"+l,v="fn"+h,w="bstTimer",y="pushState",g=t("loader");g.features.stn=!0,t(8);var b=NREUM.o.EV;o.on(m,function(t,e){var n=t[0];n instanceof b&&(this.bstStart=g.now())}),o.on(v,function(t,e){var n=t[0];n instanceof b&&i("bst",[n,e,this.bstStart,g.now()])}),a.on(m,function(t,e,n){this.bstStart=g.now(),this.bstType=n}),a.on(v,function(t,e){i(w,[e,this.bstStart,g.now(),this.bstType])}),s.on(m,function(){this.bstStart=g.now()}),s.on(v,function(t,e){i(w,[e,this.bstStart,g.now(),"requestAnimationFrame"])}),o.on(y+l,function(t){this.time=g.now(),this.startPath=location.pathname+location.hash}),o.on(y+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(p)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(p)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],6:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&o(e)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,e){return t[1]}var a=t("ee").get("events"),s=t(24)(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,e){var n=t[1],r=c(n,"nr@wrapped",function(){function t(){if("function"==typeof n.handleEvent)return n.handleEvent.apply(n,arguments)}var e={object:t,"function":n}[typeof n];return e?s(e,"fn-",null,e.name||"anonymous"):n});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],7:[function(t,e,n){function r(t,e,n){var r=t[e];"function"==typeof r&&(t[e]=function(){var t=r.apply(this,arguments);return o.emit(n+"start",arguments,t),t.then(function(e){return o.emit(n+"end",[null,e],t),e},function(e){throw o.emit(n+"end",[e],t),e})})}var o=t("ee").get("fetch"),i=t(21);e.exports=o;var a=window,s="fetch-",c=s+"body-",f=["arrayBuffer","blob","json","text","formData"],u=a.Request,d=a.Response,p=a.fetch,l="prototype";u&&d&&p&&(i(f,function(t,e){r(u[l],e,c),r(d[l],e,c)}),r(a,"fetch",s),o.on(s+"end",function(t,e){var n=this;if(e){var r=e.headers.get("content-length");null!==r&&(n.rxSize=r),o.emit(s+"done",[null,e],n)}else o.emit(s+"done",[t],n)}))},{}],8:[function(t,e,n){var r=t("ee").get("history"),o=t(24)(r);e.exports=r,o.inPlace(window.history,["pushState","replaceState"],"-")},{}],9:[function(t,e,n){function r(t){function e(){c.emit("jsonp-end",[],p),t.removeEventListener("load",e,!1),t.removeEventListener("error",n,!1)}function n(){c.emit("jsonp-error",[],p),c.emit("jsonp-end",[],p),t.removeEventListener("load",e,!1),t.removeEventListener("error",n,!1)}var r=t&&"string"==typeof t.nodeName&&"script"===t.nodeName.toLowerCase();if(r){var o="function"==typeof t.addEventListener;if(o){var a=i(t.src);if(a){var u=s(a),d="function"==typeof u.parent[u.key];if(d){var p={};f.inPlace(u.parent,[u.key],"cb-",p),t.addEventListener("load",e,!1),t.addEventListener("error",n,!1),c.emit("new-jsonp",[t.src],p)}}}}}function o(){return"addEventListener"in window}function i(t){var e=t.match(u);return e?e[1]:null}function a(t,e){var n=t.match(p),r=n[1],o=n[3];return o?a(o,e[r]):e[r]}function s(t){var e=t.match(d);return e&&e.length>=3?{key:e[2],parent:a(e[1],window)}:{key:t,parent:window}}var c=t("ee").get("jsonp"),f=t(24)(c);if(e.exports=c,o()){var u=/[?&](?:callback|cb)=([^&#]+)/,d=/(.*)\.([^.]+)/,p=/^(\w+)(\.|$)(.*)$/,l=["appendChild","insertBefore","replaceChild"];f.inPlace(HTMLElement.prototype,l,"dom-"),f.inPlace(HTMLHeadElement.prototype,l,"dom-"),f.inPlace(HTMLBodyElement.prototype,l,"dom-"),c.on("dom-start",function(t){r(t[0])})}},{}],10:[function(t,e,n){var r=t("ee").get("mutation"),o=t(24)(r),i=NREUM.o.MO;e.exports=r,i&&(window.MutationObserver=function(t){return this instanceof i?new i(o(t,"fn-")):i.apply(this,arguments)},MutationObserver.prototype=i.prototype)},{}],11:[function(t,e,n){function r(t){var e=a.context(),n=s(t,"executor-",e),r=new f(n);return a.context(r).getCtx=function(){return e},a.emit("new-promise",[r,e],e),r}function o(t,e){return e}var i=t(24),a=t("ee").get("promise"),s=i(a),c=t(21),f=NREUM.o.PR;e.exports=a,f&&(window.Promise=r,["all","race"].forEach(function(t){var e=f[t];f[t]=function(n){function r(t){return function(){a.emit("propagate",[null,!o],i),o=o||!t}}var o=!1;c(n,function(e,n){Promise.resolve(n).then(r("all"===t),r(!1))});var i=e.apply(f,arguments),s=f.resolve(i);return s}}),["resolve","reject"].forEach(function(t){var e=f[t];f[t]=function(t){var n=e.apply(f,arguments);return t!==n&&a.emit("propagate",[t,!0],n),n}}),f.prototype["catch"]=function(t){return this.then(null,t)},f.prototype=Object.create(f.prototype,{constructor:{value:r}}),c(Object.getOwnPropertyNames(f),function(t,e){try{r[e]=f[e]}catch(n){}}),a.on("executor-start",function(t){t[0]=s(t[0],"resolve-",this),t[1]=s(t[1],"resolve-",this)}),a.on("executor-err",function(t,e,n){t[1](n)}),s.inPlace(f.prototype,["then"],"then-",o),a.on("then-start",function(t,e){this.promise=e,t[0]=s(t[0],"cb-",this),t[1]=s(t[1],"cb-",this)}),a.on("then-end",function(t,e,n){this.nextPromise=n;var r=this.promise;a.emit("propagate",[r,!0],n)}),a.on("cb-end",function(t,e,n){a.emit("propagate",[n,!0],this.nextPromise)}),a.on("propagate",function(t,e,n){this.getCtx&&!e||(this.getCtx=function(){if(t instanceof Promise)var e=a.context(t);return e&&e.getCtx?e.getCtx():this})}),r.toString=function(){return""+f})},{}],12:[function(t,e,n){var r=t("ee").get("raf"),o=t(24)(r),i="equestAnimationFrame";e.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],13:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function o(t,e,n){this.method=n,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,n)}var i=t("ee").get("timer"),a=t(24)(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";e.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],14:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",s)}function o(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,y,"fn-",s)}function i(t){g.push(t),h&&(x?x.then(a):v?v(a):(E=-E,O.data=E))}function a(){for(var t=0;t<g.length;t++)r([],g[t]);g.length&&(g=[])}function s(t,e){return e}function c(t,e){for(var n in t)e[n]=t[n];return e}t(6);var f=t("ee"),u=f.get("xhr"),d=t(24)(u),p=NREUM.o,l=p.XHR,h=p.MO,m=p.PR,v=p.SI,w="readystatechange",y=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],g=[];e.exports=u;var b=window.XMLHttpRequest=function(t){var e=new l(t);try{u.emit("new-xhr",[e],e),e.addEventListener(w,o,!1)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(c(l,b),b.prototype=l.prototype,d.inPlace(b.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,e){r(t,e),i(e)}),u.on("open-xhr-start",r),h){var x=m&&m.resolve();if(!v&&!m){var E=1,O=document.createTextNode(E);new h(a).observe(O,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===w||a()})},{}],15:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<d;r++)t.removeEventListener(u[r],this.listener,!1);if(!e.aborted){if(n.duration=a.now()-this.startTime,4===t.readyState){e.status=t.status;var i=o(t,this.lastSize);if(i&&(n.rxSize=i),this.sameOrigin){var c=t.getResponseHeader("X-NewRelic-App-Data");c&&(e.cat=c.split(", ").pop())}}else e.status=0;n.cbTime=this.cbTime,f.emit("xhr-done",[t],t),s("xhr",[e,n,this.startTime])}}}function o(t,e){var n=t.responseType;if("json"===n&&null!==e)return e;var r="arraybuffer"===n||"blob"===n||"json"===n?t.response:t.responseText;return h(r)}function i(t,e){var n=c(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}var a=t("loader");if(a.xhrWrappable){var s=t("handle"),c=t(16),f=t("ee"),u=["load","error","abort","timeout"],d=u.length,p=t("id"),l=t(19),h=t(18),m=window.XMLHttpRequest;a.features.xhr=!0,t(14),f.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,l&&(l>34||l<10)||window.opera||t.addEventListener("progress",function(t){e.lastSize=t.loaded},!1)}),f.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),f.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),f.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],o=this;if(n&&r){var i=h(r);i&&(n.txSize=i)}this.startTime=a.now(),this.listener=function(t){try{"abort"===t.type&&(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof e.onload))&&o.end(e)}catch(n){try{f.emit("internal-error",[n])}catch(r){}}};for(var s=0;s<d;s++)e.addEventListener(u[s],this.listener,!1)}),f.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),f.on("xhr-load-added",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),f.on("xhr-load-removed",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),f.on("addEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-added",[t[1],t[2]],e)}),f.on("removeEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-removed",[t[1],t[2]],e)}),f.on("fn-start",function(t,e,n){e instanceof m&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),f.on("fn-end",function(t,e){this.xhrCbStart&&f.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,e],e)})}},{}],16:[function(t,e,n){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!e.protocol||":"===e.protocol||e.protocol===n.protocol,a=e.hostname===document.domain&&e.port===n.port;return r.sameOrigin=i&&(!e.hostname||a),r}},{}],17:[function(t,e,n){function r(){}function o(t,e,n){return function(){return i(t,[f.now()].concat(s(arguments)),e?null:this,n),e?void 0:this}}var i=t("handle"),a=t(21),s=t(22),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(t,e){u[e]=o(p+e,!0,"api")}),u.addPageAction=o(p+"addPageAction",!0),u.setCurrentRouteName=o(p+"routeName",!0),e.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,e){var n={},r=this,o="function"==typeof e;return i(l+"tracer",[f.now(),t,n],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],n),o)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[f.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){h[e]=o(l+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),i("err",[t,f.now(),!1,e])}},{}],18:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],19:[function(t,e,n){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),e.exports=r},{}],20:[function(t,e,n){function r(t,e){if(!o)return!1;if(t!==o)return!1;if(!e)return!0;if(!i)return!1;for(var n=i.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(o="Safari",i=c[1])}e.exports={agent:o,version:i,match:r}},{}],21:[function(t,e,n){function r(t,e){var n=[],r="",i=0;for(r in t)o.call(t,r)&&(n[i]=e(r,t[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],22:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(o<0?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=r},{}],23:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],24:[function(t,e,n){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var o=t("ee"),i=t(22),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;e.exports=function(t,e){function n(t,e,n,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof n?n(r,a):n||{}}catch(f){p([f,"",[r,a,o],s])}u(e+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(d){throw u(e+"err",[r,a,d],s),d}finally{u(e+"end",[r,a,c],s)}}return r(t)?t:(e||(e=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,e,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<e.length;c++)s=e[c],a=t[s],r(a)||(t[s]=n(a,f?s+o:o,i,s))}function u(n,r,o){if(!c||e){var i=c;c=!0;try{t.emit(n,r,o,e)}catch(a){p([a,n,r,o])}c=i}}function d(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){p([r])}for(var o in t)s.call(t,o)&&(e[o]=t[o]);return e}function p(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=o),n.inPlace=f,n.flag=a,n}},{}],ee:[function(t,e,n){function r(){}function o(t){function e(t){return t&&t instanceof r?t:t?c(t,s,i):i()}function n(n,r,o,i){if(!p.aborted||i){t&&t(n,r,o);for(var a=e(o),s=m(n),c=s.length,f=0;f<c;f++)s[f].apply(a,r);var d=u[g[n]];return d&&d.push([b,n,r,a]),a}}function l(t,e){y[t]=m(t).concat(e)}function h(t,e){var n=y[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function m(t){return y[t]||[]}function v(t){return d[t]=d[t]||o(n)}function w(t,e){f(t,function(t,n){e=e||"feature",g[n]=e,e in u||(u[e]=[])})}var y={},g={},b={on:l,addEventListener:l,removeEventListener:h,emit:n,get:v,listeners:m,context:e,buffer:w,abort:a,aborted:!1};return b}function i(){return new r}function a(){(u.api||u.feature)&&(p.aborted=!0,u=p.backlog={})}var s="nr@context",c=t("gos"),f=t(21),u={},d={},p=e.exports=o();p.backlog=u},{}],gos:[function(t,e,n){function r(t,e,n){if(o.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[e]=r,r}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){o.buffer([t],r),o.emit(t,e,n)}var o=t("ee").get("handle");e.exports=r,r.ee=o},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!E++){var t=x.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();f(g,function(e,n){t[e]||(t[e]=n)}),c("mark",["onload",a()+x.offset],null,"api");var n=l.createElement("script");n.src="https://"+t.agent,e.parentNode.insertBefore(n,e)}}function o(){"complete"===l.readyState&&i()}function i(){c("mark",["domContent",a()+x.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(s=Math.max((new Date).getTime(),s))-x.offset}var s=(new Date).getTime(),c=t("handle"),f=t(21),u=t("ee"),d=t(20),p=window,l=p.document,h="addEventListener",m="attachEvent",v=p.XMLHttpRequest,w=v&&v.prototype;NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:v,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var y=""+location,g={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-spa-1118.min.js"},b=v&&w&&w[h]&&!/CriOS/.test(navigator.userAgent),x=e.exports={offset:s,now:a,origin:y,features:{},xhrWrappable:b,userAgent:d};t(17),l[h]?(l[h]("DOMContentLoaded",i,!1),p[h]("load",r,!1)):(l[m]("onreadystatechange",o),p[m]("onload",r)),c("mark",["firstbyte",s],null,"api");var E=0,O=t(23)},{}]},{},["loader",2,15,5,3,4]);</script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","queueTime":0,"licenseKey":"6d0ece54b7","agent":"","transactionName":"NFBbY0VUXEEEARUPXg0af0JZVkZbCgxOBV4KW1RWRV5XRgYDEUhHClBORBlBQFMLEQ0HRQZRA1RCR0BXCwEYOVUGQVheWw==","applicationID":"217174376","errorBeacon":"bam.nr-data.net","applicationTime":174}</script>
+<meta http-equiv="x-ua-compatible" content="ie=edge"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VQ4BV1dWDxACVVZTAAUEUVI="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e,n){function r(t){try{s.console&&console.log(t)}catch(e){}}var o,i=t("ee"),a=t(21),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,e,n){r(n.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,s){try{l?l-=1:o(s||new UncaughtException(t,e,n),!0)}catch(f){try{i("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function o(t,e){var n=e?null:c.now();i("err",[t,n])}var i=t("handle"),a=t(22),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,p="nr@seenError",l=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(13),t(12),"addEventListener"in window&&t(6),c.xhrWrappable&&t(14),d=!0)}s.on("fn-start",function(t,e,n){d&&(l+=1)}),s.on("fn-err",function(t,e,n){d&&!n[p]&&(f(n,p,function(){return!0}),this.thrown=!0,o(n))}),s.on("fn-end",function(){d&&!this.thrown&&l>0&&(l-=1)}),s.on("internal-error",function(t){i("ierr",[t,c.now(),!0])})},{}],3:[function(t,e,n){t("loader").features.ins=!0},{}],4:[function(t,e,n){function r(){M++,N=y.hash,this[u]=g.now()}function o(){M--,y.hash!==N&&i(0,!0);var t=g.now();this[h]=~~this[h]+t-this[u],this[d]=t}function i(t,e){E.emit("newURL",[""+y,e])}function a(t,e){t.on(e,function(){this[e]=g.now()})}var s="-start",c="-end",f="-body",u="fn"+s,d="fn"+c,p="cb"+s,l="cb"+c,h="jsTime",m="fetch",v="addEventListener",w=window,y=w.location,g=t("loader");if(w[v]&&g.xhrWrappable){var b=t(10),x=t(11),E=t(8),O=t(6),P=t(13),R=t(7),T=t(14),L=t(9),j=t("ee"),S=j.get("tracer");t(15),g.features.spa=!0;var N,M=0;j.on(u,r),j.on(p,r),j.on(d,o),j.on(l,o),j.buffer([u,d,"xhr-done","xhr-resolved"]),O.buffer([u]),P.buffer(["setTimeout"+c,"clearTimeout"+s,u]),T.buffer([u,"new-xhr","send-xhr"+s]),R.buffer([m+s,m+"-done",m+f+s,m+f+c]),E.buffer(["newURL"]),b.buffer([u]),x.buffer(["propagate",p,l,"executor-err","resolve"+s]),S.buffer([u,"no-"+u]),L.buffer(["new-jsonp","cb-start","jsonp-error","jsonp-end"]),a(T,"send-xhr"+s),a(j,"xhr-resolved"),a(j,"xhr-done"),a(R,m+s),a(R,m+"-done"),a(L,"new-jsonp"),a(L,"jsonp-end"),a(L,"cb-start"),E.on("pushState-end",i),E.on("replaceState-end",i),w[v]("hashchange",i,!0),w[v]("load",i,!0),w[v]("popstate",function(){i(0,M>1)},!0)}},{}],5:[function(t,e,n){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(13),s=t(12),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",p="resource",l="-start",h="-end",m="fn"+l,v="fn"+h,w="bstTimer",y="pushState",g=t("loader");g.features.stn=!0,t(8);var b=NREUM.o.EV;o.on(m,function(t,e){var n=t[0];n instanceof b&&(this.bstStart=g.now())}),o.on(v,function(t,e){var n=t[0];n instanceof b&&i("bst",[n,e,this.bstStart,g.now()])}),a.on(m,function(t,e,n){this.bstStart=g.now(),this.bstType=n}),a.on(v,function(t,e){i(w,[e,this.bstStart,g.now(),this.bstType])}),s.on(m,function(){this.bstStart=g.now()}),s.on(v,function(t,e){i(w,[e,this.bstStart,g.now(),"requestAnimationFrame"])}),o.on(y+l,function(t){this.time=g.now(),this.startPath=location.pathname+location.hash}),o.on(y+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(p)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(p)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],6:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&o(e)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,e){return t[1]}var a=t("ee").get("events"),s=t(24)(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,e){var n=t[1],r=c(n,"nr@wrapped",function(){function t(){if("function"==typeof n.handleEvent)return n.handleEvent.apply(n,arguments)}var e={object:t,"function":n}[typeof n];return e?s(e,"fn-",null,e.name||"anonymous"):n});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],7:[function(t,e,n){function r(t,e,n){var r=t[e];"function"==typeof r&&(t[e]=function(){var t=r.apply(this,arguments);return o.emit(n+"start",arguments,t),t.then(function(e){return o.emit(n+"end",[null,e],t),e},function(e){throw o.emit(n+"end",[e],t),e})})}var o=t("ee").get("fetch"),i=t(21);e.exports=o;var a=window,s="fetch-",c=s+"body-",f=["arrayBuffer","blob","json","text","formData"],u=a.Request,d=a.Response,p=a.fetch,l="prototype";u&&d&&p&&(i(f,function(t,e){r(u[l],e,c),r(d[l],e,c)}),r(a,"fetch",s),o.on(s+"end",function(t,e){var n=this;if(e){var r=e.headers.get("content-length");null!==r&&(n.rxSize=r),o.emit(s+"done",[null,e],n)}else o.emit(s+"done",[t],n)}))},{}],8:[function(t,e,n){var r=t("ee").get("history"),o=t(24)(r);e.exports=r,o.inPlace(window.history,["pushState","replaceState"],"-")},{}],9:[function(t,e,n){function r(t){function e(){c.emit("jsonp-end",[],p),t.removeEventListener("load",e,!1),t.removeEventListener("error",n,!1)}function n(){c.emit("jsonp-error",[],p),c.emit("jsonp-end",[],p),t.removeEventListener("load",e,!1),t.removeEventListener("error",n,!1)}var r=t&&"string"==typeof t.nodeName&&"script"===t.nodeName.toLowerCase();if(r){var o="function"==typeof t.addEventListener;if(o){var a=i(t.src);if(a){var u=s(a),d="function"==typeof u.parent[u.key];if(d){var p={};f.inPlace(u.parent,[u.key],"cb-",p),t.addEventListener("load",e,!1),t.addEventListener("error",n,!1),c.emit("new-jsonp",[t.src],p)}}}}}function o(){return"addEventListener"in window}function i(t){var e=t.match(u);return e?e[1]:null}function a(t,e){var n=t.match(p),r=n[1],o=n[3];return o?a(o,e[r]):e[r]}function s(t){var e=t.match(d);return e&&e.length>=3?{key:e[2],parent:a(e[1],window)}:{key:t,parent:window}}var c=t("ee").get("jsonp"),f=t(24)(c);if(e.exports=c,o()){var u=/[?&](?:callback|cb)=([^&#]+)/,d=/(.*)\.([^.]+)/,p=/^(\w+)(\.|$)(.*)$/,l=["appendChild","insertBefore","replaceChild"];f.inPlace(HTMLElement.prototype,l,"dom-"),f.inPlace(HTMLHeadElement.prototype,l,"dom-"),f.inPlace(HTMLBodyElement.prototype,l,"dom-"),c.on("dom-start",function(t){r(t[0])})}},{}],10:[function(t,e,n){var r=t("ee").get("mutation"),o=t(24)(r),i=NREUM.o.MO;e.exports=r,i&&(window.MutationObserver=function(t){return this instanceof i?new i(o(t,"fn-")):i.apply(this,arguments)},MutationObserver.prototype=i.prototype)},{}],11:[function(t,e,n){function r(t){var e=a.context(),n=s(t,"executor-",e),r=new f(n);return a.context(r).getCtx=function(){return e},a.emit("new-promise",[r,e],e),r}function o(t,e){return e}var i=t(24),a=t("ee").get("promise"),s=i(a),c=t(21),f=NREUM.o.PR;e.exports=a,f&&(window.Promise=r,["all","race"].forEach(function(t){var e=f[t];f[t]=function(n){function r(t){return function(){a.emit("propagate",[null,!o],i),o=o||!t}}var o=!1;c(n,function(e,n){Promise.resolve(n).then(r("all"===t),r(!1))});var i=e.apply(f,arguments),s=f.resolve(i);return s}}),["resolve","reject"].forEach(function(t){var e=f[t];f[t]=function(t){var n=e.apply(f,arguments);return t!==n&&a.emit("propagate",[t,!0],n),n}}),f.prototype["catch"]=function(t){return this.then(null,t)},f.prototype=Object.create(f.prototype,{constructor:{value:r}}),c(Object.getOwnPropertyNames(f),function(t,e){try{r[e]=f[e]}catch(n){}}),a.on("executor-start",function(t){t[0]=s(t[0],"resolve-",this),t[1]=s(t[1],"resolve-",this)}),a.on("executor-err",function(t,e,n){t[1](n)}),s.inPlace(f.prototype,["then"],"then-",o),a.on("then-start",function(t,e){this.promise=e,t[0]=s(t[0],"cb-",this),t[1]=s(t[1],"cb-",this)}),a.on("then-end",function(t,e,n){this.nextPromise=n;var r=this.promise;a.emit("propagate",[r,!0],n)}),a.on("cb-end",function(t,e,n){a.emit("propagate",[n,!0],this.nextPromise)}),a.on("propagate",function(t,e,n){this.getCtx&&!e||(this.getCtx=function(){if(t instanceof Promise)var e=a.context(t);return e&&e.getCtx?e.getCtx():this})}),r.toString=function(){return""+f})},{}],12:[function(t,e,n){var r=t("ee").get("raf"),o=t(24)(r),i="equestAnimationFrame";e.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],13:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function o(t,e,n){this.method=n,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,n)}var i=t("ee").get("timer"),a=t(24)(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";e.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],14:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",s)}function o(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,y,"fn-",s)}function i(t){g.push(t),h&&(x?x.then(a):v?v(a):(E=-E,O.data=E))}function a(){for(var t=0;t<g.length;t++)r([],g[t]);g.length&&(g=[])}function s(t,e){return e}function c(t,e){for(var n in t)e[n]=t[n];return e}t(6);var f=t("ee"),u=f.get("xhr"),d=t(24)(u),p=NREUM.o,l=p.XHR,h=p.MO,m=p.PR,v=p.SI,w="readystatechange",y=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],g=[];e.exports=u;var b=window.XMLHttpRequest=function(t){var e=new l(t);try{u.emit("new-xhr",[e],e),e.addEventListener(w,o,!1)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(c(l,b),b.prototype=l.prototype,d.inPlace(b.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,e){r(t,e),i(e)}),u.on("open-xhr-start",r),h){var x=m&&m.resolve();if(!v&&!m){var E=1,O=document.createTextNode(E);new h(a).observe(O,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===w||a()})},{}],15:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<d;r++)t.removeEventListener(u[r],this.listener,!1);if(!e.aborted){if(n.duration=a.now()-this.startTime,4===t.readyState){e.status=t.status;var i=o(t,this.lastSize);if(i&&(n.rxSize=i),this.sameOrigin){var c=t.getResponseHeader("X-NewRelic-App-Data");c&&(e.cat=c.split(", ").pop())}}else e.status=0;n.cbTime=this.cbTime,f.emit("xhr-done",[t],t),s("xhr",[e,n,this.startTime])}}}function o(t,e){var n=t.responseType;if("json"===n&&null!==e)return e;var r="arraybuffer"===n||"blob"===n||"json"===n?t.response:t.responseText;return h(r)}function i(t,e){var n=c(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}var a=t("loader");if(a.xhrWrappable){var s=t("handle"),c=t(16),f=t("ee"),u=["load","error","abort","timeout"],d=u.length,p=t("id"),l=t(19),h=t(18),m=window.XMLHttpRequest;a.features.xhr=!0,t(14),f.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,l&&(l>34||l<10)||window.opera||t.addEventListener("progress",function(t){e.lastSize=t.loaded},!1)}),f.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),f.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),f.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],o=this;if(n&&r){var i=h(r);i&&(n.txSize=i)}this.startTime=a.now(),this.listener=function(t){try{"abort"===t.type&&(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof e.onload))&&o.end(e)}catch(n){try{f.emit("internal-error",[n])}catch(r){}}};for(var s=0;s<d;s++)e.addEventListener(u[s],this.listener,!1)}),f.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),f.on("xhr-load-added",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),f.on("xhr-load-removed",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),f.on("addEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-added",[t[1],t[2]],e)}),f.on("removeEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-removed",[t[1],t[2]],e)}),f.on("fn-start",function(t,e,n){e instanceof m&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),f.on("fn-end",function(t,e){this.xhrCbStart&&f.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,e],e)})}},{}],16:[function(t,e,n){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!e.protocol||":"===e.protocol||e.protocol===n.protocol,a=e.hostname===document.domain&&e.port===n.port;return r.sameOrigin=i&&(!e.hostname||a),r}},{}],17:[function(t,e,n){function r(){}function o(t,e,n){return function(){return i(t,[f.now()].concat(s(arguments)),e?null:this,n),e?void 0:this}}var i=t("handle"),a=t(21),s=t(22),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(t,e){u[e]=o(p+e,!0,"api")}),u.addPageAction=o(p+"addPageAction",!0),u.setCurrentRouteName=o(p+"routeName",!0),e.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,e){var n={},r=this,o="function"==typeof e;return i(l+"tracer",[f.now(),t,n],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],n),o)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[f.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){h[e]=o(l+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),i("err",[t,f.now(),!1,e])}},{}],18:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],19:[function(t,e,n){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),e.exports=r},{}],20:[function(t,e,n){function r(t,e){if(!o)return!1;if(t!==o)return!1;if(!e)return!0;if(!i)return!1;for(var n=i.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(o="Safari",i=c[1])}e.exports={agent:o,version:i,match:r}},{}],21:[function(t,e,n){function r(t,e){var n=[],r="",i=0;for(r in t)o.call(t,r)&&(n[i]=e(r,t[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],22:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(o<0?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=r},{}],23:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],24:[function(t,e,n){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var o=t("ee"),i=t(22),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;e.exports=function(t,e){function n(t,e,n,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof n?n(r,a):n||{}}catch(f){p([f,"",[r,a,o],s])}u(e+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(d){throw u(e+"err",[r,a,d],s),d}finally{u(e+"end",[r,a,c],s)}}return r(t)?t:(e||(e=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,e,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<e.length;c++)s=e[c],a=t[s],r(a)||(t[s]=n(a,f?s+o:o,i,s))}function u(n,r,o){if(!c||e){var i=c;c=!0;try{t.emit(n,r,o,e)}catch(a){p([a,n,r,o])}c=i}}function d(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){p([r])}for(var o in t)s.call(t,o)&&(e[o]=t[o]);return e}function p(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=o),n.inPlace=f,n.flag=a,n}},{}],ee:[function(t,e,n){function r(){}function o(t){function e(t){return t&&t instanceof r?t:t?c(t,s,i):i()}function n(n,r,o,i){if(!p.aborted||i){t&&t(n,r,o);for(var a=e(o),s=m(n),c=s.length,f=0;f<c;f++)s[f].apply(a,r);var d=u[g[n]];return d&&d.push([b,n,r,a]),a}}function l(t,e){y[t]=m(t).concat(e)}function h(t,e){var n=y[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function m(t){return y[t]||[]}function v(t){return d[t]=d[t]||o(n)}function w(t,e){f(t,function(t,n){e=e||"feature",g[n]=e,e in u||(u[e]=[])})}var y={},g={},b={on:l,addEventListener:l,removeEventListener:h,emit:n,get:v,listeners:m,context:e,buffer:w,abort:a,aborted:!1};return b}function i(){return new r}function a(){(u.api||u.feature)&&(p.aborted=!0,u=p.backlog={})}var s="nr@context",c=t("gos"),f=t(21),u={},d={},p=e.exports=o();p.backlog=u},{}],gos:[function(t,e,n){function r(t,e,n){if(o.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[e]=r,r}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){o.buffer([t],r),o.emit(t,e,n)}var o=t("ee").get("handle");e.exports=r,r.ee=o},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!E++){var t=x.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();f(g,function(e,n){t[e]||(t[e]=n)}),c("mark",["onload",a()+x.offset],null,"api");var n=l.createElement("script");n.src="https://"+t.agent,e.parentNode.insertBefore(n,e)}}function o(){"complete"===l.readyState&&i()}function i(){c("mark",["domContent",a()+x.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(s=Math.max((new Date).getTime(),s))-x.offset}var s=(new Date).getTime(),c=t("handle"),f=t(21),u=t("ee"),d=t(20),p=window,l=p.document,h="addEventListener",m="attachEvent",v=p.XMLHttpRequest,w=v&&v.prototype;NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:v,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var y=""+location,g={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-spa-1118.min.js"},b=v&&w&&w[h]&&!/CriOS/.test(navigator.userAgent),x=e.exports={offset:s,now:a,origin:y,features:{},xhrWrappable:b,userAgent:d};t(17),l[h]?(l[h]("DOMContentLoaded",i,!1),p[h]("load",r,!1)):(l[m]("onreadystatechange",o),p[m]("onload",r)),c("mark",["firstbyte",s],null,"api");var E=0,O=t(23)},{}]},{},["loader",2,15,5,3,4]);</script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","queueTime":0,"licenseKey":"6d0ece54b7","agent":"","transactionName":"NFBbY0VUXEEEARUPXg0af0JZVkZbCgxOBV4KW1RWRV5XRgYDEUhHClBORBlBQFMLEQ0HRQZRA1RCR0BXCwEYOVUGQVheWw==","applicationID":"217174376","errorBeacon":"bam.nr-data.net","applicationTime":206}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bitcoin Cash (BCH) Historical Data | CoinMarketCap</title>
 <link rel="preload" as="font" href="https://s2.coinmarketcap.com/static/cloud/fonts/glyphicons-regular.woff2" type="font/woff2" crossorigin>
@@ -655,7 +655,7 @@
             
                 "offers": {
                     "@type": "Offer",
-                    "price": "293.24",
+                    "price": "291.64",
                     "priceCurrency": "USD"
                 }
             
@@ -670,7 +670,7 @@
         };
         
             var addthis_share = {
-                title: "The price of Bitcoin Cash is $293.24!"
+                title: "The price of Bitcoin Cash is $291.64!"
             };
         
     </script>
@@ -807,7 +807,7 @@ BTC Dominance:&nbsp;
 <span>CZK</span>
 </li>
 <li class="cmc-siteprefs-dropdown-menuitem" data-currency-flag-toggle data-currency-code="DKK">
-<span class="cmc-siteprefs__currency-flag cmc-flag cmc-flag-dk">
+ <span class="cmc-siteprefs__currency-flag cmc-flag cmc-flag-dk">
 </span>
 <span>DKK</span>
 </li>
@@ -1052,7 +1052,7 @@ BTC Dominance:&nbsp;
 </li>
 <li class="cmc-siteprefs-dropdown-menuitem" data-currency-flag-toggle data-currency-code="DKK">
 <span class="cmc-siteprefs__currency-flag cmc-flag cmc-flag-dk">
- </span>
+</span>
 <span>DKK</span>
 </li>
 <li class="cmc-siteprefs-dropdown-menuitem" data-currency-flag-toggle data-currency-code="EUR">
@@ -1120,7 +1120,7 @@ BTC Dominance:&nbsp;
 </span>
 <span>NZD</span>
 </li>
-<li class="cmc-siteprefs-dropdown-menuitem" data-currency-flag-toggle data-currency-code="PHP">
+ <li class="cmc-siteprefs-dropdown-menuitem" data-currency-flag-toggle data-currency-code="PHP">
 <span class="cmc-siteprefs__currency-flag cmc-flag cmc-flag-ph">
 </span>
 <span>PHP</span>
@@ -1367,7 +1367,7 @@ Helpful Links
 </div>
 <div class="cmc-nav-mobile-submenu__item">
 <a class="cmc-nav-link--menuitem" href="/careers/">
-<h6 class="cmc-nav-mobile-heading cmc-nav-link--menuitem__arrow">Careers</h6>
+ <h6 class="cmc-nav-mobile-heading cmc-nav-link--menuitem__arrow">Careers</h6>
 <p class="cmc-nav-mobile-desc">Discover your next career! Build the future of crypto data with us</p>
 </a>
 </div>
@@ -1511,7 +1511,7 @@ Markets:&nbsp;
 </div>
 <div class="cmc-navsubmenu__section">
 <div class="cmc-nav-spotlight cmc-nav-spotlight--according-to-cmc">
- <a class="cmc-nav-spotlight__link js-nav-track-click" href="https://blog.coinmarketcap.com/2018/11/27/according-to-coinmarketcap-2018-edition/?utm_source=coinmarketcap.com&utm_medium=web&utm_campaign=nav2" target="_blank" rel="noopener" title="According to CoinMarketCap blog post" data-linkid="According to CMC - desktop"></a>
+<a class="cmc-nav-spotlight__link js-nav-track-click" href="https://blog.coinmarketcap.com/2018/11/27/according-to-coinmarketcap-2018-edition/?utm_source=coinmarketcap.com&utm_medium=web&utm_campaign=nav2" target="_blank" rel="noopener" title="According to CoinMarketCap blog post" data-linkid="According to CMC - desktop"></a>
 </div>
 </div>
 </div>
@@ -1626,7 +1626,7 @@ Markets:&nbsp;
 </div>
 <div class="cmc-navsubmenu__item">
 <a class="cmc-nav-link--menuitem" href="/careers/">
- <h6 class="cmc-nav-heading cmc-nav-link--menuitem__arrow">Careers</h6>
+<h6 class="cmc-nav-heading cmc-nav-link--menuitem__arrow">Careers</h6>
 <p class="cmc-nav-desc">Discover your next career! Build the future of crypto data with us</p>
 </a>
 </div>
@@ -1685,7 +1685,7 @@ Markets:&nbsp;
 <div class="vertical-spacer bottom-margin-2x"></div>
 <div class="row ">
 <div class="col-md-12 text-center">
-<p class="alert alert-warning"><span class="glyphicons glyphicons-info-sign padding-right--lv05"></span> In order to reflect the current market, we have merged our Bitcoin Cash (BCH) and Bitcoin Cash ABC (BCHABC) listings. We have observed that a majority of exchanges are using the Bitcoin Cash (BCH) to refer to the Bitcoin Cash ABC implementation. For more information on Bitcoin Cash SV (BCHSV), please <a href="https://coinmarketcap.com/currencies/bitcoin-cash-sv/">navigate here.</a> </p>
+ <p class="alert alert-warning"><span class="glyphicons glyphicons-info-sign padding-right--lv05"></span> In order to reflect the current market, we have merged our Bitcoin Cash (BCH) and Bitcoin Cash ABC (BCHABC) listings. We have observed that a majority of exchanges are using the Bitcoin Cash (BCH) to refer to the Bitcoin Cash ABC implementation. For more information on Bitcoin Cash SV (BCHSV), please <a href="https://coinmarketcap.com/currencies/bitcoin-cash-sv/">navigate here.</a> </p>
 </div>
 </div>
 <div class="details-panel flex-container bottom-margin-2x">
@@ -1696,22 +1696,22 @@ Bitcoin Cash
 <span class="text-bold h3 text-gray text-large">(BCH)</span>
 </div>
 <div class="details-panel-item--price bottom-margin-1x">
-<span id="quote_price" data-currency-price data-usd="293.236404393">
-<span class="h2 text-semi-bold details-panel-item--price__value" data-currency-value>293.24</span>
+<span id="quote_price" data-currency-price data-usd="291.641432503">
+<span class="h2 text-semi-bold details-panel-item--price__value" data-currency-value>291.64</span>
 <span class="text-large" data-currency-code>USD</span>
 </span>
 <span class="h2 text-semi-bold positive_change ">
-(<span data-format-percentage data-format-value="2.64185">2.64</span>%)
+(<span data-format-percentage data-format-value="2.29514">2.30</span>%)
 </span>
 <br>
 <span class="text-gray">
-<span data-format-price-crypto data-format-value="0.0551517690018">
-0.05515177
+<span data-format-price-crypto data-format-value="0.0548247514286">
+0.05482475
 </span>
 BTC
 </span>
 <span class=" positive_change ">
-(<span data-format-percentage data-format-value="1.63864">1.64</span>%)
+(<span data-format-percentage data-format-value="1.26241">1.26</span>%)
 </span>
 <div class="toolbar-buttons">
 <div>
@@ -1737,7 +1737,7 @@ Buy
 Exchange
 <span class="glyphicons glyphicons-chevron-down"></span>
 </button>
- <button type="button" class="buy-button js-buy-button" data-container="body" data-toggle="popover" data-placement="bottom" data-id="wallet">
+<button type="button" class="buy-button js-buy-button" data-container="body" data-toggle="popover" data-placement="bottom" data-id="wallet">
 Wallet
 <span class="glyphicons glyphicons-chevron-down"></span>
 </button>
@@ -1822,13 +1822,13 @@ Nexo Wallet - Instant Crypto Credit Line
 <div class="coin-summary-item">
 <h5 class="coin-summary-item-header">Market Cap</h5>
 <div class="coin-summary-item-detail">
-<span data-currency-market-cap data-usd="5202691923.12">
-<span data-currency-value>5,202,691,923</span>
+<span data-currency-market-cap data-usd="5174415306.52">
+<span data-currency-value>5,174,415,307</span>
 <span data-currency-code>USD</span>
-</span><br>
+ </span><br>
 <span class="text-gray">
-<span data-format-market-cap data-format-value="978519.920558">
-978,520
+<span data-format-market-cap data-format-value="972721.984437">
+972,722
 </span>
 BTC
 <br>
@@ -1838,13 +1838,13 @@ BTC
 <div class="coin-summary-item">
 <h5 class="coin-summary-item-header">Volume (24h)</h5>
 <div class="coin-summary-item-detail">
-<span data-currency-volume data-usd="1136496708.17">
-<span data-currency-value>1,136,496,708</span>
+<span data-currency-volume data-usd="1137449854.51">
+<span data-currency-value>1,137,449,855</span>
 <span data-currency-code>USD</span>
 </span><br>
 <span class="text-gray">
-<span data-format-volume-crypto data-format-value="213751.781774">
-213,752
+<span data-format-volume-crypto data-format-value="213825.604272">
+213,826
 </span>
 BTC
 </span>
@@ -1853,8 +1853,8 @@ BTC
 <div class="coin-summary-item">
 <h5 class="coin-summary-item-header">Circulating Supply</h5>
 <div class="coin-summary-item-detail details-text-medium">
-<span data-format-supply data-format-value="17742312.5">
-17,742,313
+<span data-format-supply data-format-value="17742387.5">
+17,742,388
 </span>
 BCH
 </div>
@@ -1881,7 +1881,7 @@ BCH
 <li><span class="glyphicons glyphicons-embed-close details-list-item-icon" title="Source Code"></span> <a href="https://github.com/bitcoincashorg/" target="_blank" rel="noopener">Source Code</a></li>
 <li><span class="glyphicons glyphicons-tag details-list-item-icon" title="Tags"></span>
 <span class="label label-warning">Coin</span>
-<span class="label label-warning">Mineable</span>
+ <span class="label label-warning">Mineable</span>
 </li>
 </ul>
 </div>
@@ -2096,7 +2096,7 @@ BCH
 <tr class="text-right">
 <td class="text-left">Apr 03, 2019</td>
 <td data-format-fiat data-format-value="236.395589373">236.40</td>
-<td data-format-fiat data-format-value="342.870039656">342.87</td>
+ <td data-format-fiat data-format-value="342.870039656">342.87</td>
 <td data-format-fiat data-format-value="236.295290104">236.30</td>
 <td data-format-fiat data-format-value="298.352531839">298.35</td>
 <td data-format-market-cap data-format-value="4237037516.39">4,237,037,516</td>
@@ -2146,7 +2146,7 @@ BCH
 <td data-format-fiat data-format-value="170.449986908">170.45</td>
 <td data-format-market-cap data-format-value="560103605.2">560,103,605</td>
 <td data-format-market-cap data-format-value="3016920025.15">3,016,920,025</td>
- </tr>
+</tr>
 <tr class="text-right">
 <td class="text-left">Mar 28, 2019</td>
 <td data-format-fiat data-format-value="173.095690499">173.10</td>
@@ -2197,7 +2197,7 @@ BCH
 <td data-format-fiat data-format-value="158.126550812">158.13</td>
 <td data-format-fiat data-format-value="170.051512581">170.05</td>
 <td data-format-fiat data-format-value="157.696859639">157.70</td>
- <td data-format-fiat data-format-value="167.410812958">167.41</td>
+<td data-format-fiat data-format-value="167.410812958">167.41</td>
 <td data-format-market-cap data-format-value="518279690.618">518,279,691</td>
 <td data-format-market-cap data-format-value="2961308944.06">2,961,308,944</td>
 </tr>
@@ -2297,7 +2297,7 @@ BCH
 <td data-format-fiat data-format-value="130.663490725">130.66</td>
 <td data-format-fiat data-format-value="128.095038659">128.10</td>
 <td data-format-fiat data-format-value="128.948241527">128.95</td>
-<td data-format-market-cap data-format-value="232279796.586">232,279,797</td>
+ <td data-format-market-cap data-format-value="232279796.586">232,279,797</td>
 <td data-format-market-cap data-format-value="2278392926.95">2,278,392,927</td>
 </tr>
 <tr class="text-right">
@@ -2447,7 +2447,7 @@ BCH
 <tr class="text-right">
 <td class="text-left">Feb 23, 2019</td>
 <td data-format-fiat data-format-value="144.882004362">144.88</td>
- <td data-format-fiat data-format-value="153.256163588">153.26</td>
+<td data-format-fiat data-format-value="153.256163588">153.26</td>
 <td data-format-fiat data-format-value="142.364762675">142.36</td>
 <td data-format-fiat data-format-value="153.256163588">153.26</td>
 <td data-format-market-cap data-format-value="391092331.108">391,092,331</td>
@@ -2498,7 +2498,7 @@ BCH
 <td data-format-market-cap data-format-value="685321230.671">685,321,231</td>
 <td data-format-market-cap data-format-value="2545790167.95">2,545,790,168</td>
 </tr>
-<tr class="text-right">
+ <tr class="text-right">
 <td class="text-left">Feb 17, 2019</td>
 <td data-format-fiat data-format-value="122.232059096">122.23</td>
 <td data-format-fiat data-format-value="125.044356333">125.04</td>
@@ -2598,7 +2598,7 @@ BCH
 <td data-format-market-cap data-format-value="2027740445.33">2,027,740,445</td>
 </tr>
 <tr class="text-right">
- <td class="text-left">Feb 06, 2019</td>
+<td class="text-left">Feb 06, 2019</td>
 <td data-format-fiat data-format-value="117.98096398">117.98</td>
 <td data-format-fiat data-format-value="120.005228697">120.01</td>
 <td data-format-fiat data-format-value="111.838694411">111.84</td>
@@ -2648,8 +2648,8 @@ BCH
 <td data-format-fiat data-format-value="118.152222464">118.15</td>
 <td data-format-fiat data-format-value="112.067613411">112.07</td>
 <td data-format-fiat data-format-value="116.556727549">116.56</td>
- <td data-format-market-cap data-format-value="246917441.277">246,917,441</td>
-<td data-format-market-cap data-format-value="2051265821.58">2,051,265,822</td>
+<td data-format-market-cap data-format-value="246917441.277">246,917,441</td>
+ <td data-format-market-cap data-format-value="2051265821.58">2,051,265,822</td>
 </tr>
 <tr class="text-right">
 <td class="text-left">Jan 31, 2019</td>
@@ -2700,7 +2700,7 @@ BCH
 <td class="text-left">Jan 26, 2019</td>
 <td data-format-fiat data-format-value="128.444375645">128.44</td>
 <td data-format-fiat data-format-value="129.656377663">129.66</td>
-<td data-format-fiat data-format-value="126.965953815">126.97</td>
+ <td data-format-fiat data-format-value="126.965953815">126.97</td>
 <td data-format-fiat data-format-value="127.13966892">127.14</td>
 <td data-format-market-cap data-format-value="178570796.09">178,570,796</td>
 <td data-format-market-cap data-format-value="2236142032.44">2,236,142,032</td>
@@ -2750,6 +2750,7 @@ BCH
 <td data-format-market-cap data-format-value="187814581.088">187,814,581</td>
 <td data-format-market-cap data-format-value="2159253905.35">2,159,253,905</td>
 </tr>
+
 <tr class="text-right">
 <td class="text-left">Jan 20, 2019</td>
 <td data-format-fiat data-format-value="130.137624094">130.14</td>
@@ -2851,7 +2852,7 @@ BCH
 </tr>
 <tr class="text-right">
 <td class="text-left">Jan 09, 2019</td>
-<td data-format-fiat data-format-value="162.119416458">162.12</td>
+ <td data-format-fiat data-format-value="162.119416458">162.12</td>
 <td data-format-fiat data-format-value="162.536587859">162.54</td>
 <td data-format-fiat data-format-value="158.44201064">158.44</td>
 <td data-format-fiat data-format-value="160.084744291">160.08</td>
@@ -3000,8 +3001,8 @@ BCH
 <td data-format-fiat data-format-value="179.086263628">179.09</td>
 <td data-format-fiat data-format-value="182.259668623">182.26</td>
 <td data-format-market-cap data-format-value="611323717.863">611,323,718</td>
- <td data-format-market-cap data-format-value="3194811505.33">3,194,811,505</td>
-</tr>
+<td data-format-market-cap data-format-value="3194811505.33">3,194,811,505</td>
+ </tr>
 <tr class="text-right">
 <td class="text-left">Dec 23, 2018</td>
 <td data-format-fiat data-format-value="197.892731423">197.89</td>
@@ -3051,8 +3052,8 @@ BCH
 <td class="text-left">Dec 18, 2018</td>
 <td data-format-fiat data-format-value="90.3098838449">90.31</td>
 <td data-format-fiat data-format-value="105.776613289">105.78</td>
- <td data-format-fiat data-format-value="87.5908932876">87.59</td>
-<td data-format-fiat data-format-value="105.200765725">105.20</td>
+<td data-format-fiat data-format-value="87.5908932876">87.59</td>
+ <td data-format-fiat data-format-value="105.200765725">105.20</td>
 <td data-format-market-cap data-format-value="188289946.345">188,289,946</td>
 <td data-format-market-cap data-format-value="1842897808.9">1,842,897,809</td>
 </tr>
@@ -3101,9 +3102,9 @@ BCH
 <td data-format-market-cap data-format-value="74837339.8424">74,837,340</td>
 <td data-format-market-cap data-format-value="1581083402.13">1,581,083,402</td>
 </tr>
- <tr class="text-right">
+<tr class="text-right">
 <td class="text-left">Dec 12, 2018</td>
-<td data-format-fiat data-format-value="101.713152909">101.71</td>
+ <td data-format-fiat data-format-value="101.713152909">101.71</td>
 <td data-format-fiat data-format-value="105.801470278">105.80</td>
 <td data-format-fiat data-format-value="99.4294710636">99.43</td>
 <td data-format-fiat data-format-value="102.59216028">102.59</td>
@@ -3253,9 +3254,9 @@ BCH
 <td data-format-fiat data-format-value="182.043">182.04</td>
 <td data-format-market-cap data-format-value="283429000.0">283,429,000</td>
 <td data-format-market-cap data-format-value="3181915943.78">3,181,915,944</td>
- </tr>
+</tr>
 <tr class="text-right">
-<td class="text-left">Nov 25, 2018</td>
+ <td class="text-left">Nov 25, 2018</td>
 <td data-format-fiat data-format-value="181.127">181.13</td>
 <td data-format-fiat data-format-value="189.251">189.25</td>
 <td data-format-fiat data-format-value="154.28">154.28</td>
@@ -3464,7 +3465,7 @@ BCH
 <tr class="text-right">
 <td class="text-left">Nov 02, 2018</td>
 <td data-format-fiat data-format-value="424.24">424.24</td>
-<td data-format-fiat data-format-value="469.884">469.88</td>
+ <td data-format-fiat data-format-value="469.884">469.88</td>
 <td data-format-fiat data-format-value="424.24">424.24</td>
 <td data-format-fiat data-format-value="462.01">462.01</td>
 <td data-format-market-cap data-format-value="524499000.0">524,499,000</td>
@@ -3514,9 +3515,9 @@ BCH
 <td data-format-fiat data-format-value="441.084">441.08</td>
 <td data-format-market-cap data-format-value="226911000.0">226,911,000</td>
 <td data-format-market-cap data-format-value="7687035518.4">7,687,035,518</td>
- </tr>
+</tr>
 <tr class="text-right">
-<td class="text-left">Oct 27, 2018</td>
+ <td class="text-left">Oct 27, 2018</td>
 <td data-format-fiat data-format-value="438.602">438.60</td>
 <td data-format-fiat data-format-value="439.823">439.82</td>
 <td data-format-fiat data-format-value="435.834">435.83</td>
@@ -3619,7 +3620,7 @@ BCH
 <td data-format-fiat data-format-value="459.323">459.32</td>
 <td data-format-fiat data-format-value="467.17">467.17</td>
 <td data-format-fiat data-format-value="454.599">454.60</td>
- <td data-format-fiat data-format-value="458.012">458.01</td>
+<td data-format-fiat data-format-value="458.012">458.01</td>
 <td data-format-market-cap data-format-value="302192000.0">302,192,000</td>
 <td data-format-market-cap data-format-value="7972225573.8">7,972,225,574</td>
 </tr>
@@ -3725,7 +3726,7 @@ BCH
 <tr class="text-right">
 <td class="text-left">Oct 04, 2018</td>
 <td data-format-fiat data-format-value="516.787">516.79</td>
-<td data-format-fiat data-format-value="529.938">529.94</td>
+ <td data-format-fiat data-format-value="529.938">529.94</td>
 <td data-format-fiat data-format-value="510.592">510.59</td>
 <td data-format-fiat data-format-value="513.03">513.03</td>
 <td data-format-market-cap data-format-value="466791000.0">466,791,000</td>
@@ -3775,9 +3776,9 @@ BCH
 <td data-format-fiat data-format-value="536.912">536.91</td>
 <td data-format-market-cap data-format-value="581112000.0">581,112,000</td>
 <td data-format-market-cap data-format-value="9329262106.8">9,329,262,107</td>
- </tr>
+</tr>
 <tr class="text-right">
-<td class="text-left">Sep 28, 2018</td>
+ <td class="text-left">Sep 28, 2018</td>
 <td data-format-fiat data-format-value="568.432">568.43</td>
 <td data-format-fiat data-format-value="572.579">572.58</td>
 <td data-format-fiat data-format-value="533.438">533.44</td>
@@ -3880,7 +3881,7 @@ BCH
 <td data-format-fiat data-format-value="450.378">450.38</td>
 <td data-format-fiat data-format-value="460.493">460.49</td>
 <td data-format-fiat data-format-value="413.039">413.04</td>
- <td data-format-fiat data-format-value="420.452">420.45</td>
+<td data-format-fiat data-format-value="420.452">420.45</td>
 <td data-format-market-cap data-format-value="365115000.0">365,115,000</td>
 <td data-format-market-cap data-format-value="7296518752.35">7,296,518,752</td>
 </tr>
@@ -3986,7 +3987,7 @@ BCH
 <tr class="text-right">
 <td class="text-left">Sep 05, 2018</td>
 <td data-format-fiat data-format-value="626.198">626.20</td>
-<td data-format-fiat data-format-value="631.765">631.76</td>
+ <td data-format-fiat data-format-value="631.765">631.76</td>
 <td data-format-fiat data-format-value="530.23">530.23</td>
 <td data-format-fiat data-format-value="530.513">530.51</td>
 <td data-format-market-cap data-format-value="520184000.0">520,184,000</td>
@@ -4038,7 +4039,7 @@ BCH
 <td data-format-market-cap data-format-value="9408059252.32">9,408,059,252</td>
 </tr>
 <tr class="text-right">
-<td class="text-left">Aug 30, 2018</td>
+ <td class="text-left">Aug 30, 2018</td>
 <td data-format-fiat data-format-value="554.071">554.07</td>
 <td data-format-fiat data-format-value="556.522">556.52</td>
 <td data-format-fiat data-format-value="527.918">527.92</td>
@@ -4141,8 +4142,8 @@ BCH
 <td data-format-fiat data-format-value="554.931">554.93</td>
 <td data-format-fiat data-format-value="579.604">579.60</td>
 <td data-format-fiat data-format-value="544.966">544.97</td>
- <td data-format-fiat data-format-value="569.926">569.93</td>
-<td data-format-market-cap data-format-value="383846000.0">383,846,000</td>
+<td data-format-fiat data-format-value="569.926">569.93</td>
+ <td data-format-market-cap data-format-value="383846000.0">383,846,000</td>
 <td data-format-market-cap data-format-value="9860902396.45">9,860,902,396</td>
 </tr>
 <tr class="text-right">
@@ -4449,8 +4450,8 @@ BCH
 <td data-format-fiat data-format-value="718.945007324">718.95</td>
 <td data-format-fiat data-format-value="805.677001953">805.68</td>
 <td data-format-market-cap data-format-value="534068000.0">534,068,000</td>
- <td data-format-market-cap data-format-value="13890898718.2">13,890,898,718</td>
-</tr>
+<td data-format-market-cap data-format-value="13890898718.2">13,890,898,718</td>
+ </tr>
 <tr class="text-right">
 <td class="text-left">Jul 15, 2018</td>
 <td data-format-fiat data-format-value="702.994995117">702.99</td>
@@ -4501,7 +4502,7 @@ BCH
 <td data-format-fiat data-format-value="732.856018066">732.86</td>
 <td data-format-fiat data-format-value="739.202026367">739.20</td>
 <td data-format-fiat data-format-value="688.62902832">688.63</td>
-<td data-format-fiat data-format-value="688.62902832">688.63</td>
+ <td data-format-fiat data-format-value="688.62902832">688.63</td>
 <td data-format-market-cap data-format-value="374505984.0">374,505,984</td>
 <td data-format-market-cap data-format-value="11865396160.9">11,865,396,161</td>
 </tr>
@@ -4550,7 +4551,7 @@ BCH
 <td data-format-market-cap data-format-value="469756992.0">469,756,992</td>
 <td data-format-market-cap data-format-value="12885612954.4">12,885,612,954</td>
 </tr>
- <tr class="text-right">
+<tr class="text-right">
 <td class="text-left">Jul 04, 2018</td>
 <td data-format-fiat data-format-value="757.926025391">757.93</td>
 <td data-format-fiat data-format-value="808.229003906">808.23</td>
@@ -4701,8 +4702,8 @@ BCH
 <td data-format-fiat data-format-value="830.29498291">830.29</td>
 <td data-format-fiat data-format-value="885.638977051">885.64</td>
 <td data-format-market-cap data-format-value="381404000.0">381,404,000</td>
- <td data-format-market-cap data-format-value="15224997908.0">15,224,997,908</td>
-</tr>
+<td data-format-market-cap data-format-value="15224997908.0">15,224,997,908</td>
+ </tr>
 <tr class="text-right">
 <td class="text-left">Jun 17, 2018</td>
 <td data-format-fiat data-format-value="853.059020996">853.06</td>
@@ -4752,8 +4753,8 @@ BCH
 <td class="text-left">Jun 12, 2018</td>
 <td data-format-fiat data-format-value="957.140014648">957.14</td>
 <td data-format-fiat data-format-value="960.145996094">960.15</td>
- <td data-format-fiat data-format-value="862.45098877">862.45</td>
-<td data-format-fiat data-format-value="874.434020996">874.43</td>
+<td data-format-fiat data-format-value="862.45098877">862.45</td>
+ <td data-format-fiat data-format-value="874.434020996">874.43</td>
 <td data-format-market-cap data-format-value="523140992.0">523,140,992</td>
 <td data-format-market-cap data-format-value="15023005658.9">15,023,005,659</td>
 </tr>
@@ -4802,7 +4803,7 @@ BCH
 <td data-format-market-cap data-format-value="561721024.0">561,721,024</td>
 <td data-format-market-cap data-format-value="19639588593.8">19,639,588,594</td>
 </tr>
- <tr class="text-right">
+<tr class="text-right">
 <td class="text-left">Jun 06, 2018</td>
 <td data-format-fiat data-format-value="1157.32995605">1157.33</td>
 <td data-format-fiat data-format-value="1157.32995605">1157.33</td>
@@ -4903,7 +4904,7 @@ BCH
 </tr>
 <tr class="text-right">
 <td class="text-left">May 26, 2018</td>
- <td data-format-fiat data-format-value="1015.67999268">1015.68</td>
+<td data-format-fiat data-format-value="1015.67999268">1015.68</td>
 <td data-format-fiat data-format-value="1046.48999023">1046.49</td>
 <td data-format-fiat data-format-value="1001.17999268">1001.18</td>
 <td data-format-fiat data-format-value="1012.47998047">1012.48</td>
@@ -5054,7 +5055,7 @@ BCH
 <td data-format-market-cap data-format-value="1070040000.0">1,070,040,000</td>
 <td data-format-market-cap data-format-value="26170760101.5">26,170,760,102</td>
 </tr>
-<tr class="text-right">
+ <tr class="text-right">
 <td class="text-left">May 09, 2018</td>
 <td data-format-fiat data-format-value="1607.86999512">1607.87</td>
 <td data-format-fiat data-format-value="1679.0300293">1679.03</td>
@@ -5103,7 +5104,7 @@ BCH
 <td class="text-left">May 04, 2018</td>
 <td data-format-fiat data-format-value="1501.40002441">1501.40</td>
 <td data-format-fiat data-format-value="1538.45996094">1538.46</td>
- <td data-format-fiat data-format-value="1466.20996094">1466.21</td>
+<td data-format-fiat data-format-value="1466.20996094">1466.21</td>
 <td data-format-fiat data-format-value="1517.32995605">1517.33</td>
 <td data-format-market-cap data-format-value="960185024.0">960,185,024</td>
 <td data-format-market-cap data-format-value="25961592166.5">25,961,592,167</td>
@@ -5153,7 +5154,6 @@ BCH
 <td data-format-market-cap data-format-value="1049449984.0">1,049,449,984</td>
 <td data-format-market-cap data-format-value="24630696326.2">24,630,696,326</td>
 </tr>
-
 <tr class="text-right">
 <td class="text-left">Apr 28, 2018</td>
 <td data-format-fiat data-format-value="1337.95996094">1337.96</td>
@@ -5204,7 +5204,7 @@ BCH
 <td data-format-fiat data-format-value="1194.70996094">1194.71</td>
 <td data-format-fiat data-format-value="1443.27001953">1443.27</td>
 <td data-format-fiat data-format-value="1194.70996094">1194.71</td>
- <td data-format-fiat data-format-value="1432.26000977">1432.26</td>
+<td data-format-fiat data-format-value="1432.26000977">1432.26</td>
 <td data-format-market-cap data-format-value="1934290048.0">1,934,290,048</td>
 <td data-format-market-cap data-format-value="24477753078.0">24,477,753,078</td>
 </tr>
@@ -5256,7 +5256,7 @@ BCH
 <tr class="text-right">
 <td class="text-left">Apr 17, 2018</td>
 <td data-format-fiat data-format-value="766.697998047">766.70</td>
-<td data-format-fiat data-format-value="784.492004395">784.49</td>
+ <td data-format-fiat data-format-value="784.492004395">784.49</td>
 <td data-format-fiat data-format-value="755.380981445">755.38</td>
 <td data-format-fiat data-format-value="757.591003418">757.59</td>
 <td data-format-market-cap data-format-value="331700992.0">331,700,992</td>
@@ -5405,9 +5405,9 @@ BCH
 <td data-format-fiat data-format-value="643.026977539">643.03</td>
 <td data-format-market-cap data-format-value="318440000.0">318,440,000</td>
 <td data-format-market-cap data-format-value="10963859523.0">10,963,859,523</td>
- </tr>
+</tr>
 <tr class="text-right">
-<td class="text-left">Mar 31, 2018</td>
+ <td class="text-left">Mar 31, 2018</td>
 <td data-format-fiat data-format-value="697.622009277">697.62</td>
 <td data-format-fiat data-format-value="735.817016602">735.82</td>
 <td data-format-fiat data-format-value="683.991027832">683.99</td>
@@ -5456,8 +5456,8 @@ BCH
 <td data-format-fiat data-format-value="967.895019531">967.90</td>
 <td data-format-fiat data-format-value="975.612976074">975.61</td>
 <td data-format-fiat data-format-value="887.00201416">887.00</td>
- <td data-format-fiat data-format-value="919.24798584">919.25</td>
-<td data-format-market-cap data-format-value="347366016.0">347,366,016</td>
+<td data-format-fiat data-format-value="919.24798584">919.25</td>
+ <td data-format-market-cap data-format-value="347366016.0">347,366,016</td>
 <td data-format-market-cap data-format-value="15663618220.8">15,663,618,221</td>
 </tr>
 <tr class="text-right">
@@ -5607,7 +5607,7 @@ BCH
 <tr class="text-right">
 <td class="text-left">Mar 09, 2018</td>
 <td data-format-fiat data-format-value="1034.68994141">1034.69</td>
- <td data-format-fiat data-format-value="1071.65002441">1071.65</td>
+<td data-format-fiat data-format-value="1071.65002441">1071.65</td>
 <td data-format-fiat data-format-value="937.96697998">937.97</td>
 <td data-format-fiat data-format-value="1067.02001953">1067.02</td>
 <td data-format-market-cap data-format-value="510887008.0">510,887,008</td>
@@ -5658,7 +5658,7 @@ BCH
 <td data-format-market-cap data-format-value="367584000.0">367,584,000</td>
 <td data-format-market-cap data-format-value="21914279432.5">21,914,279,433</td>
 </tr>
-<tr class="text-right">
+ <tr class="text-right">
 <td class="text-left">Mar 03, 2018</td>
 <td data-format-fiat data-format-value="1274.67004395">1274.67</td>
 <td data-format-fiat data-format-value="1302.80004883">1302.80</td>
@@ -5757,7 +5757,7 @@ BCH
 <td data-format-market-cap data-format-value="575353984.0">575,353,984</td>
 <td data-format-market-cap data-format-value="22218026982.2">22,218,026,982</td>
 </tr>
- <tr class="text-right">
+<tr class="text-right">
 <td class="text-left">Feb 20, 2018</td>
 <td data-format-fiat data-format-value="1543.27001953">1543.27</td>
 <td data-format-fiat data-format-value="1569.0300293">1569.03</td>
@@ -6110,7 +6110,7 @@ BCH
 </tr>
 <tr class="text-right">
 <td class="text-left">Jan 12, 2018</td>
-<td data-format-fiat data-format-value="2475.89990234">2475.90</td>
+ <td data-format-fiat data-format-value="2475.89990234">2475.90</td>
 <td data-format-fiat data-format-value="2648.22998047">2648.23</td>
 <td data-format-fiat data-format-value="2413.33007812">2413.33</td>
 <td data-format-fiat data-format-value="2620.98999023">2620.99</td>
@@ -6210,7 +6210,7 @@ BCH
 <tr class="text-right">
 <td class="text-left">Jan 01, 2018</td>
 <td data-format-fiat data-format-value="2534.82006836">2534.82</td>
-<td data-format-fiat data-format-value="2534.86010742">2534.86</td>
+ <td data-format-fiat data-format-value="2534.86010742">2534.86</td>
 <td data-format-fiat data-format-value="2389.52001953">2389.52</td>
 <td data-format-fiat data-format-value="2432.54003906">2432.54</td>
 <td data-format-market-cap data-format-value="922812992.0">922,812,992</td>
@@ -6310,7 +6310,7 @@ BCH
 <td class="text-left">Dec 21, 2017</td>
 <td data-format-fiat data-format-value="3909.0">3909.00</td>
 <td data-format-fiat data-format-value="3909.0">3909.00</td>
-<td data-format-fiat data-format-value="3038.01000977">3038.01</td>
+ <td data-format-fiat data-format-value="3038.01000977">3038.01</td>
 <td data-format-fiat data-format-value="3267.16992188">3267.17</td>
 <td data-format-market-cap data-format-value="3664329984.0">3,664,329,984</td>
 <td data-format-market-cap data-format-value="55113237296.0">55,113,237,296</td>
@@ -6410,7 +6410,7 @@ BCH
 <td data-format-fiat data-format-value="1411.83996582">1411.84</td>
 <td data-format-fiat data-format-value="1411.83996582">1411.84</td>
 <td data-format-fiat data-format-value="1226.20996094">1226.21</td>
-<td data-format-fiat data-format-value="1323.06994629">1323.07</td>
+ <td data-format-fiat data-format-value="1323.06994629">1323.07</td>
 <td data-format-market-cap data-format-value="885886016.0">885,886,016</td>
 <td data-format-market-cap data-format-value="22291645664.8">22,291,645,665</td>
 </tr>
@@ -6458,9 +6458,9 @@ BCH
 <td data-format-fiat data-format-value="1501.84997559">1501.85</td>
 <td data-format-market-cap data-format-value="1032800000.0">1,032,800,000</td>
 <td data-format-market-cap data-format-value="25290985041.9">25,290,985,042</td>
- </tr>
+</tr>
 <tr class="text-right">
-<td class="text-left">Dec 04, 2017</td>
+ <td class="text-left">Dec 04, 2017</td>
 <td data-format-fiat data-format-value="1560.16003418">1560.16</td>
 <td data-format-fiat data-format-value="1580.10998535">1580.11</td>
 <td data-format-fiat data-format-value="1498.97998047">1498.98</td>
@@ -6510,7 +6510,7 @@ BCH
 <td data-format-fiat data-format-value="1673.22998047">1673.23</td>
 <td data-format-fiat data-format-value="1332.14001465">1332.14</td>
 <td data-format-fiat data-format-value="1359.70996094">1359.71</td>
-<td data-format-market-cap data-format-value="2345250048.0">2,345,250,048</td>
+ <td data-format-market-cap data-format-value="2345250048.0">2,345,250,048</td>
 <td data-format-market-cap data-format-value="22882899517.5">22,882,899,518</td>
 </tr>
 <tr class="text-right">
@@ -6559,7 +6559,7 @@ BCH
 <td data-format-market-cap data-format-value="27728844880.5">27,728,844,881</td>
 </tr>
 <tr class="text-right">
- <td class="text-left">Nov 23, 2017</td>
+<td class="text-left">Nov 23, 2017</td>
 <td data-format-fiat data-format-value="1302.22998047">1302.23</td>
 <td data-format-fiat data-format-value="1683.81005859">1683.81</td>
 <td data-format-fiat data-format-value="1299.94995117">1299.95</td>
@@ -6809,9 +6809,9 @@ BCH
 <td data-format-fiat data-format-value="367.570007324">367.57</td>
 <td data-format-market-cap data-format-value="501988992.0">501,988,992</td>
 <td data-format-market-cap data-format-value="6150539620.75">6,150,539,621</td>
- </tr>
+</tr>
 <tr class="text-right">
-<td class="text-left">Oct 26, 2017</td>
+ <td class="text-left">Oct 26, 2017</td>
 <td data-format-fiat data-format-value="332.109985352">332.11</td>
 <td data-format-fiat data-format-value="350.937988281">350.94</td>
 <td data-format-fiat data-format-value="331.208007812">331.21</td>
@@ -6911,8 +6911,8 @@ BCH
 </tr>
 <tr class="text-right">
 <td class="text-left">Oct 15, 2017</td>
- <td data-format-fiat data-format-value="322.420013428">322.42</td>
-<td data-format-fiat data-format-value="323.592010498">323.59</td>
+<td data-format-fiat data-format-value="322.420013428">322.42</td>
+ <td data-format-fiat data-format-value="323.592010498">323.59</td>
 <td data-format-fiat data-format-value="307.677001953">307.68</td>
 <td data-format-fiat data-format-value="314.946990967">314.95</td>
 <td data-format-market-cap data-format-value="133385000.0">133,385,000</td>
@@ -7013,7 +7013,7 @@ BCH
 <td data-format-fiat data-format-value="404.199005127">404.20</td>
 <td data-format-fiat data-format-value="404.447998047">404.45</td>
 <td data-format-fiat data-format-value="354.552001953">354.55</td>
-<td data-format-fiat data-format-value="358.446990967">358.45</td>
+ <td data-format-fiat data-format-value="358.446990967">358.45</td>
 <td data-format-market-cap data-format-value="251584000.0">251,584,000</td>
 <td data-format-market-cap data-format-value="5971673252.95">5,971,673,253</td>
 </tr>
@@ -7062,9 +7062,9 @@ BCH
 <td data-format-market-cap data-format-value="148724992.0">148,724,992</td>
 <td data-format-market-cap data-format-value="7261040414.69">7,261,040,415</td>
 </tr>
- <tr class="text-right">
+<tr class="text-right">
 <td class="text-left">Sep 28, 2017</td>
-<td data-format-fiat data-format-value="456.713012695">456.71</td>
+ <td data-format-fiat data-format-value="456.713012695">456.71</td>
 <td data-format-fiat data-format-value="465.20300293">465.20</td>
 <td data-format-fiat data-format-value="433.503997803">433.50</td>
 <td data-format-fiat data-format-value="447.805999756">447.81</td>
@@ -7215,6 +7215,7 @@ BCH
 <td data-format-market-cap data-format-value="273824992.0">273,824,992</td>
 <td data-format-market-cap data-format-value="8461057682.68">8,461,057,683</td>
 </tr>
+
 <tr class="text-right">
 <td class="text-left">Sep 11, 2017</td>
 <td data-format-fiat data-format-value="537.187011719">537.19</td>
@@ -7365,8 +7366,8 @@ BCH
 <td data-format-fiat data-format-value="646.932006836">646.93</td>
 <td data-format-fiat data-format-value="622.361022949">622.36</td>
 <td data-format-fiat data-format-value="625.320983887">625.32</td>
- <td data-format-market-cap data-format-value="193414000.0">193,414,000</td>
-<td data-format-market-cap data-format-value="10347467981.5">10,347,467,982</td>
+<td data-format-market-cap data-format-value="193414000.0">193,414,000</td>
+ <td data-format-market-cap data-format-value="10347467981.5">10,347,467,982</td>
 </tr>
 <tr class="text-right">
 <td class="text-left">Aug 25, 2017</td>
@@ -7467,6 +7468,7 @@ BCH
 <td data-format-market-cap data-format-value="133924000.0">133,924,000</td>
 <td data-format-market-cap data-format-value="4912603932.6">4,912,603,933</td>
 </tr>
+
 <tr class="text-right">
 <td class="text-left">Aug 14, 2017</td>
 <td data-format-fiat data-format-value="296.097991943">296.10</td>
@@ -7619,7 +7621,7 @@ BCH
 <td data-format-fiat data-format-value="384.773010254">384.77</td>
 <td data-format-market-cap data-format-value="737815.0">737,815</td>
 <td data-format-market-cap data-format-value="-">-</td>
-</tr>
+ </tr>
 <tr class="text-right">
 <td class="text-left">Jul 28, 2017</td>
 <td data-format-fiat data-format-value="386.647003174">386.65</td>
@@ -7702,8 +7704,8 @@ BCH
 Bitcoin Cash Price
 </th>
 <td>
-<span data-currency-price data-usd="293.236404393">
-<span data-currency-value>293.24</span>
+<span data-currency-price data-usd="291.641432503">
+<span data-currency-value>291.64</span>
 <span data-currency-code>USD</span>
 </span>
 </td>
@@ -7716,7 +7718,7 @@ Bitcoin Cash ROI
 </a>
 </th>
 <td>
-<span class="text-semi-bold negative_change"><span data-format-percentage data-format-value="-47.2488"> -47.25</span>%
+<span class="text-semi-bold negative_change"><span data-format-percentage data-format-value="-47.5357"> -47.54</span>%
 </td>
 </tr>
 <tr>
@@ -7732,8 +7734,8 @@ Market Rank
 Market Cap
 </th>
 <td>
-<span data-currency-market-cap data-usd="5202691923.12">
-<span data-currency-value>5,202,691,923</span>
+<span data-currency-market-cap data-usd="5174415306.52">
+<span data-currency-value>5,174,415,307</span>
 <span data-currency-code>USD</span>
 </span>
 </td>
@@ -7743,8 +7745,8 @@ Market Cap
 24 Hour Volume
 </th>
 <td>
-<span data-currency-volume data-usd="1136496708.17">
-<span data-currency-value>1,136,496,708</span>
+<span data-currency-volume data-usd="1137449854.51">
+<span data-currency-value>1,137,449,855</span>
 <span data-currency-code>USD</span>
 </span>
 </td>
@@ -7754,8 +7756,8 @@ Market Cap
 Circulating Supply
 </th>
 <td>
-<span data-format-supply data-format-value="17742312.5">
-17,742,313
+<span data-format-supply data-format-value="17742387.5">
+17,742,388
 </span>
 BCH
 </td>
@@ -7765,17 +7767,18 @@ BCH
 Total Supply
 </th>
 <td>
-<span data-format-supply data-format-value="17742312.5">
-17,742,313
+<span data-format-supply data-format-value="17742387.5">
+17,742,388
 </span>
 BCH
 </td>
 </tr>
 <tr>
- <th scope="row">
+<th scope="row">
 Max Supply
 </th>
 <td>
+
 <span data-format-supply data-format-value="21000000.0">
 21,000,000
 </span>
@@ -7874,7 +7877,7 @@ All Time Low
 </tr>
 <tr>
 <th scope="row">
- 24 Hour High / Low
+24 Hour High / Low
 </th>
 <td>
 <span data-currency-price data-usd="295.896347786">
@@ -8041,24 +8044,24 @@ The approximate return on investment if purchased at the time of launch (or earl
 <h3 class="related-links-panel__header h5">Related Cryptocurrencies</h3>
 <ul class="related-links-panel__list">
 <li class="related-links-panel__item overflow-ellipsis">
-<img class="related-links-panel__logo lazyload" data-src="https://s2.coinmarketcap.com/static/img/coins/32x32/1437.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Zcash" />
-<a href="/currencies/zcash/" class="link-secondary">Zcash (ZEC)</a>
-</li>
-<li class="related-links-panel__item overflow-ellipsis">
-<img class="related-links-panel__logo lazyload" data-src="https://s2.coinmarketcap.com/static/img/coins/32x32/74.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Dogecoin" />
-<a href="/currencies/dogecoin/" class="link-secondary">Dogecoin (DOGE)</a>
-</li>
-<li class="related-links-panel__item overflow-ellipsis">
 <img class="related-links-panel__logo lazyload" data-src="https://s2.coinmarketcap.com/static/img/coins/32x32/3077.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="VeChain" />
 <a href="/currencies/vechain/" class="link-secondary">VeChain (VET)</a>
 </li>
 <li class="related-links-panel__item overflow-ellipsis">
-<img class="related-links-panel__logo lazyload" data-src="https://s2.coinmarketcap.com/static/img/coins/32x32/3635.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Crypto.com Chain" />
-<a href="/currencies/crypto-com-chain/" class="link-secondary">Crypto.com Chain (CRO)</a>
+<img class="related-links-panel__logo lazyload" data-src="https://s2.coinmarketcap.com/static/img/coins/32x32/1839.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Binance Coin" />
+<a href="/currencies/binance-coin/" class="link-secondary">Binance Coin (BNB)</a>
 </li>
 <li class="related-links-panel__item overflow-ellipsis">
-<img class="related-links-panel__logo lazyload" data-src="https://s2.coinmarketcap.com/static/img/coins/32x32/1.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Bitcoin" />
-<a href="/currencies/bitcoin/" class="link-secondary">Bitcoin (BTC)</a>
+<img class="related-links-panel__logo lazyload" data-src="https://s2.coinmarketcap.com/static/img/coins/32x32/52.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="XRP" />
+<a href="/currencies/ripple/" class="link-secondary">XRP (XRP)</a>
+</li>
+<li class="related-links-panel__item overflow-ellipsis">
+<img class="related-links-panel__logo lazyload" data-src="https://s2.coinmarketcap.com/static/img/coins/32x32/825.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Tether" />
+<a href="/currencies/tether/" class="link-secondary">Tether (USDT)</a>
+</li>
+<li class="related-links-panel__item overflow-ellipsis">
+<img class="related-links-panel__logo lazyload" data-src="https://s2.coinmarketcap.com/static/img/coins/32x32/873.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="NEM" />
+<a href="/currencies/nem/" class="link-secondary">NEM (XEM)</a>
 </li>
 </ul>
 </section>
@@ -8108,7 +8111,7 @@ The approximate return on investment if purchased at the time of launch (or earl
 <h5 class="footer-header">Night Mode</h5>
 <div class="btn-group" data-toggle="buttons">
 <label class="btn btn-default btn-sm" data-night-mode-off>
- <input type="radio"> Off
+<input type="radio"> Off
 </label>
 <label class="btn btn-default btn-sm" data-night-mode-on>
 <input type="radio"> On
@@ -8154,7 +8157,7 @@ The approximate return on investment if purchased at the time of launch (or earl
 We use cookies to offer you a better browsing experience, analyze site traffic, personalize content, and serve targeted advertisements. Read about how we use cookies and how you can control them on our <a href="/privacy/">Privacy Policy</a>. If you continue to use this site, you consent to our use of cookies.
 </div>
 </div>
-<div id="currency-exchange-rates" data-pkr="0.00706214689266" data-all="0.00906412871063" data-ron="0.236450499679" data-mnt="0.000397859255889" data-ugx="0.000267032153219" data-ttd="0.147412570342" data-aud="0.713020103602" data-cup="0.0388349514563" data-ngn="0.00277777777778" data-byn="0.476938815904" data-gtq="0.131003943481" data-hrk="0.151087391062" data-clp="0.00150717944931" data-eur="1.12532648535" data-nok="0.117601484789" data-amd="0.00207095323101" data-mxn="0.0530644733351" data-gel="0.37037037037" data-try="0.171275930319" data-crc="0.00168488593075" data-aed="0.272236183401" data-gbp="1.29774737011" data-bam="0.574917829869" data-ars="0.0234494079025" data-mdl="0.0559188134878" data-btc="5336.22108137" data-sek="0.10739731206" data-mur="0.0287357089776" data-irr="2.37501484384e-05" data-cny="0.149015750965" data-bdt="0.0118457362931" data-pen="0.302664079494" data-kzt="0.00263427632154" data-rub="0.0156499420952" data-omr="2.6008140548" data-mkd="0.0182892020679" data-jod="1.41043524621" data-mmk="0.000657098169154" data-pln="0.262698172934" data-kes="0.00986679822398" data-hkd="0.12745916527" data-ves="0.000243605152506" data-cop="0.000316622328823" data-dzd="0.00838152711424" data-idr="7.09999925507e-05" data-krw="0.000876347384103" data-bgn="0.57531738822" data-isk="0.00829749300376" data-ils="0.278268612692" data-bob="0.144605631522" data-dkk="0.150705974603" data-twd="0.0324165668885" data-kwd="3.28785138912" data-brl="0.254343940154" data-zar="0.0705258207724" data-sgd="0.737219561679" data-uzs="0.000118343195266" data-usd="1.0" data-chf="0.984433158465" data-xau="1274.79475804" data-xpd="1396.72607408" data-xag="15.004957638" data-huf="0.00351028594695" data-bmd="1.0" data-rsd="0.00952018278751" data-jmd="0.00774522185646" data-azn="0.587371512482" data-uah="0.0372081296638" data-lkr="0.0057260650481" data-tnd="0.331845999563" data-nzd="0.667400807555" data-iqd="0.000840336134454" data-xpt="895.768390125" data-cad="0.748410563067" data-lbp="0.00066271248219" data-khr="0.000248138957816" data-myr="0.241724910284" data-bhd="2.65188681747" data-inr="0.0143469964563" data-jpy="0.00893349998228" data-czk="0.0437444726125" data-sar="0.266954978043" data-ltc="77.1462267855" data-nad="0.0710732054016" data-qar="0.274669586221" data-pab="1.0" data-xrp="0.324533374629" data-vnd="4.30898932708e-05" data-uyu="0.0291802835244" data-nio="0.0302297460701" data-kgs="0.0145668076845" data-ssp="0.00767675340886" data-mad="0.104062604063" data-php="0.0193629586601" data-eth="171.856082191" data-npr="0.00897672853147" data-bch="293.236404393" data-ghs="0.19512195122" data-egp="0.0582377263992" data-hnl="0.0407332456727" data-dop="0.0197569890349" data-thb="0.0313577924114"></div>
+<div id="currency-exchange-rates" data-pkr="0.00706214689266" data-all="0.00906412871063" data-ron="0.236450499679" data-mnt="0.000397855466415" data-ugx="0.000267032153219" data-ttd="0.147412570342" data-aud="0.71330593763" data-cup="0.0388349514563" data-ngn="0.00277777777778" data-byn="0.476938815904" data-gtq="0.131003943481" data-hrk="0.151087391062" data-clp="0.00150511739916" data-eur="1.12599552079" data-nok="0.117698583109" data-amd="0.00207095323101" data-mxn="0.053105255466" data-gel="0.37037037037" data-try="0.17145800342" data-crc="0.00168488593075" data-aed="0.272236183401" data-gbp="1.29850062133" data-bam="0.574917829869" data-ars="0.0234260614934" data-mdl="0.0559188134878" data-btc="5351.33340255" data-sek="0.107471493455" data-mur="0.0287357089776" data-irr="2.37501484384e-05" data-cny="0.149049066953" data-bdt="0.0118457362931" data-pen="0.302649698107" data-kzt="0.00263427632154" data-rub="0.015664160401" data-omr="2.6008140548" data-mkd="0.0182892020679" data-jod="1.41043524621" data-mmk="0.000657098169154" data-pln="0.262815542911" data-kes="0.00986679822398" data-hkd="0.127474048196" data-ves="0.000243605152506" data-cop="0.000317404897558" data-dzd="0.00838047349675" data-idr="7.09974928678e-05" data-krw="0.000876155429973" data-bgn="0.575627361871" data-isk="0.00830289402436" data-ils="0.278268612692" data-bob="0.144605631522" data-dkk="0.150806680012" data-twd="0.0324159868386" data-kwd="3.28785138912" data-brl="0.254784275428" data-zar="0.0706315897949" data-sgd="0.737252716223" data-uzs="0.000118343195266" data-usd="1.0" data-chf="0.984850051655" data-xau="1274.59977567" data-xpd="1376.99319765" data-xag="14.99999925" data-huf="0.00351389553474" data-bmd="1.0" data-rsd="0.00952018278751" data-jmd="0.00774522185646" data-azn="0.587371512482" data-uah="0.0372081296638" data-lkr="0.0057260650481" data-tnd="0.332923615337" data-nzd="0.667617799492" data-iqd="0.000840336134454" data-xpt="895.495656846" data-cad="0.748855561488" data-lbp="0.000662536853612" data-khr="0.000248138957816" data-myr="0.241719943757" data-bhd="2.65216814746" data-inr="0.0143500846655" data-jpy="0.00893298474815" data-czk="0.0437904774541" data-sar="0.267059136774" data-ltc="76.6923881512" data-nad="0.0710631040364" data-qar="0.274669586221" data-pab="1.0" data-xrp="0.32336863331" data-vnd="4.31183846404e-05" data-uyu="0.0291802835244" data-nio="0.0302297460701" data-kgs="0.0145668081089" data-ssp="0.00767675340886" data-mad="0.104064769913" data-php="0.0193734622314" data-eth="171.6368432" data-npr="0.00897672853147" data-bch="291.641432503" data-ghs="0.19512195122" data-egp="0.0582455281996" data-hnl="0.0407332456727" data-dop="0.0197530864198" data-thb="0.0313674967615"></div>
 <div class="scroll-to-top">
 <button class="btn"><span class="glyphicons glyphicons-chevron-up"></span></button>
 </div>

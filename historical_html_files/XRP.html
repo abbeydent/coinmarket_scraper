@@ -6,7 +6,7 @@
 <html lang="en"> <!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<meta http-equiv="x-ua-compatible" content="ie=edge"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VQ4BV1dWDxACVVZTAAUEUVI="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e,n){function r(t){try{s.console&&console.log(t)}catch(e){}}var o,i=t("ee"),a=t(21),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,e,n){r(n.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,s){try{l?l-=1:o(s||new UncaughtException(t,e,n),!0)}catch(f){try{i("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function o(t,e){var n=e?null:c.now();i("err",[t,n])}var i=t("handle"),a=t(22),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,p="nr@seenError",l=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(13),t(12),"addEventListener"in window&&t(6),c.xhrWrappable&&t(14),d=!0)}s.on("fn-start",function(t,e,n){d&&(l+=1)}),s.on("fn-err",function(t,e,n){d&&!n[p]&&(f(n,p,function(){return!0}),this.thrown=!0,o(n))}),s.on("fn-end",function(){d&&!this.thrown&&l>0&&(l-=1)}),s.on("internal-error",function(t){i("ierr",[t,c.now(),!0])})},{}],3:[function(t,e,n){t("loader").features.ins=!0},{}],4:[function(t,e,n){function r(){M++,N=y.hash,this[u]=g.now()}function o(){M--,y.hash!==N&&i(0,!0);var t=g.now();this[h]=~~this[h]+t-this[u],this[d]=t}function i(t,e){E.emit("newURL",[""+y,e])}function a(t,e){t.on(e,function(){this[e]=g.now()})}var s="-start",c="-end",f="-body",u="fn"+s,d="fn"+c,p="cb"+s,l="cb"+c,h="jsTime",m="fetch",v="addEventListener",w=window,y=w.location,g=t("loader");if(w[v]&&g.xhrWrappable){var b=t(10),x=t(11),E=t(8),O=t(6),P=t(13),R=t(7),T=t(14),L=t(9),j=t("ee"),S=j.get("tracer");t(15),g.features.spa=!0;var N,M=0;j.on(u,r),j.on(p,r),j.on(d,o),j.on(l,o),j.buffer([u,d,"xhr-done","xhr-resolved"]),O.buffer([u]),P.buffer(["setTimeout"+c,"clearTimeout"+s,u]),T.buffer([u,"new-xhr","send-xhr"+s]),R.buffer([m+s,m+"-done",m+f+s,m+f+c]),E.buffer(["newURL"]),b.buffer([u]),x.buffer(["propagate",p,l,"executor-err","resolve"+s]),S.buffer([u,"no-"+u]),L.buffer(["new-jsonp","cb-start","jsonp-error","jsonp-end"]),a(T,"send-xhr"+s),a(j,"xhr-resolved"),a(j,"xhr-done"),a(R,m+s),a(R,m+"-done"),a(L,"new-jsonp"),a(L,"jsonp-end"),a(L,"cb-start"),E.on("pushState-end",i),E.on("replaceState-end",i),w[v]("hashchange",i,!0),w[v]("load",i,!0),w[v]("popstate",function(){i(0,M>1)},!0)}},{}],5:[function(t,e,n){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(13),s=t(12),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",p="resource",l="-start",h="-end",m="fn"+l,v="fn"+h,w="bstTimer",y="pushState",g=t("loader");g.features.stn=!0,t(8);var b=NREUM.o.EV;o.on(m,function(t,e){var n=t[0];n instanceof b&&(this.bstStart=g.now())}),o.on(v,function(t,e){var n=t[0];n instanceof b&&i("bst",[n,e,this.bstStart,g.now()])}),a.on(m,function(t,e,n){this.bstStart=g.now(),this.bstType=n}),a.on(v,function(t,e){i(w,[e,this.bstStart,g.now(),this.bstType])}),s.on(m,function(){this.bstStart=g.now()}),s.on(v,function(t,e){i(w,[e,this.bstStart,g.now(),"requestAnimationFrame"])}),o.on(y+l,function(t){this.time=g.now(),this.startPath=location.pathname+location.hash}),o.on(y+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(p)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(p)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],6:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&o(e)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,e){return t[1]}var a=t("ee").get("events"),s=t(24)(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,e){var n=t[1],r=c(n,"nr@wrapped",function(){function t(){if("function"==typeof n.handleEvent)return n.handleEvent.apply(n,arguments)}var e={object:t,"function":n}[typeof n];return e?s(e,"fn-",null,e.name||"anonymous"):n});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],7:[function(t,e,n){function r(t,e,n){var r=t[e];"function"==typeof r&&(t[e]=function(){var t=r.apply(this,arguments);return o.emit(n+"start",arguments,t),t.then(function(e){return o.emit(n+"end",[null,e],t),e},function(e){throw o.emit(n+"end",[e],t),e})})}var o=t("ee").get("fetch"),i=t(21);e.exports=o;var a=window,s="fetch-",c=s+"body-",f=["arrayBuffer","blob","json","text","formData"],u=a.Request,d=a.Response,p=a.fetch,l="prototype";u&&d&&p&&(i(f,function(t,e){r(u[l],e,c),r(d[l],e,c)}),r(a,"fetch",s),o.on(s+"end",function(t,e){var n=this;if(e){var r=e.headers.get("content-length");null!==r&&(n.rxSize=r),o.emit(s+"done",[null,e],n)}else o.emit(s+"done",[t],n)}))},{}],8:[function(t,e,n){var r=t("ee").get("history"),o=t(24)(r);e.exports=r,o.inPlace(window.history,["pushState","replaceState"],"-")},{}],9:[function(t,e,n){function r(t){function e(){c.emit("jsonp-end",[],p),t.removeEventListener("load",e,!1),t.removeEventListener("error",n,!1)}function n(){c.emit("jsonp-error",[],p),c.emit("jsonp-end",[],p),t.removeEventListener("load",e,!1),t.removeEventListener("error",n,!1)}var r=t&&"string"==typeof t.nodeName&&"script"===t.nodeName.toLowerCase();if(r){var o="function"==typeof t.addEventListener;if(o){var a=i(t.src);if(a){var u=s(a),d="function"==typeof u.parent[u.key];if(d){var p={};f.inPlace(u.parent,[u.key],"cb-",p),t.addEventListener("load",e,!1),t.addEventListener("error",n,!1),c.emit("new-jsonp",[t.src],p)}}}}}function o(){return"addEventListener"in window}function i(t){var e=t.match(u);return e?e[1]:null}function a(t,e){var n=t.match(p),r=n[1],o=n[3];return o?a(o,e[r]):e[r]}function s(t){var e=t.match(d);return e&&e.length>=3?{key:e[2],parent:a(e[1],window)}:{key:t,parent:window}}var c=t("ee").get("jsonp"),f=t(24)(c);if(e.exports=c,o()){var u=/[?&](?:callback|cb)=([^&#]+)/,d=/(.*)\.([^.]+)/,p=/^(\w+)(\.|$)(.*)$/,l=["appendChild","insertBefore","replaceChild"];f.inPlace(HTMLElement.prototype,l,"dom-"),f.inPlace(HTMLHeadElement.prototype,l,"dom-"),f.inPlace(HTMLBodyElement.prototype,l,"dom-"),c.on("dom-start",function(t){r(t[0])})}},{}],10:[function(t,e,n){var r=t("ee").get("mutation"),o=t(24)(r),i=NREUM.o.MO;e.exports=r,i&&(window.MutationObserver=function(t){return this instanceof i?new i(o(t,"fn-")):i.apply(this,arguments)},MutationObserver.prototype=i.prototype)},{}],11:[function(t,e,n){function r(t){var e=a.context(),n=s(t,"executor-",e),r=new f(n);return a.context(r).getCtx=function(){return e},a.emit("new-promise",[r,e],e),r}function o(t,e){return e}var i=t(24),a=t("ee").get("promise"),s=i(a),c=t(21),f=NREUM.o.PR;e.exports=a,f&&(window.Promise=r,["all","race"].forEach(function(t){var e=f[t];f[t]=function(n){function r(t){return function(){a.emit("propagate",[null,!o],i),o=o||!t}}var o=!1;c(n,function(e,n){Promise.resolve(n).then(r("all"===t),r(!1))});var i=e.apply(f,arguments),s=f.resolve(i);return s}}),["resolve","reject"].forEach(function(t){var e=f[t];f[t]=function(t){var n=e.apply(f,arguments);return t!==n&&a.emit("propagate",[t,!0],n),n}}),f.prototype["catch"]=function(t){return this.then(null,t)},f.prototype=Object.create(f.prototype,{constructor:{value:r}}),c(Object.getOwnPropertyNames(f),function(t,e){try{r[e]=f[e]}catch(n){}}),a.on("executor-start",function(t){t[0]=s(t[0],"resolve-",this),t[1]=s(t[1],"resolve-",this)}),a.on("executor-err",function(t,e,n){t[1](n)}),s.inPlace(f.prototype,["then"],"then-",o),a.on("then-start",function(t,e){this.promise=e,t[0]=s(t[0],"cb-",this),t[1]=s(t[1],"cb-",this)}),a.on("then-end",function(t,e,n){this.nextPromise=n;var r=this.promise;a.emit("propagate",[r,!0],n)}),a.on("cb-end",function(t,e,n){a.emit("propagate",[n,!0],this.nextPromise)}),a.on("propagate",function(t,e,n){this.getCtx&&!e||(this.getCtx=function(){if(t instanceof Promise)var e=a.context(t);return e&&e.getCtx?e.getCtx():this})}),r.toString=function(){return""+f})},{}],12:[function(t,e,n){var r=t("ee").get("raf"),o=t(24)(r),i="equestAnimationFrame";e.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],13:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function o(t,e,n){this.method=n,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,n)}var i=t("ee").get("timer"),a=t(24)(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";e.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],14:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",s)}function o(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,y,"fn-",s)}function i(t){g.push(t),h&&(x?x.then(a):v?v(a):(E=-E,O.data=E))}function a(){for(var t=0;t<g.length;t++)r([],g[t]);g.length&&(g=[])}function s(t,e){return e}function c(t,e){for(var n in t)e[n]=t[n];return e}t(6);var f=t("ee"),u=f.get("xhr"),d=t(24)(u),p=NREUM.o,l=p.XHR,h=p.MO,m=p.PR,v=p.SI,w="readystatechange",y=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],g=[];e.exports=u;var b=window.XMLHttpRequest=function(t){var e=new l(t);try{u.emit("new-xhr",[e],e),e.addEventListener(w,o,!1)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(c(l,b),b.prototype=l.prototype,d.inPlace(b.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,e){r(t,e),i(e)}),u.on("open-xhr-start",r),h){var x=m&&m.resolve();if(!v&&!m){var E=1,O=document.createTextNode(E);new h(a).observe(O,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===w||a()})},{}],15:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<d;r++)t.removeEventListener(u[r],this.listener,!1);if(!e.aborted){if(n.duration=a.now()-this.startTime,4===t.readyState){e.status=t.status;var i=o(t,this.lastSize);if(i&&(n.rxSize=i),this.sameOrigin){var c=t.getResponseHeader("X-NewRelic-App-Data");c&&(e.cat=c.split(", ").pop())}}else e.status=0;n.cbTime=this.cbTime,f.emit("xhr-done",[t],t),s("xhr",[e,n,this.startTime])}}}function o(t,e){var n=t.responseType;if("json"===n&&null!==e)return e;var r="arraybuffer"===n||"blob"===n||"json"===n?t.response:t.responseText;return h(r)}function i(t,e){var n=c(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}var a=t("loader");if(a.xhrWrappable){var s=t("handle"),c=t(16),f=t("ee"),u=["load","error","abort","timeout"],d=u.length,p=t("id"),l=t(19),h=t(18),m=window.XMLHttpRequest;a.features.xhr=!0,t(14),f.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,l&&(l>34||l<10)||window.opera||t.addEventListener("progress",function(t){e.lastSize=t.loaded},!1)}),f.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),f.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),f.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],o=this;if(n&&r){var i=h(r);i&&(n.txSize=i)}this.startTime=a.now(),this.listener=function(t){try{"abort"===t.type&&(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof e.onload))&&o.end(e)}catch(n){try{f.emit("internal-error",[n])}catch(r){}}};for(var s=0;s<d;s++)e.addEventListener(u[s],this.listener,!1)}),f.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),f.on("xhr-load-added",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),f.on("xhr-load-removed",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),f.on("addEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-added",[t[1],t[2]],e)}),f.on("removeEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-removed",[t[1],t[2]],e)}),f.on("fn-start",function(t,e,n){e instanceof m&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),f.on("fn-end",function(t,e){this.xhrCbStart&&f.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,e],e)})}},{}],16:[function(t,e,n){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!e.protocol||":"===e.protocol||e.protocol===n.protocol,a=e.hostname===document.domain&&e.port===n.port;return r.sameOrigin=i&&(!e.hostname||a),r}},{}],17:[function(t,e,n){function r(){}function o(t,e,n){return function(){return i(t,[f.now()].concat(s(arguments)),e?null:this,n),e?void 0:this}}var i=t("handle"),a=t(21),s=t(22),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(t,e){u[e]=o(p+e,!0,"api")}),u.addPageAction=o(p+"addPageAction",!0),u.setCurrentRouteName=o(p+"routeName",!0),e.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,e){var n={},r=this,o="function"==typeof e;return i(l+"tracer",[f.now(),t,n],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],n),o)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[f.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){h[e]=o(l+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),i("err",[t,f.now(),!1,e])}},{}],18:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],19:[function(t,e,n){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),e.exports=r},{}],20:[function(t,e,n){function r(t,e){if(!o)return!1;if(t!==o)return!1;if(!e)return!0;if(!i)return!1;for(var n=i.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(o="Safari",i=c[1])}e.exports={agent:o,version:i,match:r}},{}],21:[function(t,e,n){function r(t,e){var n=[],r="",i=0;for(r in t)o.call(t,r)&&(n[i]=e(r,t[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],22:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(o<0?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=r},{}],23:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],24:[function(t,e,n){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var o=t("ee"),i=t(22),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;e.exports=function(t,e){function n(t,e,n,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof n?n(r,a):n||{}}catch(f){p([f,"",[r,a,o],s])}u(e+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(d){throw u(e+"err",[r,a,d],s),d}finally{u(e+"end",[r,a,c],s)}}return r(t)?t:(e||(e=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,e,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<e.length;c++)s=e[c],a=t[s],r(a)||(t[s]=n(a,f?s+o:o,i,s))}function u(n,r,o){if(!c||e){var i=c;c=!0;try{t.emit(n,r,o,e)}catch(a){p([a,n,r,o])}c=i}}function d(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){p([r])}for(var o in t)s.call(t,o)&&(e[o]=t[o]);return e}function p(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=o),n.inPlace=f,n.flag=a,n}},{}],ee:[function(t,e,n){function r(){}function o(t){function e(t){return t&&t instanceof r?t:t?c(t,s,i):i()}function n(n,r,o,i){if(!p.aborted||i){t&&t(n,r,o);for(var a=e(o),s=m(n),c=s.length,f=0;f<c;f++)s[f].apply(a,r);var d=u[g[n]];return d&&d.push([b,n,r,a]),a}}function l(t,e){y[t]=m(t).concat(e)}function h(t,e){var n=y[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function m(t){return y[t]||[]}function v(t){return d[t]=d[t]||o(n)}function w(t,e){f(t,function(t,n){e=e||"feature",g[n]=e,e in u||(u[e]=[])})}var y={},g={},b={on:l,addEventListener:l,removeEventListener:h,emit:n,get:v,listeners:m,context:e,buffer:w,abort:a,aborted:!1};return b}function i(){return new r}function a(){(u.api||u.feature)&&(p.aborted=!0,u=p.backlog={})}var s="nr@context",c=t("gos"),f=t(21),u={},d={},p=e.exports=o();p.backlog=u},{}],gos:[function(t,e,n){function r(t,e,n){if(o.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[e]=r,r}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){o.buffer([t],r),o.emit(t,e,n)}var o=t("ee").get("handle");e.exports=r,r.ee=o},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!E++){var t=x.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();f(g,function(e,n){t[e]||(t[e]=n)}),c("mark",["onload",a()+x.offset],null,"api");var n=l.createElement("script");n.src="https://"+t.agent,e.parentNode.insertBefore(n,e)}}function o(){"complete"===l.readyState&&i()}function i(){c("mark",["domContent",a()+x.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(s=Math.max((new Date).getTime(),s))-x.offset}var s=(new Date).getTime(),c=t("handle"),f=t(21),u=t("ee"),d=t(20),p=window,l=p.document,h="addEventListener",m="attachEvent",v=p.XMLHttpRequest,w=v&&v.prototype;NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:v,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var y=""+location,g={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-spa-1118.min.js"},b=v&&w&&w[h]&&!/CriOS/.test(navigator.userAgent),x=e.exports={offset:s,now:a,origin:y,features:{},xhrWrappable:b,userAgent:d};t(17),l[h]?(l[h]("DOMContentLoaded",i,!1),p[h]("load",r,!1)):(l[m]("onreadystatechange",o),p[m]("onload",r)),c("mark",["firstbyte",s],null,"api");var E=0,O=t(23)},{}]},{},["loader",2,15,5,3,4]);</script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","queueTime":0,"licenseKey":"6d0ece54b7","agent":"","transactionName":"NFBbY0VUXEEEARUPXg0af0JZVkZbCgxOBV4KW1RWRV5XRgYDEUhHClBORBlBQFMLEQ0HRQZRA1RCR0BXCwEYOVUGQVheWw==","applicationID":"217174376","errorBeacon":"bam.nr-data.net","applicationTime":314}</script>
+<meta http-equiv="x-ua-compatible" content="ie=edge"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VQ4BV1dWDxACVVZTAAUEUVI="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e,n){function r(t){try{s.console&&console.log(t)}catch(e){}}var o,i=t("ee"),a=t(21),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,e,n){r(n.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,s){try{l?l-=1:o(s||new UncaughtException(t,e,n),!0)}catch(f){try{i("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function o(t,e){var n=e?null:c.now();i("err",[t,n])}var i=t("handle"),a=t(22),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,p="nr@seenError",l=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(13),t(12),"addEventListener"in window&&t(6),c.xhrWrappable&&t(14),d=!0)}s.on("fn-start",function(t,e,n){d&&(l+=1)}),s.on("fn-err",function(t,e,n){d&&!n[p]&&(f(n,p,function(){return!0}),this.thrown=!0,o(n))}),s.on("fn-end",function(){d&&!this.thrown&&l>0&&(l-=1)}),s.on("internal-error",function(t){i("ierr",[t,c.now(),!0])})},{}],3:[function(t,e,n){t("loader").features.ins=!0},{}],4:[function(t,e,n){function r(){M++,N=y.hash,this[u]=g.now()}function o(){M--,y.hash!==N&&i(0,!0);var t=g.now();this[h]=~~this[h]+t-this[u],this[d]=t}function i(t,e){E.emit("newURL",[""+y,e])}function a(t,e){t.on(e,function(){this[e]=g.now()})}var s="-start",c="-end",f="-body",u="fn"+s,d="fn"+c,p="cb"+s,l="cb"+c,h="jsTime",m="fetch",v="addEventListener",w=window,y=w.location,g=t("loader");if(w[v]&&g.xhrWrappable){var b=t(10),x=t(11),E=t(8),O=t(6),P=t(13),R=t(7),T=t(14),L=t(9),j=t("ee"),S=j.get("tracer");t(15),g.features.spa=!0;var N,M=0;j.on(u,r),j.on(p,r),j.on(d,o),j.on(l,o),j.buffer([u,d,"xhr-done","xhr-resolved"]),O.buffer([u]),P.buffer(["setTimeout"+c,"clearTimeout"+s,u]),T.buffer([u,"new-xhr","send-xhr"+s]),R.buffer([m+s,m+"-done",m+f+s,m+f+c]),E.buffer(["newURL"]),b.buffer([u]),x.buffer(["propagate",p,l,"executor-err","resolve"+s]),S.buffer([u,"no-"+u]),L.buffer(["new-jsonp","cb-start","jsonp-error","jsonp-end"]),a(T,"send-xhr"+s),a(j,"xhr-resolved"),a(j,"xhr-done"),a(R,m+s),a(R,m+"-done"),a(L,"new-jsonp"),a(L,"jsonp-end"),a(L,"cb-start"),E.on("pushState-end",i),E.on("replaceState-end",i),w[v]("hashchange",i,!0),w[v]("load",i,!0),w[v]("popstate",function(){i(0,M>1)},!0)}},{}],5:[function(t,e,n){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(13),s=t(12),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",p="resource",l="-start",h="-end",m="fn"+l,v="fn"+h,w="bstTimer",y="pushState",g=t("loader");g.features.stn=!0,t(8);var b=NREUM.o.EV;o.on(m,function(t,e){var n=t[0];n instanceof b&&(this.bstStart=g.now())}),o.on(v,function(t,e){var n=t[0];n instanceof b&&i("bst",[n,e,this.bstStart,g.now()])}),a.on(m,function(t,e,n){this.bstStart=g.now(),this.bstType=n}),a.on(v,function(t,e){i(w,[e,this.bstStart,g.now(),this.bstType])}),s.on(m,function(){this.bstStart=g.now()}),s.on(v,function(t,e){i(w,[e,this.bstStart,g.now(),"requestAnimationFrame"])}),o.on(y+l,function(t){this.time=g.now(),this.startPath=location.pathname+location.hash}),o.on(y+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(p)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(p)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],6:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&o(e)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,e){return t[1]}var a=t("ee").get("events"),s=t(24)(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,e){var n=t[1],r=c(n,"nr@wrapped",function(){function t(){if("function"==typeof n.handleEvent)return n.handleEvent.apply(n,arguments)}var e={object:t,"function":n}[typeof n];return e?s(e,"fn-",null,e.name||"anonymous"):n});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],7:[function(t,e,n){function r(t,e,n){var r=t[e];"function"==typeof r&&(t[e]=function(){var t=r.apply(this,arguments);return o.emit(n+"start",arguments,t),t.then(function(e){return o.emit(n+"end",[null,e],t),e},function(e){throw o.emit(n+"end",[e],t),e})})}var o=t("ee").get("fetch"),i=t(21);e.exports=o;var a=window,s="fetch-",c=s+"body-",f=["arrayBuffer","blob","json","text","formData"],u=a.Request,d=a.Response,p=a.fetch,l="prototype";u&&d&&p&&(i(f,function(t,e){r(u[l],e,c),r(d[l],e,c)}),r(a,"fetch",s),o.on(s+"end",function(t,e){var n=this;if(e){var r=e.headers.get("content-length");null!==r&&(n.rxSize=r),o.emit(s+"done",[null,e],n)}else o.emit(s+"done",[t],n)}))},{}],8:[function(t,e,n){var r=t("ee").get("history"),o=t(24)(r);e.exports=r,o.inPlace(window.history,["pushState","replaceState"],"-")},{}],9:[function(t,e,n){function r(t){function e(){c.emit("jsonp-end",[],p),t.removeEventListener("load",e,!1),t.removeEventListener("error",n,!1)}function n(){c.emit("jsonp-error",[],p),c.emit("jsonp-end",[],p),t.removeEventListener("load",e,!1),t.removeEventListener("error",n,!1)}var r=t&&"string"==typeof t.nodeName&&"script"===t.nodeName.toLowerCase();if(r){var o="function"==typeof t.addEventListener;if(o){var a=i(t.src);if(a){var u=s(a),d="function"==typeof u.parent[u.key];if(d){var p={};f.inPlace(u.parent,[u.key],"cb-",p),t.addEventListener("load",e,!1),t.addEventListener("error",n,!1),c.emit("new-jsonp",[t.src],p)}}}}}function o(){return"addEventListener"in window}function i(t){var e=t.match(u);return e?e[1]:null}function a(t,e){var n=t.match(p),r=n[1],o=n[3];return o?a(o,e[r]):e[r]}function s(t){var e=t.match(d);return e&&e.length>=3?{key:e[2],parent:a(e[1],window)}:{key:t,parent:window}}var c=t("ee").get("jsonp"),f=t(24)(c);if(e.exports=c,o()){var u=/[?&](?:callback|cb)=([^&#]+)/,d=/(.*)\.([^.]+)/,p=/^(\w+)(\.|$)(.*)$/,l=["appendChild","insertBefore","replaceChild"];f.inPlace(HTMLElement.prototype,l,"dom-"),f.inPlace(HTMLHeadElement.prototype,l,"dom-"),f.inPlace(HTMLBodyElement.prototype,l,"dom-"),c.on("dom-start",function(t){r(t[0])})}},{}],10:[function(t,e,n){var r=t("ee").get("mutation"),o=t(24)(r),i=NREUM.o.MO;e.exports=r,i&&(window.MutationObserver=function(t){return this instanceof i?new i(o(t,"fn-")):i.apply(this,arguments)},MutationObserver.prototype=i.prototype)},{}],11:[function(t,e,n){function r(t){var e=a.context(),n=s(t,"executor-",e),r=new f(n);return a.context(r).getCtx=function(){return e},a.emit("new-promise",[r,e],e),r}function o(t,e){return e}var i=t(24),a=t("ee").get("promise"),s=i(a),c=t(21),f=NREUM.o.PR;e.exports=a,f&&(window.Promise=r,["all","race"].forEach(function(t){var e=f[t];f[t]=function(n){function r(t){return function(){a.emit("propagate",[null,!o],i),o=o||!t}}var o=!1;c(n,function(e,n){Promise.resolve(n).then(r("all"===t),r(!1))});var i=e.apply(f,arguments),s=f.resolve(i);return s}}),["resolve","reject"].forEach(function(t){var e=f[t];f[t]=function(t){var n=e.apply(f,arguments);return t!==n&&a.emit("propagate",[t,!0],n),n}}),f.prototype["catch"]=function(t){return this.then(null,t)},f.prototype=Object.create(f.prototype,{constructor:{value:r}}),c(Object.getOwnPropertyNames(f),function(t,e){try{r[e]=f[e]}catch(n){}}),a.on("executor-start",function(t){t[0]=s(t[0],"resolve-",this),t[1]=s(t[1],"resolve-",this)}),a.on("executor-err",function(t,e,n){t[1](n)}),s.inPlace(f.prototype,["then"],"then-",o),a.on("then-start",function(t,e){this.promise=e,t[0]=s(t[0],"cb-",this),t[1]=s(t[1],"cb-",this)}),a.on("then-end",function(t,e,n){this.nextPromise=n;var r=this.promise;a.emit("propagate",[r,!0],n)}),a.on("cb-end",function(t,e,n){a.emit("propagate",[n,!0],this.nextPromise)}),a.on("propagate",function(t,e,n){this.getCtx&&!e||(this.getCtx=function(){if(t instanceof Promise)var e=a.context(t);return e&&e.getCtx?e.getCtx():this})}),r.toString=function(){return""+f})},{}],12:[function(t,e,n){var r=t("ee").get("raf"),o=t(24)(r),i="equestAnimationFrame";e.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],13:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function o(t,e,n){this.method=n,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,n)}var i=t("ee").get("timer"),a=t(24)(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";e.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],14:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",s)}function o(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,y,"fn-",s)}function i(t){g.push(t),h&&(x?x.then(a):v?v(a):(E=-E,O.data=E))}function a(){for(var t=0;t<g.length;t++)r([],g[t]);g.length&&(g=[])}function s(t,e){return e}function c(t,e){for(var n in t)e[n]=t[n];return e}t(6);var f=t("ee"),u=f.get("xhr"),d=t(24)(u),p=NREUM.o,l=p.XHR,h=p.MO,m=p.PR,v=p.SI,w="readystatechange",y=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],g=[];e.exports=u;var b=window.XMLHttpRequest=function(t){var e=new l(t);try{u.emit("new-xhr",[e],e),e.addEventListener(w,o,!1)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(c(l,b),b.prototype=l.prototype,d.inPlace(b.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,e){r(t,e),i(e)}),u.on("open-xhr-start",r),h){var x=m&&m.resolve();if(!v&&!m){var E=1,O=document.createTextNode(E);new h(a).observe(O,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===w||a()})},{}],15:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<d;r++)t.removeEventListener(u[r],this.listener,!1);if(!e.aborted){if(n.duration=a.now()-this.startTime,4===t.readyState){e.status=t.status;var i=o(t,this.lastSize);if(i&&(n.rxSize=i),this.sameOrigin){var c=t.getResponseHeader("X-NewRelic-App-Data");c&&(e.cat=c.split(", ").pop())}}else e.status=0;n.cbTime=this.cbTime,f.emit("xhr-done",[t],t),s("xhr",[e,n,this.startTime])}}}function o(t,e){var n=t.responseType;if("json"===n&&null!==e)return e;var r="arraybuffer"===n||"blob"===n||"json"===n?t.response:t.responseText;return h(r)}function i(t,e){var n=c(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}var a=t("loader");if(a.xhrWrappable){var s=t("handle"),c=t(16),f=t("ee"),u=["load","error","abort","timeout"],d=u.length,p=t("id"),l=t(19),h=t(18),m=window.XMLHttpRequest;a.features.xhr=!0,t(14),f.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,l&&(l>34||l<10)||window.opera||t.addEventListener("progress",function(t){e.lastSize=t.loaded},!1)}),f.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),f.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),f.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],o=this;if(n&&r){var i=h(r);i&&(n.txSize=i)}this.startTime=a.now(),this.listener=function(t){try{"abort"===t.type&&(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof e.onload))&&o.end(e)}catch(n){try{f.emit("internal-error",[n])}catch(r){}}};for(var s=0;s<d;s++)e.addEventListener(u[s],this.listener,!1)}),f.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),f.on("xhr-load-added",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),f.on("xhr-load-removed",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),f.on("addEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-added",[t[1],t[2]],e)}),f.on("removeEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-removed",[t[1],t[2]],e)}),f.on("fn-start",function(t,e,n){e instanceof m&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),f.on("fn-end",function(t,e){this.xhrCbStart&&f.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,e],e)})}},{}],16:[function(t,e,n){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!e.protocol||":"===e.protocol||e.protocol===n.protocol,a=e.hostname===document.domain&&e.port===n.port;return r.sameOrigin=i&&(!e.hostname||a),r}},{}],17:[function(t,e,n){function r(){}function o(t,e,n){return function(){return i(t,[f.now()].concat(s(arguments)),e?null:this,n),e?void 0:this}}var i=t("handle"),a=t(21),s=t(22),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(t,e){u[e]=o(p+e,!0,"api")}),u.addPageAction=o(p+"addPageAction",!0),u.setCurrentRouteName=o(p+"routeName",!0),e.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,e){var n={},r=this,o="function"==typeof e;return i(l+"tracer",[f.now(),t,n],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],n),o)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[f.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){h[e]=o(l+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),i("err",[t,f.now(),!1,e])}},{}],18:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],19:[function(t,e,n){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),e.exports=r},{}],20:[function(t,e,n){function r(t,e){if(!o)return!1;if(t!==o)return!1;if(!e)return!0;if(!i)return!1;for(var n=i.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(o="Safari",i=c[1])}e.exports={agent:o,version:i,match:r}},{}],21:[function(t,e,n){function r(t,e){var n=[],r="",i=0;for(r in t)o.call(t,r)&&(n[i]=e(r,t[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],22:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(o<0?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=r},{}],23:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],24:[function(t,e,n){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var o=t("ee"),i=t(22),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;e.exports=function(t,e){function n(t,e,n,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof n?n(r,a):n||{}}catch(f){p([f,"",[r,a,o],s])}u(e+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(d){throw u(e+"err",[r,a,d],s),d}finally{u(e+"end",[r,a,c],s)}}return r(t)?t:(e||(e=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,e,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<e.length;c++)s=e[c],a=t[s],r(a)||(t[s]=n(a,f?s+o:o,i,s))}function u(n,r,o){if(!c||e){var i=c;c=!0;try{t.emit(n,r,o,e)}catch(a){p([a,n,r,o])}c=i}}function d(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){p([r])}for(var o in t)s.call(t,o)&&(e[o]=t[o]);return e}function p(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=o),n.inPlace=f,n.flag=a,n}},{}],ee:[function(t,e,n){function r(){}function o(t){function e(t){return t&&t instanceof r?t:t?c(t,s,i):i()}function n(n,r,o,i){if(!p.aborted||i){t&&t(n,r,o);for(var a=e(o),s=m(n),c=s.length,f=0;f<c;f++)s[f].apply(a,r);var d=u[g[n]];return d&&d.push([b,n,r,a]),a}}function l(t,e){y[t]=m(t).concat(e)}function h(t,e){var n=y[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function m(t){return y[t]||[]}function v(t){return d[t]=d[t]||o(n)}function w(t,e){f(t,function(t,n){e=e||"feature",g[n]=e,e in u||(u[e]=[])})}var y={},g={},b={on:l,addEventListener:l,removeEventListener:h,emit:n,get:v,listeners:m,context:e,buffer:w,abort:a,aborted:!1};return b}function i(){return new r}function a(){(u.api||u.feature)&&(p.aborted=!0,u=p.backlog={})}var s="nr@context",c=t("gos"),f=t(21),u={},d={},p=e.exports=o();p.backlog=u},{}],gos:[function(t,e,n){function r(t,e,n){if(o.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[e]=r,r}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){o.buffer([t],r),o.emit(t,e,n)}var o=t("ee").get("handle");e.exports=r,r.ee=o},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!E++){var t=x.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();f(g,function(e,n){t[e]||(t[e]=n)}),c("mark",["onload",a()+x.offset],null,"api");var n=l.createElement("script");n.src="https://"+t.agent,e.parentNode.insertBefore(n,e)}}function o(){"complete"===l.readyState&&i()}function i(){c("mark",["domContent",a()+x.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(s=Math.max((new Date).getTime(),s))-x.offset}var s=(new Date).getTime(),c=t("handle"),f=t(21),u=t("ee"),d=t(20),p=window,l=p.document,h="addEventListener",m="attachEvent",v=p.XMLHttpRequest,w=v&&v.prototype;NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:v,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var y=""+location,g={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-spa-1118.min.js"},b=v&&w&&w[h]&&!/CriOS/.test(navigator.userAgent),x=e.exports={offset:s,now:a,origin:y,features:{},xhrWrappable:b,userAgent:d};t(17),l[h]?(l[h]("DOMContentLoaded",i,!1),p[h]("load",r,!1)):(l[m]("onreadystatechange",o),p[m]("onload",r)),c("mark",["firstbyte",s],null,"api");var E=0,O=t(23)},{}]},{},["loader",2,15,5,3,4]);</script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","queueTime":0,"licenseKey":"6d0ece54b7","agent":"","transactionName":"NFBbY0VUXEEEARUPXg0af0JZVkZbCgxOBV4KW1RWRV5XRgYDEUhHClBORBlBQFMLEQ0HRQZRA1RCR0BXCwEYOVUGQVheWw==","applicationID":"217174376","errorBeacon":"bam.nr-data.net","applicationTime":298}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>XRP (XRP) Historical Data | CoinMarketCap</title>
 <link rel="preload" as="font" href="https://s2.coinmarketcap.com/static/cloud/fonts/glyphicons-regular.woff2" type="font/woff2" crossorigin>
@@ -655,7 +655,7 @@
             
                 "offers": {
                     "@type": "Offer",
-                    "price": "0.324444",
+                    "price": "0.323313",
                     "priceCurrency": "USD"
                 }
             
@@ -670,7 +670,7 @@
         };
         
             var addthis_share = {
-                title: "The price of XRP is $0.324444!"
+                title: "The price of XRP is $0.323313!"
             };
         
     </script>
@@ -809,9 +809,9 @@ BTC Dominance:&nbsp;
 <li class="cmc-siteprefs-dropdown-menuitem" data-currency-flag-toggle data-currency-code="DKK">
 <span class="cmc-siteprefs__currency-flag cmc-flag cmc-flag-dk">
 </span>
-<span>DKK</span>
+ <span>DKK</span>
 </li>
- <li class="cmc-siteprefs-dropdown-menuitem" data-currency-flag-toggle data-currency-code="EUR">
+<li class="cmc-siteprefs-dropdown-menuitem" data-currency-flag-toggle data-currency-code="EUR">
 <span class="cmc-siteprefs__currency-flag cmc-flag cmc-flag-eu">
 </span>
 <span>EUR</span>
@@ -872,8 +872,8 @@ BTC Dominance:&nbsp;
 <span>NOK</span>
 </li>
 <li class="cmc-siteprefs-dropdown-menuitem" data-currency-flag-toggle data-currency-code="NZD">
-<span class="cmc-siteprefs__currency-flag cmc-flag cmc-flag-nz">
- </span>
+ <span class="cmc-siteprefs__currency-flag cmc-flag cmc-flag-nz">
+</span>
 <span>NZD</span>
 </li>
 <li class="cmc-siteprefs-dropdown-menuitem" data-currency-flag-toggle data-currency-code="PHP">
@@ -1122,10 +1122,10 @@ BTC Dominance:&nbsp;
 </li>
 <li class="cmc-siteprefs-dropdown-menuitem" data-currency-flag-toggle data-currency-code="PHP">
 <span class="cmc-siteprefs__currency-flag cmc-flag cmc-flag-ph">
-</span>
+ </span>
 <span>PHP</span>
 </li>
- <li class="cmc-siteprefs-dropdown-menuitem" data-currency-flag-toggle data-currency-code="PKR">
+<li class="cmc-siteprefs-dropdown-menuitem" data-currency-flag-toggle data-currency-code="PKR">
 <span class="cmc-siteprefs__currency-flag cmc-flag cmc-flag-pk">
 </span>
 <span>PKR</span>
@@ -1570,8 +1570,8 @@ Markets:&nbsp;
 <div class="cmc-navsubmenu__section cmc-navsubmenu__section--layout-three-col">
 <div class="cmc-navsubmenu__item">
 <a class="cmc-nav-link--menuitem" href="/api/">
-<h6 class="cmc-nav-heading cmc-nav-link--menuitem__arrow">Crypto API</h6>
- <p class="cmc-nav-desc">A powerful &amp; flexible market data API for commercial &amp; personal use</p>
+ <h6 class="cmc-nav-heading cmc-nav-link--menuitem__arrow">Crypto API</h6>
+<p class="cmc-nav-desc">A powerful &amp; flexible market data API for commercial &amp; personal use</p>
 </a>
 </div>
 <div class="cmc-navsubmenu__item">
@@ -1630,7 +1630,7 @@ Markets:&nbsp;
 <p class="cmc-nav-desc">Discover your next career! Build the future of crypto data with us</p>
 </a>
 </div>
- <div class="cmc-navsubmenu__item">
+<div class="cmc-navsubmenu__item">
 <a class="cmc-nav-link--menuitem" href="/faq/">
 <h6 class="cmc-nav-heading cmc-nav-link--menuitem__arrow">FAQ</h6>
 <p class="cmc-nav-desc">Need help? Check our FAQ, with questions we are most commonly asked</p>
@@ -1687,26 +1687,26 @@ Markets:&nbsp;
 <div class="details-panel-item--header flex-container">
 <div class="h1 details-panel-item--name">
 <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/52.png" class="logo-32x32" width="32" height="32" alt="XRP">
- XRP
+XRP
 <span class="text-bold h3 text-gray text-large">(XRP)</span>
 </div>
 <div class="details-panel-item--price bottom-margin-1x">
-<span id="quote_price" data-currency-price data-usd="0.324444422974">
-<span class="h2 text-semi-bold details-panel-item--price__value" data-currency-value>0.324444</span>
+<span id="quote_price" data-currency-price data-usd="0.323313191382">
+<span class="h2 text-semi-bold details-panel-item--price__value" data-currency-value>0.323313</span>
 <span class="text-large" data-currency-code>USD</span>
 </span>
 <span class="h2 text-semi-bold positive_change ">
-(<span data-format-percentage data-format-value="1.11818">1.12</span>%)
+(<span data-format-percentage data-format-value="0.793833">0.79</span>%)
 </span>
 <br>
 <span class="text-gray">
-<span data-format-price-crypto data-format-value="6.10218754704e-05">
-0.00006102
+<span data-format-price-crypto data-format-value="6.07403990796e-05">
+0.00006074
 </span>
 BTC
 </span>
-<span class=" positive_change ">
-(<span data-format-percentage data-format-value="0.122561">0.12</span>%)
+<span class=" negative_change">
+(<span data-format-percentage data-format-value="-0.287549">-0.29</span>%)
 </span>
 <div class="toolbar-buttons">
 <div>
@@ -1817,13 +1817,13 @@ Nexo Wallet - Instant Crypto Credit Line
 <div class="coin-summary-item">
 <h5 class="coin-summary-item-header">Market Cap</h5>
 <div class="coin-summary-item-detail">
-<span data-currency-market-cap data-usd="13617175135.1">
-<span data-currency-value>13,617,175,135</span>
+<span data-currency-market-cap data-usd="13569696499.0">
+<span data-currency-value>13,569,696,499</span>
 <span data-currency-code>USD</span>
 </span><br>
 <span class="text-gray">
-<span data-format-market-cap data-format-value="2561133.76133">
-2,561,134
+<span data-format-market-cap data-format-value="2549319.98665">
+2,549,320
 </span>
 BTC
 <br>
@@ -1833,13 +1833,13 @@ BTC
 <div class="coin-summary-item">
 <h5 class="coin-summary-item-header">Volume (24h)</h5>
 <div class="coin-summary-item-detail">
-<span data-currency-volume data-usd="971573025.979">
-<span data-currency-value>971,573,026</span>
+<span data-currency-volume data-usd="1007842683.77">
+<span data-currency-value>1,007,842,684</span>
 <span data-currency-code>USD</span>
 </span><br>
 <span class="text-gray">
-<span data-format-volume-crypto data-format-value="182734.55792">
-182,735
+<span data-format-volume-crypto data-format-value="189342.001668">
+189,342
 </span>
 BTC
 </span>
@@ -1952,7 +1952,7 @@ XRP
 <td data-format-fiat data-format-value="0.331871406763">0.331871</td>
 <td data-format-fiat data-format-value="0.333212541654">0.333213</td>
 <td data-format-fiat data-format-value="0.324968637062">0.324969</td>
-<td data-format-fiat data-format-value="0.328476027473">0.328476</td>
+ <td data-format-fiat data-format-value="0.328476027473">0.328476</td>
 <td data-format-market-cap data-format-value="931570799.416">931,570,799</td>
 <td data-format-market-cap data-format-value="13786384591.8">13,786,384,592</td>
 </tr>
@@ -2003,7 +2003,7 @@ XRP
 </tr>
 <tr class="text-right">
 <td class="text-left">Apr 14, 2019</td>
- <td data-format-fiat data-format-value="0.326159621068">0.326160</td>
+<td data-format-fiat data-format-value="0.326159621068">0.326160</td>
 <td data-format-fiat data-format-value="0.329421146217">0.329421</td>
 <td data-format-fiat data-format-value="0.324244291812">0.324244</td>
 <td data-format-fiat data-format-value="0.328809435158">0.328809</td>
@@ -2051,8 +2051,8 @@ XRP
 <td data-format-fiat data-format-value="0.358307317841">0.358307</td>
 <td data-format-fiat data-format-value="0.358307317841">0.358307</td>
 <td data-format-fiat data-format-value="0.348536141348">0.348536</td>
-<td data-format-fiat data-format-value="0.34946176212">0.349462</td>
- <td data-format-market-cap data-format-value="1076688923.67">1,076,688,924</td>
+ <td data-format-fiat data-format-value="0.34946176212">0.349462</td>
+<td data-format-market-cap data-format-value="1076688923.67">1,076,688,924</td>
 <td data-format-market-cap data-format-value="14604743888.6">14,604,743,889</td>
 </tr>
 <tr class="text-right">
@@ -2100,7 +2100,7 @@ XRP
 <td data-format-market-cap data-format-value="1599115419.0">1,599,115,419</td>
 <td data-format-market-cap data-format-value="13880340560.5">13,880,340,560</td>
 </tr>
-<tr class="text-right">
+ <tr class="text-right">
 <td class="text-left">Apr 03, 2019</td>
 <td data-format-fiat data-format-value="0.351309013855">0.351309</td>
 <td data-format-fiat data-format-value="0.371270463446">0.371270</td>
@@ -2199,6 +2199,7 @@ XRP
 <td data-format-market-cap data-format-value="649754894.323">649,754,894</td>
 <td data-format-market-cap data-format-value="12874448651.7">12,874,448,652</td>
 </tr>
+
 <tr class="text-right">
 <td class="text-left">Mar 23, 2019</td>
 <td data-format-fiat data-format-value="0.311343278325">0.311343</td>
@@ -2298,6 +2299,7 @@ XRP
 <td data-format-market-cap data-format-value="827163023.752">827,163,024</td>
 <td data-format-market-cap data-format-value="13013743791.0">13,013,743,791</td>
 </tr>
+
 <tr class="text-right">
 <td class="text-left">Mar 12, 2019</td>
 <td data-format-fiat data-format-value="0.311137547366">0.311138</td>
@@ -2374,7 +2376,7 @@ XRP
 <td class="text-left">Mar 04, 2019</td>
 <td data-format-fiat data-format-value="0.312021001344">0.312021</td>
 <td data-format-fiat data-format-value="0.313120407666">0.313120</td>
- <td data-format-fiat data-format-value="0.302677101367">0.302677</td>
+<td data-format-fiat data-format-value="0.302677101367">0.302677</td>
 <td data-format-fiat data-format-value="0.305133074143">0.305133</td>
 <td data-format-market-cap data-format-value="647905631.802">647,905,632</td>
 <td data-format-market-cap data-format-value="12642316835.7">12,642,316,836</td>
@@ -2473,7 +2475,7 @@ XRP
 <td class="text-left">Feb 21, 2019</td>
 <td data-format-fiat data-format-value="0.33286888219">0.332869</td>
 <td data-format-fiat data-format-value="0.33286888219">0.332869</td>
- <td data-format-fiat data-format-value="0.319200773116">0.319201</td>
+<td data-format-fiat data-format-value="0.319200773116">0.319201</td>
 <td data-format-fiat data-format-value="0.321291145278">0.321291</td>
 <td data-format-market-cap data-format-value="634536384.746">634,536,385</td>
 <td data-format-market-cap data-format-value="13272215549.2">13,272,215,549</td>
@@ -3213,7 +3215,7 @@ XRP
 <td data-format-fiat data-format-value="0.377056323138">0.377056</td>
 <td data-format-fiat data-format-value="0.357083391518">0.357083</td>
 <td data-format-fiat data-format-value="0.372905541219">0.372906</td>
-<td data-format-market-cap data-format-value="397266565.675">397,266,566</td>
+ <td data-format-market-cap data-format-value="397266565.675">397,266,566</td>
 <td data-format-market-cap data-format-value="15038289184.1">15,038,289,184</td>
 </tr>
 <tr class="text-right">
@@ -3264,8 +3266,8 @@ XRP
 <tr class="text-right">
 <td class="text-left">Nov 25, 2018</td>
 <td data-format-fiat data-format-value="0.374511">0.374511</td>
-<td data-format-fiat data-format-value="0.386333">0.386333</td>
- <td data-format-fiat data-format-value="0.324953">0.324953</td>
+ <td data-format-fiat data-format-value="0.386333">0.386333</td>
+<td data-format-fiat data-format-value="0.324953">0.324953</td>
 <td data-format-fiat data-format-value="0.374551">0.374551</td>
 <td data-format-market-cap data-format-value="1296590000.0">1,296,590,000</td>
 <td data-format-market-cap data-format-value="15104646162.6">15,104,646,163</td>
@@ -3366,8 +3368,8 @@ XRP
 <td data-format-fiat data-format-value="0.510646">0.510646</td>
 <td data-format-fiat data-format-value="0.430398">0.430398</td>
 <td data-format-fiat data-format-value="0.474372">0.474372</td>
-<td data-format-market-cap data-format-value="980604000.0">980,604,000</td>
- <td data-format-market-cap data-format-value="19103790091.5">19,103,790,091</td>
+ <td data-format-market-cap data-format-value="980604000.0">980,604,000</td>
+<td data-format-market-cap data-format-value="19103790091.5">19,103,790,091</td>
 </tr>
 <tr class="text-right">
 <td class="text-left">Nov 13, 2018</td>
@@ -3468,9 +3470,9 @@ XRP
 <td data-format-market-cap data-format-value="275311000.0">275,311,000</td>
 <td data-format-market-cap data-format-value="18320325932.8">18,320,325,933</td>
 </tr>
-<tr class="text-right">
+ <tr class="text-right">
 <td class="text-left">Nov 02, 2018</td>
- <td data-format-fiat data-format-value="0.456506">0.456506</td>
+<td data-format-fiat data-format-value="0.456506">0.456506</td>
 <td data-format-fiat data-format-value="0.461451">0.461451</td>
 <td data-format-fiat data-format-value="0.455729">0.455729</td>
 <td data-format-fiat data-format-value="0.458685">0.458685</td>
@@ -3571,7 +3573,7 @@ XRP
 <td class="text-left">Oct 22, 2018</td>
 <td data-format-fiat data-format-value="0.456089">0.456089</td>
 <td data-format-fiat data-format-value="0.458188">0.458188</td>
-<td data-format-fiat data-format-value="0.450583">0.450583</td>
+ <td data-format-fiat data-format-value="0.450583">0.450583</td>
 <td data-format-fiat data-format-value="0.453109">0.453109</td>
 <td data-format-market-cap data-format-value="249302000.0">249,302,000</td>
 <td data-format-market-cap data-format-value="18123288124.0">18,123,288,124</td>
@@ -3673,8 +3675,8 @@ XRP
 <td data-format-fiat data-format-value="0.381614">0.381614</td>
 <td data-format-fiat data-format-value="0.38313">0.383130</td>
 <td data-format-market-cap data-format-value="791202000.0">791,202,000</td>
-<td data-format-market-cap data-format-value="15324293666.5">15,324,293,667</td>
- </tr>
+ <td data-format-market-cap data-format-value="15324293666.5">15,324,293,667</td>
+</tr>
 <tr class="text-right">
 <td class="text-left">Oct 10, 2018</td>
 <td data-format-fiat data-format-value="0.479151">0.479151</td>
@@ -3776,7 +3778,7 @@ XRP
 </tr>
 <tr class="text-right">
 <td class="text-left">Sep 29, 2018</td>
-<td data-format-fiat data-format-value="0.539412">0.539412</td>
+ <td data-format-fiat data-format-value="0.539412">0.539412</td>
 <td data-format-fiat data-format-value="0.587431">0.587431</td>
 <td data-format-fiat data-format-value="0.529954">0.529954</td>
 <td data-format-fiat data-format-value="0.571228">0.571228</td>
@@ -3828,7 +3830,7 @@ XRP
 <td data-format-market-cap data-format-value="1034380000.0">1,034,380,000</td>
 <td data-format-market-cap data-format-value="19724616281.8">19,724,616,282</td>
 </tr>
- <tr class="text-right">
+<tr class="text-right">
 <td class="text-left">Sep 23, 2018</td>
 <td data-format-fiat data-format-value="0.57522">0.575220</td>
 <td data-format-fiat data-format-value="0.595025">0.595025</td>
@@ -3878,7 +3880,7 @@ XRP
 <td data-format-fiat data-format-value="0.271452">0.271452</td>
 <td data-format-fiat data-format-value="0.332653">0.332653</td>
 <td data-format-fiat data-format-value="0.27101">0.271010</td>
-<td data-format-fiat data-format-value="0.32186">0.321860</td>
+ <td data-format-fiat data-format-value="0.32186">0.321860</td>
 <td data-format-market-cap data-format-value="600216000.0">600,216,000</td>
 <td data-format-market-cap data-format-value="12812946982.5">12,812,946,983</td>
 </tr>
@@ -4083,7 +4085,7 @@ XRP
 <tr class="text-right">
 <td class="text-left">Aug 26, 2018</td>
 <td data-format-fiat data-format-value="0.328162">0.328162</td>
-<td data-format-fiat data-format-value="0.328327">0.328327</td>
+ <td data-format-fiat data-format-value="0.328327">0.328327</td>
 <td data-format-fiat data-format-value="0.320571">0.320571</td>
 <td data-format-fiat data-format-value="0.323776">0.323776</td>
 <td data-format-market-cap data-format-value="168718000.0">168,718,000</td>
@@ -4134,6 +4136,7 @@ XRP
 <td data-format-market-cap data-format-value="248735000.0">248,735,000</td>
 <td data-format-market-cap data-format-value="13196722736.2">13,196,722,736</td>
 </tr>
+
 <tr class="text-right">
 <td class="text-left">Aug 20, 2018</td>
 <td data-format-fiat data-format-value="0.344451">0.344451</td>
@@ -4238,7 +4241,7 @@ XRP
 <td data-format-fiat data-format-value="0.333771">0.333771</td>
 <td data-format-fiat data-format-value="0.359654">0.359654</td>
 <td data-format-fiat data-format-value="0.332608">0.332608</td>
- <td data-format-fiat data-format-value="0.346771">0.346771</td>
+<td data-format-fiat data-format-value="0.346771">0.346771</td>
 <td data-format-market-cap data-format-value="325775000.0">325,775,000</td>
 <td data-format-market-cap data-format-value="13628056811.4">13,628,056,811</td>
 </tr>
@@ -4288,7 +4291,7 @@ XRP
 <td data-format-market-cap data-format-value="16840271360.9">16,840,271,361</td>
 </tr>
 <tr class="text-right">
-<td class="text-left">Aug 03, 2018</td>
+ <td class="text-left">Aug 03, 2018</td>
 <td data-format-fiat data-format-value="0.430397">0.430397</td>
 <td data-format-fiat data-format-value="0.443633">0.443633</td>
 <td data-format-fiat data-format-value="0.426481">0.426481</td>
@@ -4489,7 +4492,7 @@ XRP
 <td class="text-left">Jul 12, 2018</td>
 <td data-format-fiat data-format-value="0.449882000685">0.449882</td>
 <td data-format-fiat data-format-value="0.449972003698">0.449972</td>
- <td data-format-fiat data-format-value="0.42803299427">0.428033</td>
+<td data-format-fiat data-format-value="0.42803299427">0.428033</td>
 <td data-format-fiat data-format-value="0.43536400795">0.435364</td>
 <td data-format-market-cap data-format-value="182139008.0">182,139,008</td>
 <td data-format-market-cap data-format-value="17093454981.8">17,093,454,982</td>
@@ -4587,8 +4590,8 @@ XRP
 <tr class="text-right">
 <td class="text-left">Jul 01, 2018</td>
 <td data-format-fiat data-format-value="0.465943992138">0.465944</td>
-<td data-format-fiat data-format-value="0.466280013323">0.466280</td>
- <td data-format-fiat data-format-value="0.450816005468">0.450816</td>
+ <td data-format-fiat data-format-value="0.466280013323">0.466280</td>
+<td data-format-fiat data-format-value="0.450816005468">0.450816</td>
 <td data-format-fiat data-format-value="0.461358010769">0.461358</td>
 <td data-format-market-cap data-format-value="267224992.0">267,224,992</td>
 <td data-format-market-cap data-format-value="18113882699.5">18,113,882,700</td>
@@ -4637,7 +4640,7 @@ XRP
 <td data-format-fiat data-format-value="0.456001013517">0.456001</td>
 <td data-format-market-cap data-format-value="179426000.0">179,426,000</td>
 <td data-format-market-cap data-format-value="17903549770.4">17,903,549,770</td>
- </tr>
+</tr>
 <tr class="text-right">
 <td class="text-left">Jun 25, 2018</td>
 <td data-format-fiat data-format-value="0.477106004953">0.477106</td>
@@ -4686,7 +4689,7 @@ XRP
 <tr class="text-right">
 <td class="text-left">Jun 20, 2018</td>
 <td data-format-fiat data-format-value="0.549737989902">0.549738</td>
-<td data-format-fiat data-format-value="0.550553977489">0.550554</td>
+ <td data-format-fiat data-format-value="0.550553977489">0.550554</td>
 <td data-format-fiat data-format-value="0.525858998299">0.525859</td>
 <td data-format-fiat data-format-value="0.539286017418">0.539286</td>
 <td data-format-market-cap data-format-value="256920000.0">256,920,000</td>
@@ -4735,8 +4738,8 @@ XRP
 <td data-format-fiat data-format-value="0.534300982952">0.534301</td>
 <td data-format-fiat data-format-value="0.537706971169">0.537707</td>
 <td data-format-market-cap data-format-value="241684992.0">241,684,992</td>
-<td data-format-market-cap data-format-value="21102475042.0">21,102,475,042</td>
- </tr>
+ <td data-format-market-cap data-format-value="21102475042.0">21,102,475,042</td>
+</tr>
 <tr class="text-right">
 <td class="text-left">Jun 14, 2018</td>
 <td data-format-fiat data-format-value="0.535435020924">0.535435</td>
@@ -4834,7 +4837,7 @@ XRP
 <td data-format-fiat data-format-value="0.644603013992">0.644603</td>
 <td data-format-fiat data-format-value="0.661424994469">0.661425</td>
 <td data-format-market-cap data-format-value="558131008.0">558,131,008</td>
-<td data-format-market-cap data-format-value="25955326234.0">25,955,326,234</td>
+ <td data-format-market-cap data-format-value="25955326234.0">25,955,326,234</td>
 </tr>
 <tr class="text-right">
 <td class="text-left">Jun 03, 2018</td>
@@ -4935,7 +4938,6 @@ XRP
 <td data-format-market-cap data-format-value="440532992.0">440,532,992</td>
 <td data-format-market-cap data-format-value="24767942357.1">24,767,942,357</td>
 </tr>
-
 <tr class="text-right">
 <td class="text-left">May 23, 2018</td>
 <td data-format-fiat data-format-value="0.648634016514">0.648634</td>
@@ -5035,7 +5037,7 @@ XRP
 <td data-format-market-cap data-format-value="532488000.0">532,488,000</td>
 <td data-format-market-cap data-format-value="29225840434.3">29,225,840,434</td>
 </tr>
- <tr class="text-right">
+<tr class="text-right">
 <td class="text-left">May 12, 2018</td>
 <td data-format-fiat data-format-value="0.685772001743">0.685772</td>
 <td data-format-fiat data-format-value="0.714918017387">0.714918</td>
@@ -5134,7 +5136,7 @@ XRP
 <td data-format-market-cap data-format-value="544425984.0">544,425,984</td>
 <td data-format-market-cap data-format-value="33636838507.9">33,636,838,508</td>
 </tr>
- <tr class="text-right">
+<tr class="text-right">
 <td class="text-left">May 01, 2018</td>
 <td data-format-fiat data-format-value="0.838355004787">0.838355</td>
 <td data-format-fiat data-format-value="0.842068970203">0.842069</td>
@@ -5184,7 +5186,7 @@ XRP
 <td data-format-fiat data-format-value="0.801774024963">0.801774</td>
 <td data-format-fiat data-format-value="0.852414011955">0.852414</td>
 <td data-format-fiat data-format-value="0.771786987782">0.771787</td>
- <td data-format-fiat data-format-value="0.852414011955">0.852414</td>
+<td data-format-fiat data-format-value="0.852414011955">0.852414</td>
 <td data-format-market-cap data-format-value="1028590016.0">1,028,590,016</td>
 <td data-format-market-cap data-format-value="33368771823.3">33,368,771,823</td>
 </tr>
@@ -5233,7 +5235,7 @@ XRP
 <td data-format-market-cap data-format-value="1563970048.0">1,563,970,048</td>
 <td data-format-market-cap data-format-value="34158229654.9">34,158,229,655</td>
 </tr>
- <tr class="text-right">
+<tr class="text-right">
 <td class="text-left">Apr 20, 2018</td>
 <td data-format-fiat data-format-value="0.791172027588">0.791172</td>
 <td data-format-fiat data-format-value="0.93835401535">0.938354</td>
@@ -5332,7 +5334,7 @@ XRP
 <td data-format-market-cap data-format-value="154495008.0">154,495,008</td>
 <td data-format-market-cap data-format-value="19231806624.6">19,231,806,625</td>
 </tr>
- <tr class="text-right">
+<tr class="text-right">
 <td class="text-left">Apr 09, 2018</td>
 <td data-format-fiat data-format-value="0.501200973988">0.501201</td>
 <td data-format-fiat data-format-value="0.512142002583">0.512142</td>
@@ -5382,7 +5384,7 @@ XRP
 <td data-format-fiat data-format-value="0.554569005966">0.554569</td>
 <td data-format-fiat data-format-value="0.563117027283">0.563117</td>
 <td data-format-fiat data-format-value="0.498486995697">0.498487</td>
- <td data-format-fiat data-format-value="0.5016310215">0.501631</td>
+<td data-format-fiat data-format-value="0.5016310215">0.501631</td>
 <td data-format-market-cap data-format-value="415257984.0">415,257,984</td>
 <td data-format-market-cap data-format-value="19611023474.6">19,611,023,475</td>
 </tr>
@@ -5480,8 +5482,8 @@ XRP
 <td class="text-left">Mar 24, 2018</td>
 <td data-format-fiat data-format-value="0.646214008331">0.646214</td>
 <td data-format-fiat data-format-value="0.679607987404">0.679608</td>
-<td data-format-fiat data-format-value="0.640515983105">0.640516</td>
- <td data-format-fiat data-format-value="0.641264975071">0.641265</td>
+ <td data-format-fiat data-format-value="0.640515983105">0.640516</td>
+<td data-format-fiat data-format-value="0.641264975071">0.641265</td>
 <td data-format-market-cap data-format-value="390740000.0">390,740,000</td>
 <td data-format-market-cap data-format-value="25069759668.9">25,069,759,669</td>
 </tr>
@@ -5658,8 +5660,8 @@ XRP
 </tr>
 <tr class="text-right">
 <td class="text-left">Mar 04, 2018</td>
-<td data-format-fiat data-format-value="0.906008005142">0.906008</td>
- <td data-format-fiat data-format-value="1.02630996704">1.03</td>
+ <td data-format-fiat data-format-value="0.906008005142">0.906008</td>
+<td data-format-fiat data-format-value="1.02630996704">1.03</td>
 <td data-format-fiat data-format-value="0.895618021488">0.895618</td>
 <td data-format-fiat data-format-value="1.00554001331">1.01</td>
 <td data-format-market-cap data-format-value="797225984.0">797,225,984</td>
@@ -5707,8 +5709,8 @@ XRP
 <td data-format-fiat data-format-value="0.972580015659">0.972580</td>
 <td data-format-fiat data-format-value="0.944976985455">0.944977</td>
 <td data-format-fiat data-format-value="0.94730502367">0.947305</td>
-<td data-format-market-cap data-format-value="312712992.0">312,712,992</td>
- <td data-format-market-cap data-format-value="37034701590.5">37,034,701,591</td>
+ <td data-format-market-cap data-format-value="312712992.0">312,712,992</td>
+<td data-format-market-cap data-format-value="37034701590.5">37,034,701,591</td>
 </tr>
 <tr class="text-right">
 <td class="text-left">Feb 26, 2018</td>
@@ -5809,7 +5811,6 @@ XRP
 <td data-format-market-cap data-format-value="568339008.0">568,339,008</td>
 <td data-format-market-cap data-format-value="44393657900.1">44,393,657,900</td>
 </tr>
-
 <tr class="text-right">
 <td class="text-left">Feb 15, 2018</td>
 <td data-format-fiat data-format-value="1.13905000687">1.14</td>
@@ -5909,6 +5910,7 @@ XRP
 <td data-format-market-cap data-format-value="1286179968.0">1,286,179,968</td>
 <td data-format-market-cap data-format-value="26986536507.5">26,986,536,508</td>
 </tr>
+
 <tr class="text-right">
 <td class="text-left">Feb 04, 2018</td>
 <td data-format-fiat data-format-value="0.913417994976">0.913418</td>
@@ -5959,8 +5961,8 @@ XRP
 <td data-format-fiat data-format-value="1.32817995548">1.33</td>
 <td data-format-fiat data-format-value="1.32817995548">1.33</td>
 <td data-format-fiat data-format-value="1.13112998009">1.13</td>
-<td data-format-fiat data-format-value="1.13856005669">1.14</td>
- <td data-format-market-cap data-format-value="1134640000.0">1,134,640,000</td>
+ <td data-format-fiat data-format-value="1.13856005669">1.14</td>
+<td data-format-market-cap data-format-value="1134640000.0">1,134,640,000</td>
 <td data-format-market-cap data-format-value="44106838438.9">44,106,838,439</td>
 </tr>
 <tr class="text-right">
@@ -6010,8 +6012,8 @@ XRP
 </tr>
 <tr class="text-right">
 <td class="text-left">Jan 24, 2018</td>
-<td data-format-fiat data-format-value="1.35212004185">1.35</td>
- <td data-format-fiat data-format-value="1.4249600172">1.42</td>
+ <td data-format-fiat data-format-value="1.35212004185">1.35</td>
+<td data-format-fiat data-format-value="1.4249600172">1.42</td>
 <td data-format-fiat data-format-value="1.30783998966">1.31</td>
 <td data-format-fiat data-format-value="1.35714995861">1.36</td>
 <td data-format-market-cap data-format-value="1853440000.0">1,853,440,000</td>
@@ -6061,7 +6063,7 @@ XRP
 <td data-format-fiat data-format-value="1.55204999447">1.55</td>
 <td data-format-market-cap data-format-value="3697430016.0">3,697,430,016</td>
 <td data-format-market-cap data-format-value="60125086599.8">60,125,086,600</td>
- </tr>
+</tr>
 <tr class="text-right">
 <td class="text-left">Jan 18, 2018</td>
 <td data-format-fiat data-format-value="1.30558001995">1.31</td>
@@ -6162,7 +6164,7 @@ XRP
 <td data-format-market-cap data-format-value="95151474964.6">95,151,474,965</td>
 </tr>
 <tr class="text-right">
-<td class="text-left">Jan 07, 2018</td>
+ <td class="text-left">Jan 07, 2018</td>
 <td data-format-fiat data-format-value="3.09295988083">3.09</td>
 <td data-format-fiat data-format-value="3.48725008965">3.49</td>
 <td data-format-fiat data-format-value="3.0838201046">3.08</td>
@@ -6213,7 +6215,7 @@ XRP
 <td data-format-fiat data-format-value="2.2479300499">2.25</td>
 <td data-format-fiat data-format-value="2.48090004921">2.48</td>
 <td data-format-market-cap data-format-value="3171010048.0">3,171,010,048</td>
- <td data-format-market-cap data-format-value="96107944450.9">96,107,944,451</td>
+<td data-format-market-cap data-format-value="96107944450.9">96,107,944,451</td>
 </tr>
 <tr class="text-right">
 <td class="text-left">Jan 01, 2018</td>
@@ -6315,7 +6317,7 @@ XRP
 <td data-format-market-cap data-format-value="44095993796.4">44,095,993,796</td>
 </tr>
 <tr class="text-right">
- <td class="text-left">Dec 21, 2017</td>
+<td class="text-left">Dec 21, 2017</td>
 <td data-format-fiat data-format-value="0.782514989376">0.782515</td>
 <td data-format-fiat data-format-value="1.23622000217">1.24</td>
 <td data-format-fiat data-format-value="0.782514989376">0.782515</td>
@@ -6412,9 +6414,9 @@ XRP
 <td data-format-fiat data-format-value="0.251691013575">0.251691</td>
 <td data-format-market-cap data-format-value="176100992.0">176,100,992</td>
 <td data-format-market-cap data-format-value="9750294105.69">9,750,294,106</td>
-</tr>
+ </tr>
 <tr class="text-right">
- <td class="text-left">Dec 10, 2017</td>
+<td class="text-left">Dec 10, 2017</td>
 <td data-format-fiat data-format-value="0.245547994971">0.245548</td>
 <td data-format-fiat data-format-value="0.245547994971">0.245548</td>
 <td data-format-fiat data-format-value="0.229304000735">0.229304</td>
@@ -6512,6 +6514,7 @@ XRP
 <td data-format-market-cap data-format-value="270907008.0">270,907,008</td>
 <td data-format-market-cap data-format-value="9689628482.97">9,689,628,483</td>
 </tr>
+
 <tr class="text-right">
 <td class="text-left">Nov 29, 2017</td>
 <td data-format-fiat data-format-value="0.297867000103">0.297867</td>
@@ -6611,7 +6614,7 @@ XRP
 <td data-format-market-cap data-format-value="193808000.0">193,808,000</td>
 <td data-format-market-cap data-format-value="8922506124.31">8,922,506,124</td>
 </tr>
-<tr class="text-right">
+ <tr class="text-right">
 <td class="text-left">Nov 18, 2017</td>
 <td data-format-fiat data-format-value="0.226547002792">0.226547</td>
 <td data-format-fiat data-format-value="0.230398997664">0.230399</td>
@@ -6661,7 +6664,7 @@ XRP
 <td data-format-fiat data-format-value="0.197472006083">0.197472</td>
 <td data-format-fiat data-format-value="0.204080998898">0.204081</td>
 <td data-format-fiat data-format-value="0.197456002235">0.197456</td>
-<td data-format-fiat data-format-value="0.203442007303">0.203442</td>
+ <td data-format-fiat data-format-value="0.203442007303">0.203442</td>
 <td data-format-market-cap data-format-value="132567000.0">132,567,000</td>
 <td data-format-market-cap data-format-value="7857514002.15">7,857,514,002</td>
 </tr>
@@ -6712,7 +6715,7 @@ XRP
 </tr>
 <tr class="text-right">
 <td class="text-left">Nov 07, 2017</td>
- <td data-format-fiat data-format-value="0.205102995038">0.205103</td>
+<td data-format-fiat data-format-value="0.205102995038">0.205103</td>
 <td data-format-fiat data-format-value="0.211374998093">0.211375</td>
 <td data-format-fiat data-format-value="0.203978002071">0.203978</td>
 <td data-format-fiat data-format-value="0.21035400033">0.210354</td>
@@ -6959,7 +6962,7 @@ XRP
 <td data-format-fiat data-format-value="0.267843008041">0.267843</td>
 <td data-format-fiat data-format-value="0.259079992771">0.259080</td>
 <td data-format-fiat data-format-value="0.264438986778">0.264439</td>
-<td data-format-market-cap data-format-value="161206000.0">161,206,000</td>
+ <td data-format-market-cap data-format-value="161206000.0">161,206,000</td>
 <td data-format-market-cap data-format-value="10207464779.9">10,207,464,780</td>
 </tr>
 <tr class="text-right">
@@ -7009,8 +7012,8 @@ XRP
 </tr>
 <tr class="text-right">
 <td class="text-left">Oct 05, 2017</td>
-<td data-format-fiat data-format-value="0.215582996607">0.215583</td>
- <td data-format-fiat data-format-value="0.241023004055">0.241023</td>
+ <td data-format-fiat data-format-value="0.215582996607">0.215583</td>
+<td data-format-fiat data-format-value="0.241023004055">0.241023</td>
 <td data-format-fiat data-format-value="0.215582996607">0.215583</td>
 <td data-format-fiat data-format-value="0.237016007304">0.237016</td>
 <td data-format-market-cap data-format-value="404299008.0">404,299,008</td>
@@ -7208,8 +7211,8 @@ XRP
 <tr class="text-right">
 <td class="text-left">Sep 13, 2017</td>
 <td data-format-fiat data-format-value="0.209629997611">0.209630</td>
-<td data-format-fiat data-format-value="0.20967400074">0.209674</td>
- <td data-format-fiat data-format-value="0.196179002523">0.196179</td>
+ <td data-format-fiat data-format-value="0.20967400074">0.209674</td>
+<td data-format-fiat data-format-value="0.196179002523">0.196179</td>
 <td data-format-fiat data-format-value="0.200777992606">0.200778</td>
 <td data-format-market-cap data-format-value="105471000.0">105,471,000</td>
 <td data-format-market-cap data-format-value="7698599885.58">7,698,599,886</td>
@@ -7257,7 +7260,7 @@ XRP
 <td data-format-fiat data-format-value="0.206102997065">0.206103</td>
 <td data-format-fiat data-format-value="0.211518004537">0.211518</td>
 <td data-format-market-cap data-format-value="151328992.0">151,328,992</td>
-<td data-format-market-cap data-format-value="8110412747.41">8,110,412,747</td>
+ <td data-format-market-cap data-format-value="8110412747.41">8,110,412,747</td>
 </tr>
 <tr class="text-right">
 <td class="text-left">Sep 07, 2017</td>
@@ -7457,7 +7460,6 @@ XRP
 <td data-format-market-cap data-format-value="56084300.0">56,084,300</td>
 <td data-format-market-cap data-format-value="6039078408.89">6,039,078,409</td>
 </tr>
-
 <tr class="text-right">
 <td class="text-left">Aug 16, 2017</td>
 <td data-format-fiat data-format-value="0.161237999797">0.161238</td>
@@ -7656,6 +7658,7 @@ XRP
 <td data-format-market-cap data-format-value="76584600.0">76,584,600</td>
 <td data-format-market-cap data-format-value="6662995240.07">6,662,995,240</td>
 </tr>
+
 <tr class="text-right">
 <td class="text-left">Jul 25, 2017</td>
 <td data-format-fiat data-format-value="0.192279994488">0.192280</td>
@@ -7755,7 +7758,7 @@ XRP
 <td data-format-market-cap data-format-value="131779000.0">131,779,000</td>
 <td data-format-market-cap data-format-value="6532089551.71">6,532,089,552</td>
 </tr>
-<tr class="text-right">
+ <tr class="text-right">
 <td class="text-left">Jul 14, 2017</td>
 <td data-format-fiat data-format-value="0.200819000602">0.200819</td>
 <td data-format-fiat data-format-value="0.201156005263">0.201156</td>
@@ -7805,8 +7808,8 @@ XRP
 <td data-format-fiat data-format-value="0.236883997917">0.236884</td>
 <td data-format-fiat data-format-value="0.248501002789">0.248501</td>
 <td data-format-fiat data-format-value="0.233416005969">0.233416</td>
-<td data-format-fiat data-format-value="0.233416005969">0.233416</td>
- <td data-format-market-cap data-format-value="82755000.0">82,755,000</td>
+ <td data-format-fiat data-format-value="0.233416005969">0.233416</td>
+<td data-format-market-cap data-format-value="82755000.0">82,755,000</td>
 <td data-format-market-cap data-format-value="8937822572.39">8,937,822,572</td>
 </tr>
 <tr class="text-right">
@@ -7855,7 +7858,7 @@ XRP
 <td data-format-market-cap data-format-value="9753161092.6">9,753,161,093</td>
 </tr>
 <tr class="text-right">
-<td class="text-left">Jul 03, 2017</td>
+ <td class="text-left">Jul 03, 2017</td>
 <td data-format-fiat data-format-value="0.258976995945">0.258977</td>
 <td data-format-fiat data-format-value="0.262353986502">0.262354</td>
 <td data-format-fiat data-format-value="0.25566598773">0.255666</td>
@@ -8202,7 +8205,7 @@ XRP
 <td data-format-fiat data-format-value="0.327811986208">0.327812</td>
 <td data-format-fiat data-format-value="0.245083004236">0.245083</td>
 <td data-format-fiat data-format-value="0.271807998419">0.271808</td>
-<td data-format-market-cap data-format-value="253935008.0">253,935,008</td>
+ <td data-format-market-cap data-format-value="253935008.0">253,935,008</td>
 <td data-format-market-cap data-format-value="10396475356.4">10,396,475,356</td>
 </tr>
 <tr class="text-right">
@@ -8252,8 +8255,8 @@ XRP
 </tr>
 <tr class="text-right">
 <td class="text-left">May 20, 2017</td>
-<td data-format-fiat data-format-value="0.328631013632">0.328631</td>
- <td data-format-fiat data-format-value="0.370361000299">0.370361</td>
+ <td data-format-fiat data-format-value="0.328631013632">0.328631</td>
+<td data-format-fiat data-format-value="0.370361000299">0.370361</td>
 <td data-format-fiat data-format-value="0.303941011429">0.303941</td>
 <td data-format-fiat data-format-value="0.351633995771">0.351634</td>
 <td data-format-market-cap data-format-value="237792000.0">237,792,000</td>
@@ -8301,8 +8304,8 @@ XRP
 <td data-format-fiat data-format-value="0.270720005035">0.270720</td>
 <td data-format-fiat data-format-value="0.220069006085">0.220069</td>
 <td data-format-fiat data-format-value="0.270720005035">0.270720</td>
-<td data-format-market-cap data-format-value="223923008.0">223,923,008</td>
- <td data-format-market-cap data-format-value="10370166172.7">10,370,166,173</td>
+ <td data-format-market-cap data-format-value="223923008.0">223,923,008</td>
+<td data-format-market-cap data-format-value="10370166172.7">10,370,166,173</td>
 </tr>
 <tr class="text-right">
 <td class="text-left">May 14, 2017</td>
@@ -8704,7 +8707,7 @@ XRP
 <td class="text-left">Mar 31, 2017</td>
 <td data-format-fiat data-format-value="0.0130489002913">0.013049</td>
 <td data-format-fiat data-format-value="0.0217757001519">0.021776</td>
- <td data-format-fiat data-format-value="0.0130489002913">0.013049</td>
+<td data-format-fiat data-format-value="0.0130489002913">0.013049</td>
 <td data-format-fiat data-format-value="0.020889300853">0.020889</td>
 <td data-format-market-cap data-format-value="72699400.0">72,699,400</td>
 <td data-format-market-cap data-format-value="781029218.672">781,029,219</td>
@@ -8852,7 +8855,7 @@ XRP
 <td data-format-fiat data-format-value="0.00631402991712">0.006314</td>
 <td data-format-market-cap data-format-value="1376090.0">1,376,090</td>
 <td data-format-market-cap data-format-value="235454225.065">235,454,225</td>
- </tr>
+</tr>
 <tr class="text-right">
 <td class="text-left">Mar 14, 2017</td>
 <td data-format-fiat data-format-value="0.00634565996006">0.006346</td>
@@ -8951,7 +8954,7 @@ XRP
 <td data-format-fiat data-format-value="0.00629938021302">0.006299</td>
 <td data-format-market-cap data-format-value="1372440.0">1,372,440</td>
 <td data-format-market-cap data-format-value="235639831.367">235,639,831</td>
- </tr>
+</tr>
 <tr class="text-right">
 <td class="text-left">Mar 03, 2017</td>
 <td data-format-fiat data-format-value="0.00598844978958">0.005988</td>
@@ -9001,7 +9004,7 @@ XRP
 <td class="text-left">Feb 26, 2017</td>
 <td data-format-fiat data-format-value="0.00566420983523">0.005664</td>
 <td data-format-fiat data-format-value="0.00573250977322">0.005733</td>
-<td data-format-fiat data-format-value="0.00565082998946">0.005651</td>
+ <td data-format-fiat data-format-value="0.00565082998946">0.005651</td>
 <td data-format-fiat data-format-value="0.00567115982994">0.005671</td>
 <td data-format-market-cap data-format-value="258373.0">258,373</td>
 <td data-format-market-cap data-format-value="210650135.557">210,650,136</td>
@@ -9050,7 +9053,7 @@ XRP
 <td data-format-fiat data-format-value="0.00583183020353">0.005832</td>
 <td data-format-market-cap data-format-value="653081.0">653,081</td>
 <td data-format-market-cap data-format-value="216037936.338">216,037,936</td>
-</tr>
+ </tr>
 <tr class="text-right">
 <td class="text-left">Feb 20, 2017</td>
 <td data-format-fiat data-format-value="0.00587945012376">0.005879</td>
@@ -9150,7 +9153,8 @@ XRP
 <td data-format-market-cap data-format-value="808768.0">808,768</td>
 <td data-format-market-cap data-format-value="232977147.086">232,977,147</td>
 </tr>
- <tr class="text-right">
+
+<tr class="text-right">
 <td class="text-left">Feb 09, 2017</td>
 <td data-format-fiat data-format-value="0.00643280986696">0.006433</td>
 <td data-format-fiat data-format-value="0.00648408010602">0.006484</td>
@@ -9249,7 +9253,7 @@ XRP
 <td data-format-market-cap data-format-value="391822.0">391,822</td>
 <td data-format-market-cap data-format-value="235163420.892">235,163,421</td>
 </tr>
-<tr class="text-right">
+ <tr class="text-right">
 <td class="text-left">Jan 29, 2017</td>
 <td data-format-fiat data-format-value="0.00635583000258">0.006356</td>
 <td data-format-fiat data-format-value="0.0064930501394">0.006493</td>
@@ -9349,7 +9353,7 @@ XRP
 <td data-format-market-cap data-format-value="259231566.388">259,231,566</td>
 </tr>
 <tr class="text-right">
- <td class="text-left">Jan 18, 2017</td>
+<td class="text-left">Jan 18, 2017</td>
 <td data-format-fiat data-format-value="0.00678970990703">0.006790</td>
 <td data-format-fiat data-format-value="0.00712479976937">0.007125</td>
 <td data-format-fiat data-format-value="0.0066588697955">0.006659</td>
@@ -9448,7 +9452,7 @@ XRP
 <td data-format-market-cap data-format-value="226499134.184">226,499,134</td>
 </tr>
 <tr class="text-right">
-<td class="text-left">Jan 07, 2017</td>
+ <td class="text-left">Jan 07, 2017</td>
 <td data-format-fiat data-format-value="0.00635060993955">0.006351</td>
 <td data-format-fiat data-format-value="0.00640350021422">0.006404</td>
 <td data-format-fiat data-format-value="0.0061330399476">0.006133</td>
@@ -9547,7 +9551,7 @@ XRP
 <td data-format-market-cap data-format-value="222244080.472">222,244,080</td>
 </tr>
 <tr class="text-right">
-<td class="text-left">Dec 27, 2016</td>
+ <td class="text-left">Dec 27, 2016</td>
 <td data-format-fiat data-format-value="0.00632613990456">0.006326</td>
 <td data-format-fiat data-format-value="0.00632613990456">0.006326</td>
 <td data-format-fiat data-format-value="0.00618832977489">0.006188</td>
@@ -9646,7 +9650,7 @@ XRP
 <td data-format-market-cap data-format-value="234116945.796">234,116,946</td>
 </tr>
 <tr class="text-right">
-<td class="text-left">Dec 16, 2016</td>
+ <td class="text-left">Dec 16, 2016</td>
 <td data-format-fiat data-format-value="0.00666210986674">0.006662</td>
 <td data-format-fiat data-format-value="0.00679128011689">0.006791</td>
 <td data-format-fiat data-format-value="0.00666121998802">0.006661</td>
@@ -10043,7 +10047,7 @@ XRP
 </tr>
 <tr class="text-right">
 <td class="text-left">Nov 02, 2016</td>
- <td data-format-fiat data-format-value="0.00810413993895">0.008104</td>
+<td data-format-fiat data-format-value="0.00810413993895">0.008104</td>
 <td data-format-fiat data-format-value="0.00822232011706">0.008222</td>
 <td data-format-fiat data-format-value="0.00808773003519">0.008088</td>
 <td data-format-fiat data-format-value="0.00822232011706">0.008222</td>
@@ -10142,7 +10146,7 @@ XRP
 </tr>
 <tr class="text-right">
 <td class="text-left">Oct 22, 2016</td>
- <td data-format-fiat data-format-value="0.00902730971575">0.009027</td>
+<td data-format-fiat data-format-value="0.00902730971575">0.009027</td>
 <td data-format-fiat data-format-value="0.00908095017076">0.009081</td>
 <td data-format-fiat data-format-value="0.00886383000761">0.008864</td>
 <td data-format-fiat data-format-value="0.00897242967039">0.008972</td>
@@ -10290,7 +10294,7 @@ XRP
 <td data-format-fiat data-format-value="0.00745989009738">0.007460</td>
 <td data-format-fiat data-format-value="0.00732146017253">0.007321</td>
 <td data-format-fiat data-format-value="0.0073823002167">0.007382</td>
- <td data-format-market-cap data-format-value="2826190.0">2,826,190</td>
+<td data-format-market-cap data-format-value="2826190.0">2,826,190</td>
 <td data-format-market-cap data-format-value="261893013.429">261,893,013</td>
 </tr>
 <tr class="text-right">
@@ -10389,7 +10393,7 @@ XRP
 <td data-format-fiat data-format-value="0.00798625033349">0.007986</td>
 <td data-format-fiat data-format-value="0.00731647992507">0.007316</td>
 <td data-format-fiat data-format-value="0.00785456970334">0.007855</td>
- <td data-format-market-cap data-format-value="4699860.0">4,699,860</td>
+<td data-format-market-cap data-format-value="4699860.0">4,699,860</td>
 <td data-format-market-cap data-format-value="278512115.34">278,512,115</td>
 </tr>
 <tr class="text-right">
@@ -10488,7 +10492,7 @@ XRP
 <td data-format-fiat data-format-value="0.00604231981561">0.006042</td>
 <td data-format-fiat data-format-value="0.00588113022968">0.005881</td>
 <td data-format-fiat data-format-value="0.00596127985045">0.005961</td>
- <td data-format-market-cap data-format-value="1048560.0">1,048,560</td>
+<td data-format-market-cap data-format-value="1048560.0">1,048,560</td>
 <td data-format-market-cap data-format-value="210537258.649">210,537,259</td>
 </tr>
 <tr class="text-right">
@@ -10538,7 +10542,7 @@ XRP
 </tr>
 <tr class="text-right">
 <td class="text-left">Sep 08, 2016</td>
-<td data-format-fiat data-format-value="0.00589204998687">0.005892</td>
+ <td data-format-fiat data-format-value="0.00589204998687">0.005892</td>
 <td data-format-fiat data-format-value="0.00594080006704">0.005941</td>
 <td data-format-fiat data-format-value="0.00589204998687">0.005892</td>
 <td data-format-fiat data-format-value="0.00590159976855">0.005902</td>
@@ -10836,7 +10840,7 @@ XRP
 <tr class="text-right">
 <td class="text-left">Aug 06, 2016</td>
 <td data-format-fiat data-format-value="0.00644836015999">0.006448</td>
- <td data-format-fiat data-format-value="0.00656032003462">0.006560</td>
+<td data-format-fiat data-format-value="0.00656032003462">0.006560</td>
 <td data-format-fiat data-format-value="0.00623928988352">0.006239</td>
 <td data-format-fiat data-format-value="0.00633660005406">0.006337</td>
 <td data-format-market-cap data-format-value="2164530.0">2,164,530</td>
@@ -10885,7 +10889,7 @@ XRP
 <td data-format-fiat data-format-value="0.00590356998146">0.005904</td>
 <td data-format-fiat data-format-value="0.00590626010671">0.005906</td>
 <td data-format-market-cap data-format-value="958956.0">958,956</td>
- <td data-format-market-cap data-format-value="209968356.044">209,968,356</td>
+<td data-format-market-cap data-format-value="209968356.044">209,968,356</td>
 </tr>
 <tr class="text-right">
 <td class="text-left">Jul 31, 2016</td>
@@ -10935,7 +10939,7 @@ XRP
 <tr class="text-right">
 <td class="text-left">Jul 26, 2016</td>
 <td data-format-fiat data-format-value="0.00624644989148">0.006246</td>
-<td data-format-fiat data-format-value="0.00624991999939">0.006250</td>
+ <td data-format-fiat data-format-value="0.00624991999939">0.006250</td>
 <td data-format-fiat data-format-value="0.00598346022889">0.005983</td>
 <td data-format-fiat data-format-value="0.00599762005731">0.005998</td>
 <td data-format-market-cap data-format-value="1547830.0">1,547,830</td>
@@ -10984,7 +10988,7 @@ XRP
 <td data-format-fiat data-format-value="0.00637352000922">0.006374</td>
 <td data-format-fiat data-format-value="0.00641633011401">0.006416</td>
 <td data-format-market-cap data-format-value="811193.0">811,193</td>
-<td data-format-market-cap data-format-value="228101447.085">228,101,447</td>
+ <td data-format-market-cap data-format-value="228101447.085">228,101,447</td>
 </tr>
 <tr class="text-right">
 <td class="text-left">Jul 20, 2016</td>
@@ -11134,7 +11138,7 @@ XRP
 <td class="text-left">Jul 04, 2016</td>
 <td data-format-fiat data-format-value="0.00662086997181">0.006621</td>
 <td data-format-fiat data-format-value="0.00844697002321">0.008447</td>
- <td data-format-fiat data-format-value="0.00659883022308">0.006599</td>
+<td data-format-fiat data-format-value="0.00659883022308">0.006599</td>
 <td data-format-fiat data-format-value="0.00702768983319">0.007028</td>
 <td data-format-market-cap data-format-value="875970.0">875,970</td>
 <td data-format-market-cap data-format-value="248400533.494">248,400,533</td>
@@ -11282,7 +11286,7 @@ XRP
 <td data-format-fiat data-format-value="0.00660402001813">0.006604</td>
 <td data-format-market-cap data-format-value="1190870.0">1,190,870</td>
 <td data-format-market-cap data-format-value="231856093.496">231,856,093</td>
- </tr>
+</tr>
 <tr class="text-right">
 <td class="text-left">Jun 17, 2016</td>
 <td data-format-fiat data-format-value="0.00668057985604">0.006681</td>
@@ -11581,7 +11585,7 @@ XRP
 <td data-format-market-cap data-format-value="389621.0">389,621</td>
 <td data-format-market-cap data-format-value="209976746.913">209,976,747</td>
 </tr>
-<tr class="text-right">
+ <tr class="text-right">
 <td class="text-left">May 15, 2016</td>
 <td data-format-fiat data-format-value="0.00607206998393">0.006072</td>
 <td data-format-fiat data-format-value="0.00607512984425">0.006075</td>
@@ -11631,7 +11635,7 @@ XRP
 <td data-format-fiat data-format-value="0.0063986601308">0.006399</td>
 <td data-format-fiat data-format-value="0.00639927992597">0.006399</td>
 <td data-format-fiat data-format-value="0.0062698898837">0.006270</td>
-<td data-format-fiat data-format-value="0.00627243006602">0.006272</td>
+ <td data-format-fiat data-format-value="0.00627243006602">0.006272</td>
 <td data-format-market-cap data-format-value="404295.0">404,295</td>
 <td data-format-market-cap data-format-value="218711351.118">218,711,351</td>
 </tr>
@@ -11681,7 +11685,7 @@ XRP
 <td data-format-market-cap data-format-value="215932317.365">215,932,317</td>
 </tr>
 <tr class="text-right">
-<td class="text-left">May 04, 2016</td>
+ <td class="text-left">May 04, 2016</td>
 <td data-format-fiat data-format-value="0.00655760988593">0.006558</td>
 <td data-format-fiat data-format-value="0.00655981013551">0.006560</td>
 <td data-format-fiat data-format-value="0.00630659982562">0.006307</td>
@@ -11880,7 +11884,7 @@ XRP
 </tr>
 <tr class="text-right">
 <td class="text-left">Apr 12, 2016</td>
-<td data-format-fiat data-format-value="0.00604839017615">0.006048</td>
+ <td data-format-fiat data-format-value="0.00604839017615">0.006048</td>
 <td data-format-fiat data-format-value="0.00608217017725">0.006082</td>
 <td data-format-fiat data-format-value="0.00587290991098">0.005873</td>
 <td data-format-fiat data-format-value="0.00588507996872">0.005885</td>
@@ -11918,7 +11922,7 @@ XRP
 <td class="text-left">Apr 08, 2016</td>
 <td data-format-fiat data-format-value="0.00687464978546">0.006875</td>
 <td data-format-fiat data-format-value="0.00687489006668">0.006875</td>
- <td data-format-fiat data-format-value="0.00665660994127">0.006657</td>
+<td data-format-fiat data-format-value="0.00665660994127">0.006657</td>
 <td data-format-fiat data-format-value="0.0066707697697">0.006671</td>
 <td data-format-market-cap data-format-value="859428.0">859,428</td>
 <td data-format-market-cap data-format-value="229740454.048">229,740,454</td>
@@ -11967,7 +11971,7 @@ XRP
 <td data-format-fiat data-format-value="0.00750266993418">0.007503</td>
 <td data-format-market-cap data-format-value="250112.0">250,112</td>
 <td data-format-market-cap data-format-value="258390982.206">258,390,982</td>
- </tr>
+</tr>
 <tr class="text-right">
 <td class="text-left">Apr 02, 2016</td>
 <td data-format-fiat data-format-value="0.00741768022999">0.007418</td>
@@ -12028,7 +12032,7 @@ XRP
 <td data-format-fiat data-format-value="0.00808074977249">0.008081</td>
 <td data-format-fiat data-format-value="0.00800450984389">0.008005</td>
 <td data-format-fiat data-format-value="0.00802863016725">0.008029</td>
-<td data-format-market-cap data-format-value="418222.0">418,222</td>
+ <td data-format-market-cap data-format-value="418222.0">418,222</td>
 <td data-format-market-cap data-format-value="276504976.425">276,504,976</td>
 </tr>
 <tr class="text-right">
@@ -12067,7 +12071,6 @@ XRP
 <td data-format-market-cap data-format-value="1022850.0">1,022,850</td>
 <td data-format-market-cap data-format-value="286936468.76">286,936,469</td>
 </tr>
-
 <tr class="text-right">
 <td class="text-left">Mar 22, 2016</td>
 <td data-format-fiat data-format-value="0.00802785996348">0.008028</td>
@@ -12167,7 +12170,7 @@ XRP
 <td data-format-market-cap data-format-value="1536850.0">1,536,850</td>
 <td data-format-market-cap data-format-value="296599183.259">296,599,183</td>
 </tr>
- <tr class="text-right">
+<tr class="text-right">
 <td class="text-left">Mar 11, 2016</td>
 <td data-format-fiat data-format-value="0.00818345975131">0.008183</td>
 <td data-format-fiat data-format-value="0.00892025977373">0.008920</td>
@@ -12278,7 +12281,7 @@ XRP
 <tr class="text-right">
 <td class="text-left">Feb 28, 2016</td>
 <td data-format-fiat data-format-value="0.00797696039081">0.007977</td>
-<td data-format-fiat data-format-value="0.007986869663">0.007987</td>
+ <td data-format-fiat data-format-value="0.007986869663">0.007987</td>
 <td data-format-fiat data-format-value="0.00785376038402">0.007854</td>
 <td data-format-fiat data-format-value="0.00788890011609">0.007889</td>
 <td data-format-market-cap data-format-value="570935.0">570,935</td>
@@ -12327,7 +12330,7 @@ XRP
 <td data-format-fiat data-format-value="0.00795422960073">0.007954</td>
 <td data-format-fiat data-format-value="0.00796968955547">0.007970</td>
 <td data-format-market-cap data-format-value="807140.0">807,140</td>
-<td data-format-market-cap data-format-value="271693437.303">271,693,437</td>
+ <td data-format-market-cap data-format-value="271693437.303">271,693,437</td>
 </tr>
 <tr class="text-right">
 <td class="text-left">Feb 22, 2016</td>
@@ -12565,7 +12568,7 @@ XRP
 </tr>
 <tr class="text-right">
 <td class="text-left">Jan 27, 2016</td>
- <td data-format-fiat data-format-value="0.00540834013373">0.005408</td>
+<td data-format-fiat data-format-value="0.00540834013373">0.005408</td>
 <td data-format-fiat data-format-value="0.00657061021775">0.006571</td>
 <td data-format-fiat data-format-value="0.00540784979239">0.005408</td>
 <td data-format-fiat data-format-value="0.00650588003919">0.006506</td>
@@ -12614,7 +12617,7 @@ XRP
 <td data-format-fiat data-format-value="0.00531393988058">0.005314</td>
 <td data-format-fiat data-format-value="0.00509274983779">0.005093</td>
 <td data-format-fiat data-format-value="0.00511437002569">0.005114</td>
- <td data-format-market-cap data-format-value="355595.0">355,595</td>
+<td data-format-market-cap data-format-value="355595.0">355,595</td>
 <td data-format-market-cap data-format-value="171522876.67">171,522,877</td>
 </tr>
 <tr class="text-right">
@@ -12725,6 +12728,7 @@ XRP
 <td data-format-market-cap data-format-value="195011.0">195,011</td>
 <td data-format-market-cap data-format-value="199751004.487">199,751,004</td>
 </tr>
+
 <tr class="text-right">
 <td class="text-left">Jan 09, 2016</td>
 <td data-format-fiat data-format-value="0.00593680003658">0.005937</td>
@@ -12824,7 +12828,7 @@ XRP
 <td data-format-market-cap data-format-value="280345.0">280,345</td>
 <td data-format-market-cap data-format-value="207320069.306">207,320,069</td>
 </tr>
-<tr class="text-right">
+ <tr class="text-right">
 <td class="text-left">Dec 29, 2015</td>
 <td data-format-fiat data-format-value="0.00634171022102">0.006342</td>
 <td data-format-fiat data-format-value="0.00635258993134">0.006353</td>
@@ -12863,7 +12867,7 @@ XRP
 <tr class="text-right">
 <td class="text-left">Dec 25, 2015</td>
 <td data-format-fiat data-format-value="0.0059710200876">0.005971</td>
- <td data-format-fiat data-format-value="0.00651430012658">0.006514</td>
+<td data-format-fiat data-format-value="0.00651430012658">0.006514</td>
 <td data-format-fiat data-format-value="0.00597011018544">0.005970</td>
 <td data-format-fiat data-format-value="0.00648652017117">0.006487</td>
 <td data-format-market-cap data-format-value="815998.0">815,998</td>
@@ -12874,7 +12878,7 @@ XRP
 <td data-format-fiat data-format-value="0.00602285983041">0.006023</td>
 <td data-format-fiat data-format-value="0.00605343002826">0.006053</td>
 <td data-format-fiat data-format-value="0.00595533009619">0.005955</td>
-<td data-format-fiat data-format-value="0.00597068015486">0.005971</td>
+ <td data-format-fiat data-format-value="0.00597068015486">0.005971</td>
 <td data-format-market-cap data-format-value="332166.0">332,166</td>
 <td data-format-market-cap data-format-value="200241321.859">200,241,322</td>
 </tr>
@@ -12912,7 +12916,7 @@ XRP
 <td data-format-fiat data-format-value="0.00620514992625">0.006205</td>
 <td data-format-fiat data-format-value="0.00623524002731">0.006235</td>
 <td data-format-market-cap data-format-value="577803.0">577,803</td>
- <td data-format-market-cap data-format-value="209113986.968">209,113,987</td>
+<td data-format-market-cap data-format-value="209113986.968">209,113,987</td>
 </tr>
 <tr class="text-right">
 <td class="text-left">Dec 19, 2015</td>
@@ -12924,7 +12928,7 @@ XRP
 <td data-format-market-cap data-format-value="210998120.343">210,998,120</td>
 </tr>
 <tr class="text-right">
-<td class="text-left">Dec 18, 2015</td>
+ <td class="text-left">Dec 18, 2015</td>
 <td data-format-fiat data-format-value="0.00668588001281">0.006686</td>
 <td data-format-fiat data-format-value="0.00668588001281">0.006686</td>
 <td data-format-fiat data-format-value="0.00636703008786">0.006367</td>
@@ -13023,7 +13027,7 @@ XRP
 <td data-format-market-cap data-format-value="227221521.536">227,221,522</td>
 </tr>
 <tr class="text-right">
-<td class="text-left">Dec 07, 2015</td>
+ <td class="text-left">Dec 07, 2015</td>
 <td data-format-fiat data-format-value="0.00531216012314">0.005312</td>
 <td data-format-fiat data-format-value="0.0055599398911">0.005560</td>
 <td data-format-fiat data-format-value="0.00529706990346">0.005297</td>
@@ -13161,7 +13165,7 @@ XRP
 <td class="text-left">Nov 22, 2015</td>
 <td data-format-fiat data-format-value="0.00424868008122">0.004249</td>
 <td data-format-fiat data-format-value="0.00427359994501">0.004274</td>
- <td data-format-fiat data-format-value="0.0042380602099">0.004238</td>
+<td data-format-fiat data-format-value="0.0042380602099">0.004238</td>
 <td data-format-fiat data-format-value="0.0042672897689">0.004267</td>
 <td data-format-market-cap data-format-value="174556.0">174,556</td>
 <td data-format-market-cap data-format-value="141487170.553">141,487,171</td>
@@ -13210,7 +13214,7 @@ XRP
 <td data-format-fiat data-format-value="0.00425038021058">0.004250</td>
 <td data-format-market-cap data-format-value="243681.0">243,681</td>
 <td data-format-market-cap data-format-value="140926499.013">140,926,499</td>
- </tr>
+</tr>
 <tr class="text-right">
 <td class="text-left">Nov 16, 2015</td>
 <td data-format-fiat data-format-value="0.00416261982173">0.004163</td>
@@ -13222,7 +13226,7 @@ XRP
 </tr>
 <tr class="text-right">
 <td class="text-left">Nov 15, 2015</td>
-<td data-format-fiat data-format-value="0.00432715984061">0.004327</td>
+ <td data-format-fiat data-format-value="0.00432715984061">0.004327</td>
 <td data-format-fiat data-format-value="0.00432715984061">0.004327</td>
 <td data-format-fiat data-format-value="0.00414397986606">0.004144</td>
 <td data-format-fiat data-format-value="0.00416452018544">0.004165</td>
@@ -13310,7 +13314,6 @@ XRP
 <td data-format-market-cap data-format-value="786513.0">786,513</td>
 <td data-format-market-cap data-format-value="151266263.627">151,266,264</td>
 </tr>
-
 <tr class="text-right">
 <td class="text-left">Nov 05, 2015</td>
 <td data-format-fiat data-format-value="0.00495459977537">0.004955</td>
@@ -13410,7 +13413,7 @@ XRP
 <td data-format-market-cap data-format-value="427011.0">427,011</td>
 <td data-format-market-cap data-format-value="154999653.062">154,999,653</td>
 </tr>
- <tr class="text-right">
+<tr class="text-right">
 <td class="text-left">Oct 25, 2015</td>
 <td data-format-fiat data-format-value="0.00466160988435">0.004662</td>
 <td data-format-fiat data-format-value="0.00473746005446">0.004737</td>
@@ -13460,7 +13463,7 @@ XRP
 <td data-format-fiat data-format-value="0.00504226004705">0.005042</td>
 <td data-format-fiat data-format-value="0.00504786986858">0.005048</td>
 <td data-format-fiat data-format-value="0.00472994009033">0.004730</td>
- <td data-format-fiat data-format-value="0.00473106978461">0.004731</td>
+<td data-format-fiat data-format-value="0.00473106978461">0.004731</td>
 <td data-format-market-cap data-format-value="420949.0">420,949</td>
 <td data-format-market-cap data-format-value="156864358.407">156,864,358</td>
 </tr>
@@ -13510,7 +13513,7 @@ XRP
 <td data-format-market-cap data-format-value="179016354.995">179,016,355</td>
 </tr>
 <tr class="text-right">
- <td class="text-left">Oct 14, 2015</td>
+<td class="text-left">Oct 14, 2015</td>
 <td data-format-fiat data-format-value="0.00537875015289">0.005379</td>
 <td data-format-fiat data-format-value="0.00546426977962">0.005464</td>
 <td data-format-fiat data-format-value="0.00537580018863">0.005376</td>
@@ -13709,7 +13712,7 @@ XRP
 </tr>
 <tr class="text-right">
 <td class="text-left">Sep 22, 2015</td>
- <td data-format-fiat data-format-value="0.0072452002205">0.007245</td>
+<td data-format-fiat data-format-value="0.0072452002205">0.007245</td>
 <td data-format-fiat data-format-value="0.00724982982501">0.007250</td>
 <td data-format-fiat data-format-value="0.00715153012425">0.007152</td>
 <td data-format-fiat data-format-value="0.00716754002497">0.007168</td>
@@ -13758,7 +13761,7 @@ XRP
 <td data-format-fiat data-format-value="0.00743818003684">0.007438</td>
 <td data-format-fiat data-format-value="0.0073625901714">0.007363</td>
 <td data-format-fiat data-format-value="0.00737192993984">0.007372</td>
- <td data-format-market-cap data-format-value="544100.0">544,100</td>
+<td data-format-market-cap data-format-value="544100.0">544,100</td>
 <td data-format-market-cap data-format-value="239501085.184">239,501,085</td>
 </tr>
 <tr class="text-right">
@@ -13968,7 +13971,7 @@ XRP
 <td data-format-market-cap data-format-value="593316.0">593,316</td>
 <td data-format-market-cap data-format-value="231516123.753">231,516,124</td>
 </tr>
-<tr class="text-right">
+ <tr class="text-right">
 <td class="text-left">Aug 24, 2015</td>
 <td data-format-fiat data-format-value="0.00755260000005">0.007553</td>
 <td data-format-fiat data-format-value="0.00764920981601">0.007649</td>
@@ -14007,7 +14010,7 @@ XRP
 <tr class="text-right">
 <td class="text-left">Aug 20, 2015</td>
 <td data-format-fiat data-format-value="0.00776027003303">0.007760</td>
- <td data-format-fiat data-format-value="0.00787209998816">0.007872</td>
+<td data-format-fiat data-format-value="0.00787209998816">0.007872</td>
 <td data-format-fiat data-format-value="0.00771861011162">0.007719</td>
 <td data-format-fiat data-format-value="0.00787193980068">0.007872</td>
 <td data-format-market-cap data-format-value="215415.0">215,415</td>
@@ -14018,7 +14021,7 @@ XRP
 <td data-format-fiat data-format-value="0.00752551015466">0.007526</td>
 <td data-format-fiat data-format-value="0.00794706027955">0.007947</td>
 <td data-format-fiat data-format-value="0.00752551015466">0.007526</td>
-<td data-format-fiat data-format-value="0.00775846978649">0.007758</td>
+ <td data-format-fiat data-format-value="0.00775846978649">0.007758</td>
 <td data-format-market-cap data-format-value="474702.0">474,702</td>
 <td data-format-market-cap data-format-value="247561540.231">247,561,540</td>
 </tr>
@@ -14056,7 +14059,7 @@ XRP
 <td data-format-fiat data-format-value="0.00832519028336">0.008325</td>
 <td data-format-fiat data-format-value="0.00842036027461">0.008420</td>
 <td data-format-market-cap data-format-value="176135.0">176,135</td>
- <td data-format-market-cap data-format-value="268681491.441">268,681,491</td>
+<td data-format-market-cap data-format-value="268681491.441">268,681,491</td>
 </tr>
 <tr class="text-right">
 <td class="text-left">Aug 14, 2015</td>
@@ -14068,7 +14071,7 @@ XRP
 <td data-format-market-cap data-format-value="266013936.528">266,013,937</td>
 </tr>
 <tr class="text-right">
-<td class="text-left">Aug 13, 2015</td>
+ <td class="text-left">Aug 13, 2015</td>
 <td data-format-fiat data-format-value="0.00826650019735">0.008267</td>
 <td data-format-fiat data-format-value="0.00826723035425">0.008267</td>
 <td data-format-fiat data-format-value="0.00814586039633">0.008146</td>
@@ -14267,7 +14270,7 @@ XRP
 </tr>
 <tr class="text-right">
 <td class="text-left">Jul 22, 2015</td>
-<td data-format-fiat data-format-value="0.00770808011293">0.007708</td>
+ <td data-format-fiat data-format-value="0.00770808011293">0.007708</td>
 <td data-format-fiat data-format-value="0.00771375978366">0.007714</td>
 <td data-format-fiat data-format-value="0.00757058011368">0.007571</td>
 <td data-format-fiat data-format-value="0.00757858995348">0.007579</td>
@@ -14305,7 +14308,7 @@ XRP
 <td class="text-left">Jul 18, 2015</td>
 <td data-format-fiat data-format-value="0.00802315026522">0.008023</td>
 <td data-format-fiat data-format-value="0.00808046013117">0.008080</td>
- <td data-format-fiat data-format-value="0.00799673981965">0.007997</td>
+<td data-format-fiat data-format-value="0.00799673981965">0.007997</td>
 <td data-format-fiat data-format-value="0.00805963017046">0.008060</td>
 <td data-format-market-cap data-format-value="68212.8984375">68,213</td>
 <td data-format-market-cap data-format-value="257171119.627">257,171,120</td>
@@ -14316,7 +14319,7 @@ XRP
 <td data-format-fiat data-format-value="0.00806694012135">0.008067</td>
 <td data-format-fiat data-format-value="0.00795175973326">0.007952</td>
 <td data-format-fiat data-format-value="0.00802555959672">0.008026</td>
-<td data-format-market-cap data-format-value="299869.0">299,869</td>
+ <td data-format-market-cap data-format-value="299869.0">299,869</td>
 <td data-format-market-cap data-format-value="256083995.275">256,083,995</td>
 </tr>
 <tr class="text-right">
@@ -14354,7 +14357,7 @@ XRP
 <td data-format-fiat data-format-value="0.00856893975288">0.008569</td>
 <td data-format-market-cap data-format-value="1023880.0">1,023,880</td>
 <td data-format-market-cap data-format-value="273422464.036">273,422,464</td>
- </tr>
+</tr>
 <tr class="text-right">
 <td class="text-left">Jul 12, 2015</td>
 <td data-format-fiat data-format-value="0.0086111696437">0.008611</td>
@@ -14454,7 +14457,7 @@ XRP
 <td data-format-market-cap data-format-value="404117.0">404,117</td>
 <td data-format-market-cap data-format-value="352168302.155">352,168,302</td>
 </tr>
- <tr class="text-right">
+<tr class="text-right">
 <td class="text-left">Jul 01, 2015</td>
 <td data-format-fiat data-format-value="0.0113174002618">0.011317</td>
 <td data-format-fiat data-format-value="0.011405499652">0.011405</td>
@@ -14504,7 +14507,7 @@ XRP
 <td data-format-fiat data-format-value="0.0110483998433">0.011048</td>
 <td data-format-fiat data-format-value="0.0112941004336">0.011294</td>
 <td data-format-fiat data-format-value="0.011029000394">0.011029</td>
- <td data-format-fiat data-format-value="0.011287599802">0.011288</td>
+<td data-format-fiat data-format-value="0.011287599802">0.011288</td>
 <td data-format-market-cap data-format-value="344441.0">344,441</td>
 <td data-format-market-cap data-format-value="360170966.893">360,170,967</td>
 </tr>
@@ -14515,7 +14518,7 @@ XRP
 <td data-format-fiat data-format-value="0.0108957001939">0.010896</td>
 <td data-format-fiat data-format-value="0.0110478997231">0.011048</td>
 <td data-format-market-cap data-format-value="328795.0">328,795</td>
-<td data-format-market-cap data-format-value="352522487.078">352,522,487</td>
+ <td data-format-market-cap data-format-value="352522487.078">352,522,487</td>
 </tr>
 <tr class="text-right">
 <td class="text-left">Jun 24, 2015</td>
@@ -14654,7 +14657,7 @@ XRP
 </tr>
 <tr class="text-right">
 <td class="text-left">Jun 09, 2015</td>
- <td data-format-fiat data-format-value="0.00800880976021">0.008009</td>
+<td data-format-fiat data-format-value="0.00800880976021">0.008009</td>
 <td data-format-fiat data-format-value="0.00801874045283">0.008019</td>
 <td data-format-fiat data-format-value="0.00796295981854">0.007963</td>
 <td data-format-fiat data-format-value="0.00799489021301">0.007995</td>
@@ -14703,7 +14706,7 @@ XRP
 <td data-format-fiat data-format-value="0.00800955016166">0.008010</td>
 <td data-format-fiat data-format-value="0.00787935964763">0.007879</td>
 <td data-format-fiat data-format-value="0.00787935964763">0.007879</td>
- <td data-format-market-cap data-format-value="241573.0">241,573</td>
+<td data-format-market-cap data-format-value="241573.0">241,573</td>
 <td data-format-market-cap data-format-value="251418965.033">251,418,965</td>
 </tr>
 <tr class="text-right">
@@ -14814,6 +14817,7 @@ XRP
 <td data-format-market-cap data-format-value="298160.0">298,160</td>
 <td data-format-market-cap data-format-value="216976555.364">216,976,555</td>
 </tr>
+
 <tr class="text-right">
 <td class="text-left">May 22, 2015</td>
 <td data-format-fiat data-format-value="0.00657297018915">0.006573</td>
@@ -14913,7 +14917,7 @@ XRP
 <td data-format-market-cap data-format-value="973166.0">973,166</td>
 <td data-format-market-cap data-format-value="230164359.735">230,164,360</td>
 </tr>
-<tr class="text-right">
+ <tr class="text-right">
 <td class="text-left">May 11, 2015</td>
 <td data-format-fiat data-format-value="0.00737931020558">0.007379</td>
 <td data-format-fiat data-format-value="0.00741320988163">0.007413</td>
@@ -14952,7 +14956,7 @@ XRP
 <tr class="text-right">
 <td class="text-left">May 07, 2015</td>
 <td data-format-fiat data-format-value="0.00778706977144">0.007787</td>
- <td data-format-fiat data-format-value="0.00779051007703">0.007791</td>
+<td data-format-fiat data-format-value="0.00779051007703">0.007791</td>
 <td data-format-fiat data-format-value="0.00752572994679">0.007526</td>
 <td data-format-fiat data-format-value="0.00752867013216">0.007529</td>
 <td data-format-market-cap data-format-value="2231440.0">2,231,440</td>
@@ -15001,7 +15005,7 @@ XRP
 <td data-format-fiat data-format-value="0.00797763001174">0.007978</td>
 <td data-format-fiat data-format-value="0.00803712010384">0.008037</td>
 <td data-format-market-cap data-format-value="107649.0">107,649</td>
- <td data-format-market-cap data-format-value="256452858.131">256,452,858</td>
+<td data-format-market-cap data-format-value="256452858.131">256,452,858</td>
 </tr>
 <tr class="text-right">
 <td class="text-left">May 01, 2015</td>
@@ -15212,7 +15216,7 @@ XRP
 </tr>
 <tr class="text-right">
 <td class="text-left">Apr 08, 2015</td>
-<td data-format-fiat data-format-value="0.00906718987972">0.009067</td>
+ <td data-format-fiat data-format-value="0.00906718987972">0.009067</td>
 <td data-format-fiat data-format-value="0.00926898978651">0.009269</td>
 <td data-format-fiat data-format-value="0.00906246993691">0.009062</td>
 <td data-format-fiat data-format-value="0.0091980304569">0.009198</td>
@@ -15261,7 +15265,7 @@ XRP
 <td data-format-fiat data-format-value="0.00872221961617">0.008722</td>
 <td data-format-fiat data-format-value="0.00790437031537">0.007904</td>
 <td data-format-fiat data-format-value="0.00872024986893">0.008720</td>
-<td data-format-market-cap data-format-value="1010690.0">1,010,690</td>
+ <td data-format-market-cap data-format-value="1010690.0">1,010,690</td>
 <td data-format-market-cap data-format-value="278250546.977">278,250,547</td>
 </tr>
 <tr class="text-right">
@@ -15358,7 +15362,7 @@ XRP
 <td class="text-left">Mar 23, 2015</td>
 <td data-format-fiat data-format-value="0.0101977000013">0.010198</td>
 <td data-format-fiat data-format-value="0.0103813996539">0.010381</td>
- <td data-format-fiat data-format-value="0.0100977001712">0.010098</td>
+<td data-format-fiat data-format-value="0.0100977001712">0.010098</td>
 <td data-format-fiat data-format-value="0.0103085003793">0.010309</td>
 <td data-format-market-cap data-format-value="670229.0">670,229</td>
 <td data-format-market-cap data-format-value="328929304.035">328,929,304</td>
@@ -15408,7 +15412,6 @@ XRP
 <td data-format-market-cap data-format-value="1632590.0">1,632,590</td>
 <td data-format-market-cap data-format-value="337442505.598">337,442,506</td>
 </tr>
-
 <tr class="text-right">
 <td class="text-left">Mar 17, 2015</td>
 <td data-format-fiat data-format-value="0.0109657002613">0.010966</td>
@@ -15461,7 +15464,7 @@ XRP
 <td data-format-fiat data-format-value="0.0101535003632">0.010154</td>
 <td data-format-fiat data-format-value="0.0103590004146">0.010359</td>
 <td data-format-market-cap data-format-value="687546.0">687,546</td>
-<td data-format-market-cap data-format-value="330540685.89">330,540,686</td>
+ <td data-format-market-cap data-format-value="330540685.89">330,540,686</td>
 </tr>
 <tr class="text-right">
 <td class="text-left">Mar 11, 2015</td>
@@ -15509,7 +15512,7 @@ XRP
 <td data-format-market-cap data-format-value="336156590.969">336,156,591</td>
 </tr>
 <tr class="text-right">
- <td class="text-left">Mar 06, 2015</td>
+<td class="text-left">Mar 06, 2015</td>
 <td data-format-fiat data-format-value="0.0115518998355">0.011552</td>
 <td data-format-fiat data-format-value="0.0116638001055">0.011664</td>
 <td data-format-fiat data-format-value="0.0108556998894">0.010856</td>
@@ -15609,7 +15612,7 @@ XRP
 </tr>
 <tr class="text-right">
 <td class="text-left">Feb 23, 2015</td>
- <td data-format-fiat data-format-value="0.0131243998185">0.013124</td>
+<td data-format-fiat data-format-value="0.0131243998185">0.013124</td>
 <td data-format-fiat data-format-value="0.0133632002398">0.013363</td>
 <td data-format-fiat data-format-value="0.0131099997088">0.013110</td>
 <td data-format-fiat data-format-value="0.013334300369">0.013334</td>
@@ -15661,7 +15664,7 @@ XRP
 <td data-format-market-cap data-format-value="384700.0">384,700</td>
 <td data-format-market-cap data-format-value="440041262.371">440,041,262</td>
 </tr>
-<tr class="text-right">
+ <tr class="text-right">
 <td class="text-left">Feb 17, 2015</td>
 <td data-format-fiat data-format-value="0.0137513000518">0.013751</td>
 <td data-format-fiat data-format-value="0.0140481004491">0.014048</td>
@@ -15711,7 +15714,7 @@ XRP
 <td data-format-fiat data-format-value="0.0137801999226">0.013780</td>
 <td data-format-fiat data-format-value="0.0140685001388">0.014069</td>
 <td data-format-fiat data-format-value="0.0137739004567">0.013774</td>
-<td data-format-fiat data-format-value="0.0140394996852">0.014039</td>
+ <td data-format-fiat data-format-value="0.0140394996852">0.014039</td>
 <td data-format-market-cap data-format-value="542301.0">542,301</td>
 <td data-format-market-cap data-format-value="447980110.006">447,980,110</td>
 </tr>
@@ -15758,7 +15761,7 @@ XRP
 <td data-format-fiat data-format-value="0.0144589003175">0.014459</td>
 <td data-format-fiat data-format-value="0.0145771000534">0.014577</td>
 <td data-format-market-cap data-format-value="518284.0">518,284</td>
- <td data-format-market-cap data-format-value="465134147.339">465,134,147</td>
+<td data-format-market-cap data-format-value="465134147.339">465,134,147</td>
 </tr>
 <tr class="text-right">
 <td class="text-left">Feb 06, 2015</td>
@@ -15861,7 +15864,7 @@ XRP
 </tr>
 <tr class="text-right">
 <td class="text-left">Jan 26, 2015</td>
-<td data-format-fiat data-format-value="0.0165862999856">0.016586</td>
+ <td data-format-fiat data-format-value="0.0165862999856">0.016586</td>
 <td data-format-fiat data-format-value="0.0178081002086">0.017808</td>
 <td data-format-fiat data-format-value="0.015831200406">0.015831</td>
 <td data-format-fiat data-format-value="0.0160188004375">0.016019</td>
@@ -15908,7 +15911,7 @@ XRP
 <td class="text-left">Jan 21, 2015</td>
 <td data-format-fiat data-format-value="0.0161076001823">0.016108</td>
 <td data-format-fiat data-format-value="0.0167174004018">0.016717</td>
- <td data-format-fiat data-format-value="0.0161076001823">0.016108</td>
+<td data-format-fiat data-format-value="0.0161076001823">0.016108</td>
 <td data-format-fiat data-format-value="0.0166529994458">0.016653</td>
 <td data-format-market-cap data-format-value="1141990.0">1,141,990</td>
 <td data-format-market-cap data-format-value="515877886.306">515,877,886</td>
@@ -16160,7 +16163,7 @@ XRP
 <td class="text-left">Dec 24, 2014</td>
 <td data-format-fiat data-format-value="0.0238380003721">0.023838</td>
 <td data-format-fiat data-format-value="0.023852000013">0.023852</td>
-<td data-format-fiat data-format-value="0.0231599006802">0.023160</td>
+ <td data-format-fiat data-format-value="0.0231599006802">0.023160</td>
 <td data-format-fiat data-format-value="0.0233823992312">0.023382</td>
 <td data-format-market-cap data-format-value="1428390.0">1,428,390</td>
 <td data-format-market-cap data-format-value="724341745.556">724,341,746</td>
@@ -16207,9 +16210,9 @@ XRP
 <td data-format-fiat data-format-value="0.0280338991433">0.028034</td>
 <td data-format-fiat data-format-value="0.0233380999416">0.023338</td>
 <td data-format-fiat data-format-value="0.0233380999416">0.023338</td>
- <td data-format-market-cap data-format-value="6254590.0">6,254,590</td>
+<td data-format-market-cap data-format-value="6254590.0">6,254,590</td>
 <td data-format-market-cap data-format-value="720712278.505">720,712,279</td>
-</tr>
+ </tr>
 <tr class="text-right">
 <td class="text-left">Dec 18, 2014</td>
 <td data-format-fiat data-format-value="0.0260256994516">0.026026</td>
@@ -16309,7 +16312,7 @@ XRP
 <td data-format-market-cap data-format-value="2568380.0">2,568,380</td>
 <td data-format-market-cap data-format-value="414446386.163">414,446,386</td>
 </tr>
-<tr class="text-right">
+ <tr class="text-right">
 <td class="text-left">Dec 07, 2014</td>
 <td data-format-fiat data-format-value="0.014406000264">0.014406</td>
 <td data-format-fiat data-format-value="0.0147941997275">0.014794</td>
@@ -16359,7 +16362,7 @@ XRP
 <td data-format-fiat data-format-value="0.0125864995643">0.012586</td>
 <td data-format-fiat data-format-value="0.0133069995791">0.013307</td>
 <td data-format-fiat data-format-value="0.0125679997727">0.012568</td>
-<td data-format-fiat data-format-value="0.0131579004228">0.013158</td>
+ <td data-format-fiat data-format-value="0.0131579004228">0.013158</td>
 <td data-format-market-cap data-format-value="2206040.0">2,206,040</td>
 <td data-format-market-cap data-format-value="406333852.77">406,333,853</td>
 </tr>
@@ -16406,10 +16409,10 @@ XRP
 <td data-format-fiat data-format-value="0.0110039999709">0.011004</td>
 <td data-format-fiat data-format-value="0.0142048001289">0.014205</td>
 <td data-format-market-cap data-format-value="5355350.0">5,355,350</td>
- <td data-format-market-cap data-format-value="438663549.034">438,663,549</td>
+<td data-format-market-cap data-format-value="438663549.034">438,663,549</td>
 </tr>
 <tr class="text-right">
-<td class="text-left">Nov 26, 2014</td>
+ <td class="text-left">Nov 26, 2014</td>
 <td data-format-fiat data-format-value="0.00974220968783">0.009742</td>
 <td data-format-fiat data-format-value="0.0110138002783">0.011014</td>
 <td data-format-fiat data-format-value="0.00969482026994">0.009695</td>
@@ -16456,7 +16459,7 @@ XRP
 <tr class="text-right">
 <td class="text-left">Nov 21, 2014</td>
 <td data-format-fiat data-format-value="0.00607171002775">0.006072</td>
- <td data-format-fiat data-format-value="0.0066031999886">0.006603</td>
+<td data-format-fiat data-format-value="0.0066031999886">0.006603</td>
 <td data-format-fiat data-format-value="0.00603742012754">0.006037</td>
 <td data-format-fiat data-format-value="0.00658929022029">0.006589</td>
 <td data-format-market-cap data-format-value="720035.0">720,035</td>
@@ -16608,7 +16611,7 @@ XRP
 </tr>
 <tr class="text-right">
 <td class="text-left">Nov 04, 2014</td>
-<td data-format-fiat data-format-value="0.00480948993936">0.004809</td>
+ <td data-format-fiat data-format-value="0.00480948993936">0.004809</td>
 <td data-format-fiat data-format-value="0.00485944002867">0.004859</td>
 <td data-format-fiat data-format-value="0.00478046014905">0.004780</td>
 <td data-format-fiat data-format-value="0.00480483006686">0.004805</td>
@@ -16657,7 +16660,7 @@ XRP
 <td data-format-fiat data-format-value="0.00491017987952">0.004910</td>
 <td data-format-fiat data-format-value="0.00476884003729">0.004769</td>
 <td data-format-fiat data-format-value="0.00488997017965">0.004890</td>
-<td data-format-market-cap data-format-value="220063.0">220,063</td>
+ <td data-format-market-cap data-format-value="220063.0">220,063</td>
 <td data-format-market-cap data-format-value="141756573.981">141,756,574</td>
 </tr>
 <tr class="text-right">
@@ -16903,10 +16906,10 @@ XRP
 <td data-format-market-cap data-format-value="264083.0">264,083</td>
 <td data-format-market-cap data-format-value="145607796.147">145,607,796</td>
 </tr>
- <tr class="text-right">
+<tr class="text-right">
 <td class="text-left">Oct 02, 2014</td>
 <td data-format-fiat data-format-value="0.00475515983999">0.004755</td>
-<td data-format-fiat data-format-value="0.00487626018003">0.004876</td>
+ <td data-format-fiat data-format-value="0.00487626018003">0.004876</td>
 <td data-format-fiat data-format-value="0.00475346995518">0.004753</td>
 <td data-format-fiat data-format-value="0.00487409019843">0.004874</td>
 <td data-format-market-cap data-format-value="209158.0">209,158</td>
@@ -16955,7 +16958,7 @@ XRP
 <td data-format-fiat data-format-value="0.00457538012415">0.004575</td>
 <td data-format-fiat data-format-value="0.00470503978431">0.004705</td>
 <td data-format-market-cap data-format-value="221573.0">221,573</td>
-<td data-format-market-cap data-format-value="136395591.557">136,395,592</td>
+ <td data-format-market-cap data-format-value="136395591.557">136,395,592</td>
 </tr>
 <tr class="text-right">
 <td class="text-left">Sep 26, 2014</td>
@@ -17204,7 +17207,7 @@ XRP
 <td class="text-left">Aug 30, 2014</td>
 <td data-format-fiat data-format-value="0.00501675019041">0.005017</td>
 <td data-format-fiat data-format-value="0.00504367984831">0.005044</td>
-<td data-format-fiat data-format-value="0.0049516200088">0.004952</td>
+ <td data-format-fiat data-format-value="0.0049516200088">0.004952</td>
 <td data-format-fiat data-format-value="0.0049606799148">0.004961</td>
 <td data-format-market-cap data-format-value="136957.0">136,957</td>
 <td data-format-market-cap data-format-value="143806404.01">143,806,404</td>
@@ -17253,7 +17256,7 @@ XRP
 <td data-format-fiat data-format-value="0.00497446022928">0.004974</td>
 <td data-format-market-cap data-format-value="291023.0">291,023</td>
 <td data-format-market-cap data-format-value="41052231.9637">41,052,232</td>
-</tr>
+ </tr>
 <tr class="text-right">
 <td class="text-left">Aug 24, 2014</td>
 <td data-format-fiat data-format-value="0.00501722982153">0.005017</td>
@@ -17353,7 +17356,7 @@ XRP
 <td data-format-market-cap data-format-value="665506.0">665,506</td>
 <td data-format-market-cap data-format-value="43134445.6405">43,134,446</td>
 </tr>
-<tr class="text-right">
+ <tr class="text-right">
 <td class="text-left">Aug 13, 2014</td>
 <td data-format-fiat data-format-value="0.00504502980039">0.005045</td>
 <td data-format-fiat data-format-value="0.00504573993385">0.005046</td>
@@ -17403,7 +17406,7 @@ XRP
 <td data-format-fiat data-format-value="0.0053432402201">0.005343</td>
 <td data-format-fiat data-format-value="0.00548378005624">0.005484</td>
 <td data-format-fiat data-format-value="0.00534316990525">0.005343</td>
-<td data-format-fiat data-format-value="0.00546156987548">0.005462</td>
+ <td data-format-fiat data-format-value="0.00546156987548">0.005462</td>
 <td data-format-market-cap data-format-value="192304.0">192,304</td>
 <td data-format-market-cap data-format-value="45072156.2795">45,072,156</td>
 </tr>
@@ -17453,7 +17456,7 @@ XRP
 <td data-format-market-cap data-format-value="43035992.1144">43,035,992</td>
 </tr>
 <tr class="text-right">
-<td class="text-left">Aug 02, 2014</td>
+ <td class="text-left">Aug 02, 2014</td>
 <td data-format-fiat data-format-value="0.00537079013884">0.005371</td>
 <td data-format-fiat data-format-value="0.0055215600878">0.005522</td>
 <td data-format-fiat data-format-value="0.00526993023232">0.005270</td>
@@ -17699,7 +17702,7 @@ XRP
 <td class="text-left">Jul 06, 2014</td>
 <td data-format-fiat data-format-value="0.00313387997448">0.003134</td>
 <td data-format-fiat data-format-value="0.00316857988946">0.003169</td>
- <td data-format-fiat data-format-value="0.00280393008143">0.002804</td>
+<td data-format-fiat data-format-value="0.00280393008143">0.002804</td>
 <td data-format-fiat data-format-value="0.00281020998955">0.002810</td>
 <td data-format-market-cap data-format-value="148862.0">148,862</td>
 <td data-format-market-cap data-format-value="21969912.0724">21,969,912</td>
@@ -17848,10 +17851,10 @@ XRP
 <td data-format-market-cap data-format-value="157677.0">157,677</td>
 <td data-format-market-cap data-format-value="32742495.1324">32,742,495</td>
 </tr>
- <tr class="text-right">
+<tr class="text-right">
 <td class="text-left">Jun 19, 2014</td>
 <td data-format-fiat data-format-value="0.00425070011988">0.004251</td>
-<td data-format-fiat data-format-value="0.00427812989801">0.004278</td>
+ <td data-format-fiat data-format-value="0.00427812989801">0.004278</td>
 <td data-format-fiat data-format-value="0.00420439988375">0.004204</td>
 <td data-format-fiat data-format-value="0.00423046993092">0.004230</td>
 <td data-format-market-cap data-format-value="24118.0996094">24,118</td>
@@ -17900,7 +17903,7 @@ XRP
 <td data-format-fiat data-format-value="0.0038471899461">0.003847</td>
 <td data-format-fiat data-format-value="0.00401738006622">0.004017</td>
 <td data-format-market-cap data-format-value="144324.0">144,324</td>
-<td data-format-market-cap data-format-value="31407434.0926">31,407,434</td>
+ <td data-format-market-cap data-format-value="31407434.0926">31,407,434</td>
 </tr>
 <tr class="text-right">
 <td class="text-left">Jun 13, 2014</td>
@@ -18147,9 +18150,9 @@ XRP
 </tr>
 <tr class="text-right">
 <td class="text-left">May 17, 2014</td>
- <td data-format-fiat data-format-value="0.00690140016377">0.006901</td>
+<td data-format-fiat data-format-value="0.00690140016377">0.006901</td>
 <td data-format-fiat data-format-value="0.00690591987222">0.006906</td>
-<td data-format-fiat data-format-value="0.00648004980758">0.006480</td>
+ <td data-format-fiat data-format-value="0.00648004980758">0.006480</td>
 <td data-format-fiat data-format-value="0.00648675020784">0.006487</td>
 <td data-format-market-cap data-format-value="248157.0">248,157</td>
 <td data-format-market-cap data-format-value="50712696.6083">50,712,697</td>
@@ -18196,9 +18199,10 @@ XRP
 <td data-format-fiat data-format-value="0.00594912003726">0.005949</td>
 <td data-format-fiat data-format-value="0.005746609997">0.005747</td>
 <td data-format-fiat data-format-value="0.00593659002334">0.005937</td>
- <td data-format-market-cap data-format-value="168471.0">168,471</td>
+<td data-format-market-cap data-format-value="168471.0">168,471</td>
 <td data-format-market-cap data-format-value="46411606.3603">46,411,606</td>
 </tr>
+
 <tr class="text-right">
 <td class="text-left">May 11, 2014</td>
 <td data-format-fiat data-format-value="0.00594196980819">0.005942</td>
@@ -18348,7 +18352,7 @@ XRP
 <td data-format-fiat data-format-value="0.00606941012666">0.006069</td>
 <td data-format-fiat data-format-value="0.00607164995745">0.006072</td>
 <td data-format-fiat data-format-value="0.00523361004889">0.005234</td>
-<td data-format-fiat data-format-value="0.005490870215">0.005491</td>
+ <td data-format-fiat data-format-value="0.005490870215">0.005491</td>
 <td data-format-market-cap data-format-value="115698.0">115,698</td>
 <td data-format-market-cap data-format-value="42927016.5222">42,927,017</td>
 </tr>
@@ -18498,7 +18502,7 @@ XRP
 </tr>
 <tr class="text-right">
 <td class="text-left">Apr 08, 2014</td>
-<td data-format-fiat data-format-value="0.00800465978682">0.008005</td>
+ <td data-format-fiat data-format-value="0.00800465978682">0.008005</td>
 <td data-format-fiat data-format-value="0.00818865001202">0.008189</td>
 <td data-format-fiat data-format-value="0.00798008032143">0.007980</td>
 <td data-format-fiat data-format-value="0.00801276043057">0.008013</td>
@@ -18547,7 +18551,7 @@ XRP
 <td data-format-fiat data-format-value="0.00802727043629">0.008027</td>
 <td data-format-fiat data-format-value="0.00717632984743">0.007176</td>
 <td data-format-fiat data-format-value="0.00794437993318">0.007944</td>
-<td data-format-market-cap data-format-value="172873.0">172,873</td>
+ <td data-format-market-cap data-format-value="172873.0">172,873</td>
 <td data-format-market-cap data-format-value="62108287.3058">62,108,287</td>
 </tr>
 <tr class="text-right">
@@ -18590,7 +18594,7 @@ XRP
 <td class="text-left">Mar 29, 2014</td>
 <td data-format-fiat data-format-value="0.010625699535">0.010626</td>
 <td data-format-fiat data-format-value="0.0106296995655">0.010630</td>
- <td data-format-fiat data-format-value="0.0103383995593">0.010338</td>
+<td data-format-fiat data-format-value="0.0103383995593">0.010338</td>
 <td data-format-fiat data-format-value="0.0103383995593">0.010338</td>
 <td data-format-market-cap data-format-value="121921.0">121,921</td>
 <td data-format-market-cap data-format-value="80824471.8256">80,824,472</td>
@@ -18640,7 +18644,6 @@ XRP
 <td data-format-market-cap data-format-value="115538.0">115,538</td>
 <td data-format-market-cap data-format-value="100627186.669">100,627,187</td>
 </tr>
-
 <tr class="text-right">
 <td class="text-left">Mar 23, 2014</td>
 <td data-format-fiat data-format-value="0.0129610002041">0.012961</td>
@@ -18741,7 +18744,7 @@ XRP
 <td data-format-market-cap data-format-value="112055377.967">112,055,378</td>
 </tr>
 <tr class="text-right">
- <td class="text-left">Mar 12, 2014</td>
+<td class="text-left">Mar 12, 2014</td>
 <td data-format-fiat data-format-value="0.0141991004348">0.014199</td>
 <td data-format-fiat data-format-value="0.0151784000918">0.015178</td>
 <td data-format-fiat data-format-value="0.0141636002809">0.014164</td>
@@ -18798,7 +18801,7 @@ XRP
 <td class="text-left">Mar 06, 2014</td>
 <td data-format-fiat data-format-value="0.0159917995334">0.015992</td>
 <td data-format-fiat data-format-value="0.016118299216">0.016118</td>
-<td data-format-fiat data-format-value="0.0156351998448">0.015635</td>
+ <td data-format-fiat data-format-value="0.0156351998448">0.015635</td>
 <td data-format-fiat data-format-value="0.0159210003912">0.015921</td>
 <td data-format-market-cap data-format-value="142277.0">142,277</td>
 <td data-format-market-cap data-format-value="124468623.378">124,468,623</td>
@@ -18848,6 +18851,7 @@ XRP
 <td data-format-market-cap data-format-value="111575.0">111,575</td>
 <td data-format-market-cap data-format-value="107881406.607">107,881,407</td>
 </tr>
+
 <tr class="text-right">
 <td class="text-left">Feb 28, 2014</td>
 <td data-format-fiat data-format-value="0.014124199748">0.014124</td>
@@ -18941,14 +18945,14 @@ XRP
 <tr class="text-right">
 <td class="text-left">Feb 18, 2014</td>
 <td data-format-fiat data-format-value="0.0153080001473">0.015308</td>
- <td data-format-fiat data-format-value="0.0156980995089">0.015698</td>
+<td data-format-fiat data-format-value="0.0156980995089">0.015698</td>
 <td data-format-fiat data-format-value="0.0149857997894">0.014986</td>
 <td data-format-fiat data-format-value="0.015286100097">0.015286</td>
 <td data-format-market-cap data-format-value="152124.0">152,124</td>
 <td data-format-market-cap data-format-value="119505045.149">119,505,045</td>
 </tr>
 <tr class="text-right">
-<td class="text-left">Feb 17, 2014</td>
+ <td class="text-left">Feb 17, 2014</td>
 <td data-format-fiat data-format-value="0.015290199779">0.015290</td>
 <td data-format-fiat data-format-value="0.0159585997462">0.015959</td>
 <td data-format-fiat data-format-value="0.0150923999026">0.015092</td>
@@ -19097,7 +19101,7 @@ XRP
 <td data-format-fiat data-format-value="0.0211417004466">0.021142</td>
 <td data-format-fiat data-format-value="0.0204316992313">0.020432</td>
 <td data-format-fiat data-format-value="0.0206981003284">0.020698</td>
-<td data-format-market-cap data-format-value="123949.0">123,949</td>
+ <td data-format-market-cap data-format-value="123949.0">123,949</td>
 <td data-format-market-cap data-format-value="161815464.704">161,815,465</td>
 </tr>
 <tr class="text-right">
@@ -19190,7 +19194,6 @@ XRP
 <td data-format-market-cap data-format-value="60703.1015625">60,703</td>
 <td data-format-market-cap data-format-value="151577938.021">151,577,938</td>
 </tr>
-
 <tr class="text-right">
 <td class="text-left">Jan 21, 2014</td>
 <td data-format-fiat data-format-value="0.0198491998017">0.019849</td>
@@ -19241,7 +19244,7 @@ XRP
 <td data-format-fiat data-format-value="0.0222053993493">0.022205</td>
 <td data-format-fiat data-format-value="0.022343300283">0.022343</td>
 <td data-format-fiat data-format-value="0.0210235994309">0.021024</td>
- <td data-format-fiat data-format-value="0.0210235994309">0.021024</td>
+<td data-format-fiat data-format-value="0.0210235994309">0.021024</td>
 <td data-format-market-cap data-format-value="58850.8984375">58,851</td>
 <td data-format-market-cap data-format-value="164360187.831">164,360,188</td>
 </tr>
@@ -19291,7 +19294,7 @@ XRP
 <td data-format-market-cap data-format-value="187776331.336">187,776,331</td>
 </tr>
 <tr class="text-right">
- <td class="text-left">Jan 10, 2014</td>
+<td class="text-left">Jan 10, 2014</td>
 <td data-format-fiat data-format-value="0.0223670993">0.022367</td>
 <td data-format-fiat data-format-value="0.0229033008218">0.022903</td>
 <td data-format-fiat data-format-value="0.0217441990972">0.021744</td>
@@ -19397,7 +19400,7 @@ XRP
 <td data-format-fiat data-format-value="0.0274602007121">0.027460</td>
 <td data-format-market-cap data-format-value="72634.3984375">72,634</td>
 <td data-format-market-cap data-format-value="214680817.266">214,680,817</td>
-</tr>
+ </tr>
 <tr class="text-right">
 <td class="text-left">Dec 29, 2013</td>
 <td data-format-fiat data-format-value="0.027311399579">0.027311</td>
@@ -19499,7 +19502,7 @@ XRP
 </tr>
 <tr class="text-right">
 <td class="text-left">Dec 18, 2013</td>
-<td data-format-fiat data-format-value="0.01797089912">0.017971</td>
+ <td data-format-fiat data-format-value="0.01797089912">0.017971</td>
 <td data-format-fiat data-format-value="0.0185713004321">0.018571</td>
 <td data-format-fiat data-format-value="0.0123250996694">0.012325</td>
 <td data-format-fiat data-format-value="0.0158524997532">0.015852</td>
@@ -19542,7 +19545,7 @@ XRP
 <td data-format-market-cap data-format-value="-">-</td>
 <td data-format-market-cap data-format-value="249707308.901">249,707,309</td>
 </tr>
- <tr class="text-right">
+<tr class="text-right">
 <td class="text-left">Dec 13, 2013</td>
 <td data-format-fiat data-format-value="0.0346486009657">0.034649</td>
 <td data-format-fiat data-format-value="0.0368973985314">0.036897</td>
@@ -19593,7 +19596,7 @@ XRP
 <td data-format-fiat data-format-value="0.036868698895">0.036869</td>
 <td data-format-fiat data-format-value="0.0315939001739">0.031594</td>
 <td data-format-fiat data-format-value="0.0364555008709">0.036456</td>
- <td data-format-market-cap data-format-value="-">-</td>
+<td data-format-market-cap data-format-value="-">-</td>
 <td data-format-market-cap data-format-value="285005081.312">285,005,081</td>
 </tr>
 <tr class="text-right">
@@ -19695,7 +19698,6 @@ XRP
 <td data-format-market-cap data-format-value="-">-</td>
 <td data-format-market-cap data-format-value="188378308.85">188,378,309</td>
 </tr>
-
 <tr class="text-right">
 <td class="text-left">Nov 26, 2013</td>
 <td data-format-fiat data-format-value="0.0188579000533">0.018858</td>
@@ -19703,7 +19705,7 @@ XRP
 <td data-format-fiat data-format-value="0.0187589991838">0.018759</td>
 <td data-format-fiat data-format-value="0.0299124997109">0.029912</td>
 <td data-format-market-cap data-format-value="-">-</td>
-<td data-format-market-cap data-format-value="233852628.403">233,852,628</td>
+ <td data-format-market-cap data-format-value="233852628.403">233,852,628</td>
 </tr>
 <tr class="text-right">
 <td class="text-left">Nov 25, 2013</td>
@@ -19754,7 +19756,7 @@ XRP
 <td class="text-left">Nov 20, 2013</td>
 <td data-format-fiat data-format-value="0.00713384989649">0.007134</td>
 <td data-format-fiat data-format-value="0.00754657015204">0.007547</td>
-<td data-format-fiat data-format-value="0.00568578997627">0.005686</td>
+ <td data-format-fiat data-format-value="0.00568578997627">0.005686</td>
 <td data-format-fiat data-format-value="0.00746669992805">0.007467</td>
 <td data-format-market-cap data-format-value="-">-</td>
 <td data-format-market-cap data-format-value="58373837.7099">58,373,838</td>
@@ -19798,14 +19800,14 @@ XRP
 <tr class="text-right">
 <td class="text-left">Nov 15, 2013</td>
 <td data-format-fiat data-format-value="0.00962809007615">0.009628</td>
- <td data-format-fiat data-format-value="0.0101151997223">0.010115</td>
+<td data-format-fiat data-format-value="0.0101151997223">0.010115</td>
 <td data-format-fiat data-format-value="0.00922104995698">0.009221</td>
 <td data-format-fiat data-format-value="0.00968473032117">0.009685</td>
 <td data-format-market-cap data-format-value="-">-</td>
 <td data-format-market-cap data-format-value="75714151.8053">75,714,152</td>
 </tr>
 <tr class="text-right">
-<td class="text-left">Nov 14, 2013</td>
+ <td class="text-left">Nov 14, 2013</td>
 <td data-format-fiat data-format-value="0.0108203003183">0.010820</td>
 <td data-format-fiat data-format-value="0.0111907003447">0.011191</td>
 <td data-format-fiat data-format-value="0.00930527970195">0.009305</td>
@@ -19899,7 +19901,7 @@ XRP
 <td data-format-fiat data-format-value="0.00714726001024">0.007147</td>
 <td data-format-fiat data-format-value="0.00745033007115">0.007450</td>
 <td data-format-fiat data-format-value="0.00690772011876">0.006908</td>
- <td data-format-fiat data-format-value="0.00701108993962">0.007011</td>
+<td data-format-fiat data-format-value="0.00701108993962">0.007011</td>
 <td data-format-market-cap data-format-value="-">-</td>
 <td data-format-market-cap data-format-value="54811928.9418">54,811,929</td>
 </tr>
@@ -19957,6 +19959,7 @@ XRP
 <td data-format-market-cap data-format-value="-">-</td>
 <td data-format-market-cap data-format-value="46892406.5825">46,892,407</td>
 </tr>
+
 <tr class="text-right">
 <td class="text-left">Oct 28, 2013</td>
 <td data-format-fiat data-format-value="0.00683439988643">0.006834</td>
@@ -20000,7 +20003,7 @@ XRP
 <td data-format-fiat data-format-value="0.00650097010657">0.006501</td>
 <td data-format-fiat data-format-value="0.00859589036554">0.008596</td>
 <td data-format-market-cap data-format-value="-">-</td>
- <td data-format-market-cap data-format-value="67201720.6842">67,201,721</td>
+<td data-format-market-cap data-format-value="67201720.6842">67,201,721</td>
 </tr>
 <tr class="text-right">
 <td class="text-left">Oct 23, 2013</td>
@@ -20051,7 +20054,7 @@ XRP
 <td class="text-left">Oct 18, 2013</td>
 <td data-format-fiat data-format-value="0.0083497799933">0.008350</td>
 <td data-format-fiat data-format-value="0.00843229983002">0.008432</td>
- <td data-format-fiat data-format-value="0.00764593994245">0.007646</td>
+<td data-format-fiat data-format-value="0.00764593994245">0.007646</td>
 <td data-format-fiat data-format-value="0.00794246979058">0.007942</td>
 <td data-format-market-cap data-format-value="-">-</td>
 <td data-format-market-cap data-format-value="62093355.1363">62,093,355</td>
@@ -20102,7 +20105,7 @@ XRP
 <td data-format-market-cap data-format-value="65761509.0267">65,761,509</td>
 </tr>
 <tr class="text-right">
- <td class="text-left">Oct 12, 2013</td>
+<td class="text-left">Oct 12, 2013</td>
 <td data-format-fiat data-format-value="0.00891182012856">0.008912</td>
 <td data-format-fiat data-format-value="0.00940772984177">0.009408</td>
 <td data-format-fiat data-format-value="0.00848472025245">0.008485</td>
@@ -20152,7 +20155,7 @@ XRP
 <td data-format-fiat data-format-value="0.00966855976731">0.009669</td>
 <td data-format-fiat data-format-value="0.00919735990465">0.009197</td>
 <td data-format-fiat data-format-value="0.0092395702377">0.009240</td>
- <td data-format-market-cap data-format-value="-">-</td>
+<td data-format-market-cap data-format-value="-">-</td>
 <td data-format-market-cap data-format-value="72233939.9855">72,233,940</td>
 </tr>
 <tr class="text-right">
@@ -20211,7 +20214,7 @@ XRP
 </tr>
 <tr class="text-right">
 <td class="text-left">Sep 30, 2013</td>
-<td data-format-fiat data-format-value="0.0128499995917">0.012850</td>
+ <td data-format-fiat data-format-value="0.0128499995917">0.012850</td>
 <td data-format-fiat data-format-value="0.0128499995917">0.012850</td>
 <td data-format-fiat data-format-value="0.010542999953">0.010543</td>
 <td data-format-fiat data-format-value="0.0109323002398">0.010932</td>
@@ -20254,14 +20257,14 @@ XRP
 <td data-format-market-cap data-format-value="-">-</td>
 <td data-format-market-cap data-format-value="91574070.2896">91,574,070</td>
 </tr>
- <tr class="text-right">
+<tr class="text-right">
 <td class="text-left">Sep 25, 2013</td>
 <td data-format-fiat data-format-value="0.0104590998963">0.010459</td>
 <td data-format-fiat data-format-value="0.0107281003147">0.010728</td>
 <td data-format-fiat data-format-value="0.0104328999296">0.010433</td>
 <td data-format-fiat data-format-value="0.0104328999296">0.010433</td>
 <td data-format-market-cap data-format-value="-">-</td>
-<td data-format-market-cap data-format-value="81563262.411">81,563,262</td>
+ <td data-format-market-cap data-format-value="81563262.411">81,563,262</td>
 </tr>
 <tr class="text-right">
 <td class="text-left">Sep 24, 2013</td>
@@ -20356,7 +20359,7 @@ XRP
 <tr class="text-right">
 <td class="text-left">Sep 14, 2013</td>
 <td data-format-fiat data-format-value="0.00651455996558">0.006515</td>
- <td data-format-fiat data-format-value="0.00655042985454">0.006550</td>
+<td data-format-fiat data-format-value="0.00655042985454">0.006550</td>
 <td data-format-fiat data-format-value="0.00628795986995">0.006288</td>
 <td data-format-fiat data-format-value="0.00633984012529">0.006340</td>
 <td data-format-market-cap data-format-value="-">-</td>
@@ -20457,7 +20460,7 @@ XRP
 <td data-format-fiat data-format-value="0.00551808997989">0.005518</td>
 <td data-format-fiat data-format-value="0.00569263007492">0.005693</td>
 <td data-format-fiat data-format-value="0.00540491985157">0.005405</td>
- <td data-format-fiat data-format-value="0.00566982990131">0.005670</td>
+<td data-format-fiat data-format-value="0.00566982990131">0.005670</td>
 <td data-format-market-cap data-format-value="-">-</td>
 <td data-format-market-cap data-format-value="44326106.0794">44,326,106</td>
 </tr>
@@ -20515,6 +20518,7 @@ XRP
 <td data-format-market-cap data-format-value="-">-</td>
 <td data-format-market-cap data-format-value="48830305.1041">48,830,305</td>
 </tr>
+
 <tr class="text-right">
 <td class="text-left">Aug 27, 2013</td>
 <td data-format-fiat data-format-value="0.00646839989349">0.006468</td>
@@ -20558,7 +20562,7 @@ XRP
 <td data-format-fiat data-format-value="0.00491904979572">0.004919</td>
 <td data-format-fiat data-format-value="0.00513859000057">0.005139</td>
 <td data-format-market-cap data-format-value="-">-</td>
- <td data-format-market-cap data-format-value="40172930.3063">40,172,930</td>
+<td data-format-market-cap data-format-value="40172930.3063">40,172,930</td>
 </tr>
 <tr class="text-right">
 <td class="text-left">Aug 22, 2013</td>
@@ -20660,7 +20664,7 @@ XRP
 <td data-format-market-cap data-format-value="34778195.4553">34,778,195</td>
 </tr>
 <tr class="text-right">
- <td class="text-left">Aug 11, 2013</td>
+<td class="text-left">Aug 11, 2013</td>
 <td data-format-fiat data-format-value="0.00431382004172">0.004314</td>
 <td data-format-fiat data-format-value="0.00442061014473">0.004421</td>
 <td data-format-fiat data-format-value="0.00430027022958">0.004300</td>
@@ -20710,7 +20714,7 @@ XRP
 <td data-format-fiat data-format-value="0.00566102005541">0.005661</td>
 <td data-format-fiat data-format-value="0.0046286098659">0.004629</td>
 <td data-format-fiat data-format-value="0.00468041980639">0.004680</td>
- <td data-format-market-cap data-format-value="-">-</td>
+<td data-format-market-cap data-format-value="-">-</td>
 <td data-format-market-cap data-format-value="36591007.7403">36,591,008</td>
 </tr>
 <tr class="text-right">
@@ -20759,8 +20763,8 @@ XRP
 XRP Price
 </th>
 <td>
-<span data-currency-price data-usd="0.324444422974">
-<span data-currency-value>0.324444</span>
+<span data-currency-price data-usd="0.323313191382">
+<span data-currency-value>0.323313</span>
 <span data-currency-code>USD</span>
 </span>
 </td>
@@ -20773,7 +20777,7 @@ XRP ROI
 </a>
 </th>
 <td>
-<span class="text-semi-bold positive_change "><span data-format-percentage data-format-value="5423.55"> +5423.55</span>%
+<span class="text-semi-bold positive_change "><span data-format-percentage data-format-value="5404.29"> +5404.29</span>%
 </td>
 </tr>
 <tr>
@@ -20789,8 +20793,8 @@ Market Rank
 Market Cap
 </th>
 <td>
-<span data-currency-market-cap data-usd="13617175135.1">
- <span data-currency-value>13,617,175,135</span>
+<span data-currency-market-cap data-usd="13569696499.0">
+<span data-currency-value>13,569,696,499</span>
 <span data-currency-code>USD</span>
 </span>
 </td>
@@ -20800,12 +20804,12 @@ Market Cap
 24 Hour Volume
 </th>
 <td>
-<span data-currency-volume data-usd="971573025.979">
-<span data-currency-value>971,573,026</span>
+<span data-currency-volume data-usd="1007842683.77">
+<span data-currency-value>1,007,842,684</span>
 <span data-currency-code>USD</span>
 </span>
 </td>
-</tr>
+ </tr>
 <tr>
 <th scope="row">
 Circulating Supply
@@ -20900,7 +20904,7 @@ All Time Low
 <tr>
 <th scope="row">
 30 Day High / Low
- </th>
+</th>
 <td>
 <span data-currency-price data-usd="0.374064231981">
 <span data-currency-value>0.374064</span>
@@ -20991,7 +20995,7 @@ Yesterday's Change
 </span>
 </td>
 </tr>
- <tr>
+<tr>
 <th scope="row">
 Yesterday's Volume
 </th>
@@ -21057,7 +21061,7 @@ The approximate return on investment if purchased at the time of launch (or earl
 <strong>LTdsVS8VDw6syvfQADdhf2PHAm3rMGJvPX</strong> <br /> <img src="https://s2.coinmarketcap.com/static/cloud/img/qrcodes/donate_litecoin.png" alt="Donate Litecoin"><br />
 </div>
 </div>
-</div>
+ </div>
 </div>
 <div class="modal fade" id="donate_eth" tabindex="-1" role="dialog" aria-labelledby="donate_eth_label" aria-hidden="true">
 <div class="modal-dialog">
@@ -21098,24 +21102,25 @@ The approximate return on investment if purchased at the time of launch (or earl
 <h3 class="related-links-panel__header h5">Related Cryptocurrencies</h3>
 <ul class="related-links-panel__list">
 <li class="related-links-panel__item overflow-ellipsis">
-<img class="related-links-panel__logo lazyload" data-src="https://s2.coinmarketcap.com/static/img/coins/32x32/2083.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Bitcoin Gold" />
-<a href="/currencies/bitcoin-gold/" class="link-secondary">Bitcoin Gold (BTG)</a>
+<img class="related-links-panel__logo lazyload" data-src="https://s2.coinmarketcap.com/static/img/coins/32x32/1437.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Zcash" />
+<a href="/currencies/zcash/" class="link-secondary">Zcash (ZEC)</a>
 </li>
 <li class="related-links-panel__item overflow-ellipsis">
-<img class="related-links-panel__logo lazyload" data-src="https://s2.coinmarketcap.com/static/img/coins/32x32/1.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Bitcoin" />
-<a href="/currencies/bitcoin/" class="link-secondary">Bitcoin (BTC)</a>
+<img class="related-links-panel__logo lazyload" data-src="https://s2.coinmarketcap.com/static/img/coins/32x32/2010.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Cardano" />
+<a href="/currencies/cardano/" class="link-secondary">Cardano (ADA)</a>
+</li>
+
+<li class="related-links-panel__item overflow-ellipsis">
+<img class="related-links-panel__logo lazyload" data-src="https://s2.coinmarketcap.com/static/img/coins/32x32/1958.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="TRON" />
+<a href="/currencies/tron/" class="link-secondary">TRON (TRX)</a>
 </li>
 <li class="related-links-panel__item overflow-ellipsis">
 <img class="related-links-panel__logo lazyload" data-src="https://s2.coinmarketcap.com/static/img/coins/32x32/1839.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Binance Coin" />
 <a href="/currencies/binance-coin/" class="link-secondary">Binance Coin (BNB)</a>
 </li>
 <li class="related-links-panel__item overflow-ellipsis">
-<img class="related-links-panel__logo lazyload" data-src="https://s2.coinmarketcap.com/static/img/coins/32x32/2.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Litecoin" />
-<a href="/currencies/litecoin/" class="link-secondary">Litecoin (LTC)</a>
-</li>
-<li class="related-links-panel__item overflow-ellipsis">
-<img class="related-links-panel__logo lazyload" data-src="https://s2.coinmarketcap.com/static/img/coins/32x32/1831.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Bitcoin Cash" />
-<a href="/currencies/bitcoin-cash/" class="link-secondary">Bitcoin Cash (BCH)</a>
+<img class="related-links-panel__logo lazyload" data-src="https://s2.coinmarketcap.com/static/img/coins/32x32/3077.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="VeChain" />
+<a href="/currencies/vechain/" class="link-secondary">VeChain (VET)</a>
 </li>
 </ul>
 </section>
@@ -21148,7 +21153,7 @@ The approximate return on investment if purchased at the time of launch (or earl
 </div>
 <div class="col-xs-6">
 <ul class="list-unstyled">
- <li><a href="/request/" target="_blank">Request Form</a></li>
+<li><a href="/request/" target="_blank">Request Form</a></li>
 <li><a href="/careers/">Careers</a></li>
 <li><a href="https://blog.coinmarketcap.com" target="_blank" rel="noopener">Blog</a></li>
 <li><a href="/newsletter/" target="_blank">Newsletter</a></li>
@@ -21211,7 +21216,7 @@ The approximate return on investment if purchased at the time of launch (or earl
 We use cookies to offer you a better browsing experience, analyze site traffic, personalize content, and serve targeted advertisements. Read about how we use cookies and how you can control them on our <a href="/privacy/">Privacy Policy</a>. If you continue to use this site, you consent to our use of cookies.
 </div>
 </div>
-<div id="currency-exchange-rates" data-pkr="0.00706214689266" data-all="0.00906412871063" data-ron="0.236450499679" data-mnt="0.000397859255889" data-ugx="0.000267032153219" data-ttd="0.147412570342" data-aud="0.71315994038" data-cup="0.0388349514563" data-ngn="0.00277777777778" data-byn="0.476938815904" data-gtq="0.131003943481" data-hrk="0.151087391062" data-clp="0.00150715900528" data-eur="1.12534674747" data-nok="0.117608967354" data-amd="0.00207095323101" data-mxn="0.053037230014" data-gel="0.37037037037" data-try="0.171473526888" data-crc="0.00168488593075" data-aed="0.272236183401" data-gbp="1.29779958081" data-bam="0.574917829869" data-ars="0.0234466588511" data-mdl="0.0559188134878" data-btc="5336.22108137" data-sek="0.107401095405" data-mur="0.0287357089776" data-irr="2.37501484384e-05" data-cny="0.149015750965" data-bdt="0.0118457362931" data-pen="0.302690189327" data-kzt="0.00263427632154" data-rub="0.0156495992138" data-omr="2.6008140548" data-mkd="0.0182892020679" data-jod="1.41043524621" data-mmk="0.000657098169154" data-pln="0.262636078318" data-kes="0.00986679822398" data-hkd="0.127455916185" data-ves="0.000243605152506" data-cop="0.000317306197307" data-dzd="0.00838152711424" data-idr="7.09999925507e-05" data-krw="0.000876462596959" data-bgn="0.575262118184" data-isk="0.00829926202713" data-ils="0.278268612692" data-bob="0.144605631522" data-dkk="0.150711357608" data-twd="0.0324180276133" data-kwd="3.28785138912" data-brl="0.254394797321" data-zar="0.0705593707007" data-sgd="0.73724510672" data-uzs="0.000118343195266" data-usd="1.0" data-chf="0.984445757039" data-xau="1275.00605628" data-xpd="1396.72607408" data-xag="14.9999722501" data-huf="0.00351047432511" data-bmd="1.0" data-rsd="0.00952018278751" data-jmd="0.00774522185646" data-azn="0.587371512482" data-uah="0.0372081296638" data-lkr="0.0057260650481" data-tnd="0.331845999563" data-nzd="0.667400807555" data-iqd="0.000840336134454" data-xpt="895.768390125" data-cad="0.748301355922" data-lbp="0.00066271248219" data-khr="0.000248138957816" data-myr="0.241724910284" data-bhd="2.65188681747" data-inr="0.0143489521678" data-jpy="0.00893378538753" data-czk="0.0437503863706" data-sar="0.266985981901" data-ltc="77.078341272" data-nad="0.0710732054016" data-qar="0.274669586221" data-pab="1.0" data-xrp="0.324444422974" data-vnd="4.30913783046e-05" data-uyu="0.0291802835244" data-nio="0.0302297460701" data-kgs="0.0145668076845" data-ssp="0.00767675340886" data-mad="0.104062604063" data-php="0.0193644584729" data-eth="171.856082191" data-npr="0.00897672853147" data-bch="293.166457697" data-ghs="0.19512195122" data-egp="0.0582377263992" data-hnl="0.0407332456727" data-dop="0.0197569890349" data-thb="0.0313577924114"></div>
+<div id="currency-exchange-rates" data-pkr="0.00706214689266" data-all="0.00906412871063" data-ron="0.236450499679" data-mnt="0.000397855466415" data-ugx="0.000267032153219" data-ttd="0.147412570342" data-aud="0.713242851345" data-cup="0.0388349514563" data-ngn="0.00277777777778" data-byn="0.476938815904" data-gtq="0.131003943481" data-hrk="0.151087391062" data-clp="0.00150749987519" data-eur="1.12599425293" data-nok="0.117699677503" data-amd="0.00207095323101" data-mxn="0.0531023734106" data-gel="0.37037037037" data-try="0.171419089504" data-crc="0.00168488593075" data-aed="0.272236183401" data-gbp="1.29836406128" data-bam="0.574917829869" data-ars="0.0234274335247" data-mdl="0.0559188134878" data-btc="5351.33340255" data-sek="0.107466030525" data-mur="0.0287357089776" data-irr="2.37501484384e-05" data-cny="0.149049066953" data-bdt="0.0118457362931" data-pen="0.302664079494" data-kzt="0.00263427632154" data-rub="0.0156661481172" data-omr="2.6008140548" data-mkd="0.0182892020679" data-jod="1.41043524621" data-mmk="0.000657098169154" data-pln="0.262801729235" data-kes="0.00986679822398" data-hkd="0.127470538372" data-ves="0.000243605152506" data-cop="0.000317319286666" data-dzd="0.00838047349675" data-idr="7.09974928678e-05" data-krw="0.000876309392009" data-bgn="0.575217777451" data-isk="0.00830320563604" data-ils="0.278268612692" data-bob="0.144605631522" data-dkk="0.150808499446" data-twd="0.0324173350662" data-kwd="3.28785138912" data-brl="0.254756300123" data-zar="0.0706173595548" data-sgd="0.737254346852" data-uzs="0.000118343195266" data-usd="1.0" data-chf="0.984907280829" data-xau="1274.6972594" data-xpd="1377.48636289" data-xag="14.9999722501" data-huf="0.0035136494794" data-bmd="1.0" data-rsd="0.00952018278751" data-jmd="0.00774522185646" data-azn="0.587371512482" data-uah="0.0372081296638" data-lkr="0.0057260650481" data-tnd="0.332923615337" data-nzd="0.667570111551" data-iqd="0.000840336134454" data-xpt="895.471600118" data-cad="0.748717073295" data-lbp="0.000662536853612" data-khr="0.000248138957816" data-myr="0.241719943757" data-bhd="2.65216814746" data-inr="0.0143500846655" data-jpy="0.00893321749928" data-czk="0.0437954714694" data-sar="0.267069478659" data-ltc="76.8001363214" data-nad="0.0710631040364" data-qar="0.274669586221" data-pab="1.0" data-xrp="0.323313191382" data-vnd="4.31198696734e-05" data-uyu="0.0291802835244" data-nio="0.0302297460701" data-kgs="0.0145668081089" data-ssp="0.00767675340886" data-mad="0.104064769913" data-php="0.01937458829" data-eth="171.6368432" data-npr="0.00897672853147" data-bch="292.213073022" data-ghs="0.19512195122" data-egp="0.0582445104549" data-hnl="0.0407332456727" data-dop="0.0197530864198" data-thb="0.0313774975586"></div>
 <div class="scroll-to-top">
 <button class="btn"><span class="glyphicons glyphicons-chevron-up"></span></button>
 </div>
