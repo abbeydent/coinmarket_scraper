@@ -44,5 +44,5 @@ for one_file_name in glob.glob("historical_html_files/*.html"):
 			}, ignore_index=True)
 
 
-print(df)
+#print(df)
 df.to_csv("parsed_historical_files/coinmarket_historical_dataset")
