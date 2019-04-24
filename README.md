@@ -17,7 +17,7 @@ import datetime
 from bs4 import BeautifulSoup
 import pandas as pd 
 ```
-First the libraries required to run this file are imported
+First the libraries required to run this file are imported.
 
 
 ```
@@ -90,7 +90,7 @@ import os
 import glob
 import pandas as pd
 ```
-First the libraries needed for this program are imported
+First the libraries needed for this program are imported.
 
 
 ```
@@ -191,7 +191,62 @@ generated are then appended into a data frame that was initialized earlier.
 
 
 
-#coinmarket_analysis
+#coinmarket_analysis.ipynb
+
+```
+import numpy as np
+import os
+import pandas as pd
+import time
+from datetime import datetime
+import matplotlib.pyplot as plt
+from sklearn import datasets
+from sklearn import linear_model
+import statsmodels.api as sm
+import scipy.stats as stats
+from IPython import get_ipython
+```
+The packages above are required for this file.
+
+
+```
+df.sort_values(['date'], ascending = [True], inplace = True)
+df.head()
+```
+The code above sorts the data by date. 
+
+
+```
+data = df['close_price']
+target = df['open_price']
+data = sm.add_constant(data)
+model=sm.OLS(target, data).fit()
+predictions=model.predict(data)
+model.summary()
+```
+This code chunk regresses close_price on open_price.
+
+
+```
+data = df['open_price']
+target = df['high']
+data = sm.add_constant(data)
+model=sm.OLS(target, data).fit()
+predictions=model.predict(data)
+model.summary()
+```
+The code chunk above regresses open_price on high.
+
+
+```
+data = df['low']
+target = df['close_price']
+data = sm.add_constant(data)
+model=sm.OLS(target, data).fit()
+predictions=model.predict(data)
+model.summary()
+```
+This code chunk regresses low on close_price.
 
 
 
